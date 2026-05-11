@@ -663,6 +663,313 @@ Premium Chicks & Hatchery Solutions
 </p>
 
 </footer>
+<!-- WHATSAPP FLOATING BUTTON -->
 
+<a
+href="https://wa.me/917063482623"
+target="_blank"
+style="
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+width:70px;
+height:70px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:40px;
+color:white;
+z-index:999;
+text-decoration:none;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+">
+
+💬
+
+</a>
+
+<!-- AI ASSISTANT -->
+
+<div
+style="
+position:fixed;
+bottom:110px;
+right:20px;
+width:340px;
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 0 30px rgba(0,0,0,0.2);
+z-index:999;
+">
+
+<div
+style="
+background:#14532d;
+color:white;
+padding:15px;
+font-size:22px;
+font-weight:900;
+">
+
+Safari Farm AI 🤖
+
+</div>
+
+<div
+id="chat"
+style="
+height:280px;
+overflow:auto;
+padding:15px;
+background:#f5f5f5;
+">
+
+<div
+style="
+background:#dcfce7;
+padding:12px;
+border-radius:15px;
+margin-bottom:10px;
+">
+
+🤖 Ask anything about chicks, incubators and Safari Farm.
+
+</div>
+
+</div>
+
+<div
+style="
+display:flex;
+gap:10px;
+padding:10px;
+">
+
+<input
+id="input"
+placeholder="Ask..."
+style="
+flex:1;
+padding:12px;
+border-radius:15px;
+border:1px solid #ccc;
+outline:none;
+">
+
+<button
+onclick="sendAI()"
+style="
+background:#14532d;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:15px;
+font-weight:900;
+">
+
+Send
+
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUCT POPUP -->
+
+<div
+id="popup"
+style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+z-index:9999;
+justify-content:center;
+align-items:center;
+">
+
+<div
+style="
+background:white;
+max-width:500px;
+width:90%;
+padding:30px;
+border-radius:30px;
+text-align:center;
+">
+
+<h2 id="title"
+style="
+font-size:40px;
+font-weight:900;
+color:#14532d;
+">
+
+</h2>
+
+<p id="price"
+style="
+font-size:30px;
+font-weight:900;
+color:#ca8a04;
+margin:20px 0;
+">
+
+</p>
+
+<p id="minimum"
+style="
+font-size:22px;
+font-weight:700;
+margin-bottom:20px;
+">
+
+</p>
+
+<button
+onclick="closePopup()"
+style="
+background:red;
+color:white;
+padding:12px 25px;
+border:none;
+border-radius:15px;
+font-weight:900;
+">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const products={
+
+silkie:{
+price:"₹70-₹100",
+minimum:"Minimum Order: 100"
+},
+
+sultan:{
+price:"₹70-₹100",
+minimum:"Minimum Order: 100"
+},
+
+karaknath:{
+price:"₹40-₹70",
+minimum:"Minimum Order: 100"
+},
+
+turkey:{
+price:"₹100-₹170",
+minimum:"Minimum Order: 50"
+},
+
+brahma:{
+price:"₹1000-₹1200",
+minimum:"Minimum Order: 10"
+},
+
+sonali:{
+price:"₹20-₹30",
+minimum:"Minimum Order: 500"
+},
+
+desi:{
+price:"₹30-₹60",
+minimum:"Minimum Order: 500"
+},
+
+quail:{
+price:"₹10-₹15",
+minimum:"Minimum Order: 500"
+}
+
+};
+
+function openProduct(name){
+
+document.getElementById("popup").style.display="flex";
+
+document.getElementById("title").innerText=name;
+
+document.getElementById("price").innerText=
+products[name].price;
+
+document.getElementById("minimum").innerText=
+products[name].minimum;
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+function sendAI(){
+
+let input=document.getElementById("input");
+
+let message=input.value.toLowerCase();
+
+let chat=document.getElementById("chat");
+
+chat.innerHTML+=`
+<div style="
+background:#fde68a;
+padding:12px;
+border-radius:15px;
+margin-bottom:10px;
+text-align:right;
+">
+👤 ${message}
+</div>
+`;
+
+let reply="Safari Farm provides healthy chicks and incubators.";
+
+if(message.includes("silkie")){
+reply="Silkie price ₹70-₹100. Minimum order 100.";
+}
+
+if(message.includes("brahma")){
+reply="Brahma price ₹1000-₹1200. Minimum order 10.";
+}
+
+if(message.includes("sonali")){
+reply="Sonali price ₹20-₹30. Minimum order 500.";
+}
+
+if(message.includes("quail")){
+reply="Quail price ₹10-₹15. Minimum order 500.";
+}
+
+chat.innerHTML+=`
+<div style="
+background:#dcfce7;
+padding:12px;
+border-radius:15px;
+margin-bottom:10px;
+">
+🤖 ${reply}
+</div>
+`;
+
+input.value="";
+
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+</script>
 </body>
 </html>
