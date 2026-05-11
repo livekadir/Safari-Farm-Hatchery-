@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Safari Farm & Hatchery</title>
+<title>Safari Farm Luxury</title>
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,19 +15,19 @@
 
 <nav class="navbar">
 
-<div class="logo-area">
+<div class="logo-box">
 <img src="logo.png">
 <div>
 <h1>Safari Farm</h1>
-<p>Premium Hatchery</p>
+<p>Luxury Hatchery Startup</p>
 </div>
 </div>
 
 <div class="nav-links" id="navLinks">
 <a href="#home">Home</a>
-<a href="#products">Products</a>
+<a href="#products">Chicks</a>
+<a href="#incubator">Incubators</a>
 <a href="#about">About</a>
-<a href="#gallery">Gallery</a>
 <a href="#contact">Contact</a>
 </div>
 
@@ -45,19 +45,20 @@
 <div class="hero-content">
 
 <h1>
-Safari Farm & Hatchery
+Modern Poultry Farming.
+Luxury Hatchery Experience.
 </h1>
 
 <p>
-Healthy Vaccinated Chicks,
-Premium Hatchery,
-Delivery Support,
-Farming Guidance & Incubators.
+Premium Vaccinated Chicks,
+Luxury Hatchery Support,
+Modern Incubators,
+Professional Farming Guidance & Delivery.
 </p>
 
 <div class="hero-buttons">
-<a href="#products" class="btn yellow">Explore Chicks</a>
-<a href="https://wa.me/917063482623" class="btn green">WhatsApp Order</a>
+<a href="#products" class="btn gold">Explore Chicks</a>
+<a href="https://wa.me/917063482623" target="_blank" class="btn green">Order on WhatsApp</a>
 </div>
 
 </div>
@@ -70,21 +71,25 @@ Farming Guidance & Incubators.
 <div class="feature-card">
 💉
 <h3>Vaccinated Chicks</h3>
+<p>Healthy premium chicks with proper care and support.</p>
 </div>
 
 <div class="feature-card">
 🚚
 <h3>Delivery Support</h3>
+<p>Bulk order delivery support available.</p>
 </div>
 
 <div class="feature-card">
 🥚
 <h3>Premium Hatchery</h3>
+<p>Modern hatchery setup with professional guidance.</p>
 </div>
 
 <div class="feature-card">
-📞
-<h3>24/7 Support</h3>
+🤖
+<h3>AI Farm Support</h3>
+<p>Smart AI assistant for farming support and information.</p>
 </div>
 
 </section>
@@ -93,7 +98,7 @@ Farming Guidance & Incubators.
 
 <section class="products" id="products">
 
-<h2>Premium Chicks</h2>
+<h2>Premium Chicks Collection</h2>
 
 <div class="product-grid">
 
@@ -103,7 +108,7 @@ Farming Guidance & Incubators.
 <h3>Silkie</h3>
 <p>₹70 - ₹100</p>
 <span>Minimum Order: 100</span>
-<button onclick="openPopup('Silkie Chicks','Soft fluffy decorative premium breed.')">View Details</button>
+<button onclick="showDetails('Silkie','Soft fluffy decorative premium breed with calm nature.')">View Details</button>
 </div>
 </div>
 
@@ -113,7 +118,7 @@ Farming Guidance & Incubators.
 <h3>Sultan</h3>
 <p>₹70 - ₹100</p>
 <span>Minimum Order: 100</span>
-<button onclick="openPopup('Sultan Chicks','Royal white premium breed.')">View Details</button>
+<button onclick="showDetails('Sultan','Royal white premium decorative breed.')">View Details</button>
 </div>
 </div>
 
@@ -123,7 +128,7 @@ Farming Guidance & Incubators.
 <h3>Brahma</h3>
 <p>₹1000 - ₹1200</p>
 <span>Minimum Order: 10</span>
-<button onclick="openPopup('Brahma Chicks','Heavy giant premium breed.')">View Details</button>
+<button onclick="showDetails('Brahma','Heavy giant premium farming breed.')">View Details</button>
 </div>
 </div>
 
@@ -133,7 +138,7 @@ Farming Guidance & Incubators.
 <h3>Sonali</h3>
 <p>₹20 - ₹30</p>
 <span>Minimum Order: 500</span>
-<button onclick="openPopup('Sonali Chicks','Fast growth commercial breed.')">View Details</button>
+<button onclick="showDetails('Sonali','Fast growth commercial farming breed.')">View Details</button>
 </div>
 </div>
 
@@ -143,7 +148,7 @@ Farming Guidance & Incubators.
 <h3>Desi</h3>
 <p>₹30 - ₹60</p>
 <span>Minimum Order: 500</span>
-<button onclick="openPopup('Desi Chicks','Strong Indian natural immunity breed.')">View Details</button>
+<button onclick="showDetails('Desi','Strong Indian natural immunity breed.')">View Details</button>
 </div>
 </div>
 
@@ -153,7 +158,7 @@ Farming Guidance & Incubators.
 <h3>Quail</h3>
 <p>₹10 - ₹15</p>
 <span>Minimum Order: 500</span>
-<button onclick="openPopup('Quail Chicks','High egg production premium bird.')">View Details</button>
+<button onclick="showDetails('Quail','High egg production premium bird.')">View Details</button>
 </div>
 </div>
 
@@ -163,7 +168,7 @@ Farming Guidance & Incubators.
 <h3>Turkey</h3>
 <p>₹100 - ₹170</p>
 <span>Minimum Order: 50</span>
-<button onclick="openPopup('Turkey Chicks','Heavy premium turkey breed.')">View Details</button>
+<button onclick="showDetails('Turkey','Heavy premium turkey farming breed.')">View Details</button>
 </div>
 </div>
 
@@ -173,9 +178,35 @@ Farming Guidance & Incubators.
 <h3>Kadaknath</h3>
 <p>₹40 - ₹70</p>
 <span>Minimum Order: 100</span>
-<button onclick="openPopup('Kadaknath Chicks','Black meat medicinal breed.')">View Details</button>
+<button onclick="showDetails('Kadaknath','Black meat medicinal premium breed.')">View Details</button>
 </div>
 </div>
+
+</div>
+</section>
+
+<!-- INCUBATOR -->
+
+<section class="incubator" id="incubator">
+
+<div class="incubator-box">
+
+<div>
+<h2>Modern Incubators</h2>
+<p>
+Automatic incubators available with:
+Digital temperature control,
+humidity control,
+automatic egg turning,
+high hatch rate and premium support.
+</p>
+
+<a href="https://wa.me/917063482623" target="_blank" class="btn green">
+Book Incubator
+</a>
+</div>
+
+<img src="incubator.jpg">
 
 </div>
 
@@ -184,51 +215,43 @@ Farming Guidance & Incubators.
 <!-- ABOUT -->
 
 <section class="about" id="about">
+
 <h2>About Safari Farm</h2>
+
 <p>
 Safari Farm & Hatchery is managed by Rifat & Kadir Brothers.
-We provide healthy vaccinated chicks,
-premium hatchery support,
-incubators,
-farming guidance and delivery support.
+
+We provide:
+Healthy vaccinated chicks,
+modern hatchery support,
+premium incubators,
+professional farming guidance,
+delivery support and customer service.
+
+Our mission is to build a modern poultry farming experience with premium quality chicks and support.
 </p>
-</section>
 
-<!-- GALLERY -->
-
-<section class="gallery" id="gallery">
-<h2>Farm Gallery</h2>
-
-<div class="gallery-grid">
-<img src="silkie.jpg">
-<img src="sultan.jpg">
-<img src="brahma.jpg">
-<img src="sonali.jpg">
-<img src="desi.jpg">
-<img src="quail.jpg">
-<img src="turkey.jpg">
-<img src="kadaknath.jpg">
-</div>
 </section>
 
 <!-- CONTACT -->
 
 <section class="contact" id="contact">
+
 <h2>Contact Safari Farm</h2>
 
 <div class="contact-grid">
 
-<div class="contact-card">
+<a href="tel:7063482623" class="contact-card">
 📞
-<h3>Call</h3>
-<a href="tel:7063482623">7063482623</a>
-</div>
+<h3>Call Us</h3>
+<p>7063482623</p>
+</a>
 
-<div class="contact-card">
+<a href="mailto:rifatsahin000@gmail.com" class="contact-card">
 📧
 <h3>Email</h3>
 <p>rifatsahin000@gmail.com</p>
-</div>
+</a>
 
 <div class="contact-card">
 📍
@@ -243,20 +266,10 @@ Near Al Amin Mission.
 </div>
 
 </div>
+
 </section>
 
-<!-- PRODUCT POPUP -->
-
-<div class="popup-box" id="popupBox">
-<div class="popup-content">
-<button onclick="closePopup()">×</button>
-<h2 id="popupTitle"></h2>
-<p id="popupText"></p>
-<a href="https://wa.me/917063482623">Order on WhatsApp</a>
-</div>
-</div>
-
-<!-- AI ASSISTANT -->
+<!-- AI -->
 
 <div class="ai-button" onclick="toggleAI()">
 🤖
@@ -265,25 +278,49 @@ Near Al Amin Mission.
 <div class="ai-box" id="aiBox">
 
 <div class="ai-top">
-Safari Farm AI
+Safari Farm AI Assistant
 </div>
 
-<div class="ai-chat" id="aiChat">
+<div class="ai-chat" id="chatArea">
+
 <div class="bot-msg">
-👋 Hello! Ask me about chicks, prices, delivery, incubators or Safari Farm.
+👋 Hello! Welcome to Safari Farm.
+
+Ask me about:
+• Chicks
+• Prices
+• Farming
+• Delivery
+• Incubators
+• Location
+• Contact
 </div>
+
 </div>
 
 <div class="ai-bottom">
-<input id="aiInput" placeholder="Ask something...">
-<button onclick="sendAI()">Send</button>
+<input id="userInput" placeholder="Ask anything...">
+<button onclick="sendMessage()">Send</button>
 </div>
 
 </div>
 
-<!-- WHATSAPP -->
+<!-- PRODUCT POPUP -->
 
-<a href="https://wa.me/917063482623" class="whatsapp">
+<div class="popup" id="popup">
+<div class="popup-content">
+<button onclick="closePopup()">×</button>
+<h2 id="popupTitle"></h2>
+<p id="popupText"></p>
+<a href="https://wa.me/917063482623" target="_blank">
+Order on WhatsApp
+</a>
+</div>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+
+<a href="https://wa.me/917063482623" target="_blank" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
 
