@@ -915,11 +915,17 @@ document.getElementById("popup").style.display="none";
 
 }
 
+<script>
+
 function sendAI(){
 
 let input=document.getElementById("input");
 
-let message=input.value.toLowerCase();
+let message=input.value.trim();
+
+if(message==="") return;
+
+let lower=message.toLowerCase();
 
 let chat=document.getElementById("chat");
 
@@ -930,27 +936,90 @@ padding:12px;
 border-radius:15px;
 margin-bottom:10px;
 text-align:right;
+font-size:18px;
 ">
 👤 ${message}
 </div>
 `;
 
-let reply="Safari Farm provides healthy chicks and incubators.";
+let reply="";
 
-if(message.includes("silkie")){
-reply="Silkie price ₹70-₹100. Minimum order 100.";
+if(lower.includes("hello") || lower.includes("hi")){
+
+reply="Hello 👋 Welcome to Safari Farm & Hatchery. Ask about chicks, incubators, prices or farming support.";
+
 }
 
-if(message.includes("brahma")){
-reply="Brahma price ₹1000-₹1200. Minimum order 10.";
+else if(lower.includes("silkie")){
+
+reply="🐔 Silkie premium fluffy chicks available.\n\n💰 Price: ₹70-₹100\n📦 Minimum Order: 100\n✨ Best for show, pet and decoration.";
+
 }
 
-if(message.includes("sonali")){
-reply="Sonali price ₹20-₹30. Minimum order 500.";
+else if(lower.includes("sultan")){
+
+reply="🐔 Sultan royal breed available.\n\n💰 Price: ₹70-₹100\n📦 Minimum Order: 100\n✨ Beautiful white feathers and premium quality.";
+
 }
 
-if(message.includes("quail")){
-reply="Quail price ₹10-₹15. Minimum order 500.";
+else if(lower.includes("brahma")){
+
+reply="🐔 Brahma giant breed available.\n\n💰 Price: ₹1000-₹1200\n📦 Minimum Order: 10\n✨ Heavy weight premium farm breed.";
+
+}
+
+else if(lower.includes("sonali")){
+
+reply="🐔 Sonali commercial chicks available.\n\n💰 Price: ₹20-₹30\n📦 Minimum Order: 500\n✨ Fast growth and strong immunity.";
+
+}
+
+else if(lower.includes("desi")){
+
+reply="🐔 Desi healthy Indian chicks available.\n\n💰 Price: ₹30-₹60\n📦 Minimum Order: 500\n✨ Strong natural immunity.";
+
+}
+
+else if(lower.includes("quail")){
+
+reply="🐔 Quail chicks available.\n\n💰 Price: ₹10-₹15\n📦 Minimum Order: 500\n✨ Small bird with high egg production.";
+
+}
+
+else if(lower.includes("karaknath")){
+
+reply="🐔 Karaknath black meat chicks available.\n\n💰 Price: ₹40-₹70\n📦 Minimum Order: 100\n✨ High protein premium breed.";
+
+}
+
+else if(lower.includes("turkey")){
+
+reply="🐔 Turkey chicks available.\n\n💰 Price: ₹100-₹170\n📦 Minimum Order: 50\n✨ Large healthy farm birds.";
+
+}
+
+else if(lower.includes("incubator")){
+
+reply="🥚 Automatic incubators available.\n\n✨ Digital temperature control\n✨ Automatic egg turning\n✨ High hatch success rate.";
+
+}
+
+else if(lower.includes("location") || lower.includes("address")){
+
+reply="📍 Safari Farm & Hatchery\nWest Bengal, Malda, Sujapur, Baranagar Danga Station Road Near Al Amin Mission.";
+
+}
+
+else if(lower.includes("contact") || lower.includes("number")){
+
+reply="📞 Contact: 7063482623\n📧 Email: rifatsahin000@gmail.com";
+
+}
+
+else{
+
+reply="🤖 Sorry, I am still learning. Please ask about chicks, prices, incubators or Safari Farm.";
+
 }
 
 chat.innerHTML+=`
@@ -959,8 +1028,20 @@ background:#dcfce7;
 padding:12px;
 border-radius:15px;
 margin-bottom:10px;
+font-size:18px;
+white-space:pre-line;
 ">
 🤖 ${reply}
+</div>
+`;
+
+input.value="";
+
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+</script>}
 </div>
 `;
 
