@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
@@ -17,23 +17,9 @@
                         gold: { 300: '#fde047', 400: '#facc15', 500: '#eab308', 600: '#ca8a04', 700: '#a16207' },
                         royal: { light: '#f8fafc', dark: '#0a0a0a', darker: '#050505' }
                     },
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 5s ease-in-out infinite',
-                        'zoom-in': 'zoomIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-12px)' },
-                        },
-                        zoomIn: {
-                            '0%': { opacity: '0', transform: 'scale(0.9)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' },
-                        }
-                    }
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    animation: { 'float': 'float 5s ease-in-out infinite' },
+                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-12px)' } } }
                 }
             }
         }
@@ -45,31 +31,23 @@
 
     <style>
         body { scroll-behavior: smooth; transition: background-color 0.5s ease, color 0.5s ease; }
-        
-        /* Premium Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #ca8a04; border-radius: 10px; }
-
-        /* Hide scrollbar for slider but keep functionality */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* Glassmorphism */
+        
         .glass-dark { background: rgba(10, 10, 10, 0.75); backdrop-filter: blur(25px); border: 1px solid rgba(250, 204, 21, 0.15); }
         .glass-light { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
-
-        /* Gradients */
         .gold-gradient { background: linear-gradient(135deg, #facc15, #a16207); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Hover Effects */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .card-hover:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 30px 60px rgba(0,0,0,0.15); z-index: 10; }
-        .dark .card-hover:hover { box-shadow: 0 30px 60px rgba(250, 204, 21, 0.1); }
+        .card-hover:hover { transform: translateY(-10px) scale(1.02); z-index: 10; }
         
-        /* Loading Bar */
         #scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: linear-gradient(to right, #facc15, #ca8a04); z-index: 1000; transition: width 0.1s; }
+        
+        /* Fallback background for missing images */
+        .img-placeholder { background-color: #1f2937; display: flex; align-items: center; justify-content: center; color: #4b5563; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
     </style>
 </head>
 <body class="bg-royal-light text-gray-900 dark:bg-royal-darker dark:text-gray-100">
@@ -80,18 +58,17 @@
     <nav class="fixed w-full z-50 transition-all duration-400 pt-5 px-4 md:px-8" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center glass-light dark:glass-dark rounded-full transition-all duration-500">
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                <img src="logo.png" alt="Safari Farm" class="w-12 h-12 rounded-full border-2 border-green-800 dark:border-gold-500 object-cover shadow-lg" onerror="this.src='https://images.unsplash.com/photo-1548550023-2bf3c49b338c?q=80&w=150&auto=format&fit=crop'">
+                <img src="logo.png" alt="Safari Farm" class="w-12 h-12 rounded-full border-2 border-green-800 dark:border-gold-500 object-cover shadow-lg bg-gray-800">
                 <div>
                     <h1 class="text-xl md:text-2xl font-extrabold text-green-900 dark:text-gold-500 tracking-wide uppercase">Safari Farm</h1>
                 </div>
             </div>
 
-            <!-- Desktop Links -->
             <div class="hidden md:flex gap-8 items-center font-bold text-xs tracking-widest uppercase">
                 <a href="#home" class="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-gold-400 transition">Home</a>
-                <a href="#chicks" class="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-gold-400 transition">Premium Chicks</a>
+                <a href="#chicks" class="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-gold-400 transition">Chicks</a>
                 <a href="#gallery" class="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-gold-400 transition">Gallery</a>
-                <a href="#about" class="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-gold-400 transition">About</a>
+                <a href="#about" class="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-gold-400 transition">About Us</a>
                 
                 <button onclick="toggleTheme()" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gold-400 hover:scale-110 transition flex items-center justify-center shadow-inner">
                     <i id="themeIcon" class="fas fa-sun text-lg"></i>
@@ -102,7 +79,6 @@
                 </a>
             </div>
 
-            <!-- Mobile Buttons -->
             <div class="md:hidden flex items-center gap-4">
                 <button onclick="toggleTheme()" class="text-xl text-gray-800 dark:text-gold-400"><i id="themeIconMobile" class="fas fa-sun"></i></button>
                 <button class="text-2xl text-gray-800 dark:text-gold-400" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
@@ -120,7 +96,7 @@
 
     <!-- HERO SECTION -->
     <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('farmbg.jpg')] bg-cover bg-center bg-fixed opacity-20 dark:opacity-30"></div>
+        <div class="absolute inset-0 bg-cover bg-center bg-fixed opacity-20 dark:opacity-30" style="background-image: url('farm1.jpg');"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-royal-light dark:from-black/95 dark:via-royal-dark/90 dark:to-royal-darker transition-colors duration-700"></div>
         
         <div class="relative z-10 text-center max-w-6xl mx-auto reveal active animate-float mt-10">
@@ -132,7 +108,7 @@
                 <span class="gold-gradient">Unmatched Purity.</span>
             </h1>
             <p class="text-lg md:text-2xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
-                Healthy, 100% Vaccinated Chicks, Modern Setup, aur poore India mein Safe Delivery. Safari Farm par aapka bharosa hi humari pehchan hai.
+                Healthy, 100% Vaccinated Chicks, Modern Setup, aur poore India mein Safe Delivery. Kadir & Rifat Brothers par aapka bharosa hi humari pehchan hai.
             </p>
             <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
                 <a href="#gallery" class="px-10 py-4 bg-black dark:bg-gold-500 text-white dark:text-black font-extrabold rounded-full hover:scale-105 transition duration-300 shadow-2xl text-lg uppercase tracking-wider w-full sm:w-auto">
@@ -156,25 +132,26 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- JS Array for Chicks (Using Your Real Images) -->
+                <!-- JS Array for Chicks (Using Only Local Images) -->
                 <script>
                     const chicksList = [
-                        { name: 'Kadaknath', price: '₹50 - ₹60', min: 100, img: '46697.jpg', fallback: 'https://images.unsplash.com/photo-1600005470402-53b47f42c232?q=80&w=600', details: 'Black meat aur medicinal properties ke liye world famous breed. Highest protein content.' },
-                        { name: 'Quail', price: '₹13', min: 500, img: '45534.jpg', fallback: 'https://images.unsplash.com/photo-1598375971485-9f5b3303d76e?q=80&w=600', details: 'Quail (Bater) farming trending hai. Kam jagah mein high egg/meat production.' },
-                        { name: 'Silkie', price: '₹80', min: 100, img: '46711.jpg', fallback: 'https://images.unsplash.com/photo-1614995303975-d16c522eb1f7?q=80&w=600', details: 'Silkie chicks apni soft, fur-like feathers aur calm nature ke liye famous hain. Decorative aur luxury breed.' },
-                        { name: 'Sultan', price: '₹80', min: 100, img: '46724.jpg', fallback: 'https://images.unsplash.com/photo-1582046467000-8b1e4c70d440?q=80&w=600', details: 'Sultan breed apne royal look aur sar par taj (crest) ke liye jani jati hai. Premium ornamental bird.' },
-                        { name: 'Brahma', price: '₹1100', min: 10, img: '52281.jpg', fallback: 'https://images.unsplash.com/photo-1563223771-5fe4bf7ac5ce?q=80&w=600', details: 'Brahma ko "King of Poultry" kaha jata hai! Heavy size, majestic look aur strong immunity.' },
-                        { name: 'Sonali / Desi', price: '₹25 - ₹60', min: 500, img: '50137.jpg', fallback: 'https://images.unsplash.com/photo-1590272456421-2e6b911c79fb?q=80&w=600', details: 'Commercial farmers ki pehli pasand. Fast growth aur high meat yield wali profitable breed.' },
-                        { name: 'Turkey', price: '₹160', min: 50, img: 'turkey.jpg', fallback: 'https://images.unsplash.com/photo-1574676137682-16987f620bd2?q=80&w=600', details: 'Heavy weight Turkey chicks. Festival seasons aur premium meat market ke liye best.' },
-                        { name: 'Crested Black', price: '₹80', min: 100, img: '46689.jpg', fallback: 'https://images.unsplash.com/photo-1582046467000-8b1e4c70d440?q=80&w=600', details: 'Premium black crested ornamental breed. Unique look and high demand in luxury farms.' }
+                        { name: 'Kadaknath', price: '₹50 - ₹60', min: 100, img: 'kadaknath.jpg', details: 'Black meat aur medicinal properties ke liye world famous breed. Highest protein content.' },
+                        { name: 'Quail', price: '₹13', min: 500, img: 'quail.jpg', details: 'Quail (Bater) farming trending hai. Kam jagah mein high egg/meat production.' },
+                        { name: 'Silkie', price: '₹80', min: 100, img: 'silkie.jpg', details: 'Silkie chicks apni soft, fur-like feathers aur calm nature ke liye famous hain. Decorative aur luxury breed.' },
+                        { name: 'Sultan', price: '₹80', min: 100, img: 'sultan.jpg', details: 'Sultan breed apne royal look aur sar par taj (crest) ke liye jani jati hai. Premium ornamental bird.' },
+                        { name: 'Brahma', price: '₹1100', min: 10, img: 'brahma.jpg', details: 'Brahma ko "King of Poultry" kaha jata hai! Heavy size, majestic look aur strong immunity.' },
+                        { name: 'Sonali', price: '₹25 - ₹32', min: 500, img: 'sonali.jpg', details: 'Commercial farmers ki pehli pasand. Fast growth aur high meat yield wali profitable breed.' },
+                        { name: 'Turkey', price: '₹160', min: 50, img: 'turkey.jpg', details: 'Heavy weight Turkey chicks. Festival seasons aur premium meat market ke liye best.' },
+                        { name: 'Desi', price: '₹40 - ₹60', min: 500, img: 'desi.jpg', details: 'Pure Desi breed. Natural immunity aur organic farming ke liye perfect choice.' }
                     ];
 
                     chicksList.forEach(p => {
                         document.write(`
                             <div class="bg-white dark:bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden card-hover transition-all duration-500 reveal group flex flex-col h-full shadow-2xl dark:shadow-none border border-gray-100 dark:border-gray-800 relative">
-                                <div class="overflow-hidden h-72 relative p-2">
-                                    <img src="${p.img}" onerror="this.src='${p.fallback}'" alt="" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-110 transition duration-700">
-                                    <div class="absolute top-6 right-6 bg-white/90 dark:bg-black/80 text-black dark:text-gold-400 font-extrabold px-4 py-1.5 rounded-full text-[10px] backdrop-blur-md shadow-lg uppercase tracking-widest border border-gray-200 dark:border-gray-700">
+                                <div class="overflow-hidden h-72 relative p-2 img-placeholder rounded-[2rem]">
+                                    <span class="absolute z-0 text-gray-500 font-bold opacity-50">Upload ${p.img}</span>
+                                    <img src="${p.img}" alt="" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-110 transition duration-700 relative z-10" onerror="this.style.opacity='0'">
+                                    <div class="absolute top-6 right-6 bg-white/90 dark:bg-black/80 text-black dark:text-gold-400 font-extrabold px-4 py-1.5 rounded-full text-[10px] backdrop-blur-md shadow-lg uppercase tracking-widest border border-gray-200 dark:border-gray-700 z-20">
                                         Min: ${p.min}
                                     </div>
                                 </div>
@@ -193,7 +170,7 @@
         </div>
     </section>
 
-    <!-- 📸 LUXURY SLIDER GALLERY (WITH REAL IMAGES) -->
+    <!-- 📸 LUXURY SLIDER GALLERY (20 IMAGES) -->
     <section id="gallery" class="py-32 px-0 bg-white dark:bg-[#080808] transition-colors duration-700 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 mb-12 reveal">
             <h2 class="text-5xl md:text-7xl font-extrabold text-black dark:text-white tracking-tight">
@@ -202,41 +179,32 @@
             <p class="text-gray-600 dark:text-gray-400 text-xl font-medium mt-4">Safari Farm ka exclusive infrastructure (Slide to view).</p>
         </div>
 
-        <!-- Slider Container -->
         <div class="relative w-full group reveal">
             <!-- Left Button -->
             <button onclick="slideGallery(-1)" class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/80 dark:bg-black/80 backdrop-blur-md text-black dark:text-gold-500 rounded-full shadow-2xl flex items-center justify-center text-xl hover:scale-110 transition border border-gray-200 dark:border-gray-700 opacity-0 group-hover:opacity-100 hidden md:flex">
                 <i class="fas fa-chevron-left"></i>
             </button>
 
-            <!-- 10 Images Track (Using uploaded filenames) -->
+            <!-- 20 Images Track -->
             <div id="gallery-track" class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 pb-12 pt-4 px-6 md:px-10 w-full scroll-smooth">
                 <script>
-                    const farmImages = [
-                        { src: '71794.jpg', fallback: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=1000' },
-                        { src: '46525.jpg', fallback: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=1000' },
-                        { src: '50137.jpg', fallback: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1000' },
-                        { src: '52281.jpg', fallback: 'https://images.unsplash.com/photo-1603048297172-c92544798d5e?q=80&w=1000' },
-                        { src: '46724.jpg', fallback: 'https://images.unsplash.com/photo-1563223771-5fe4bf7ac5ce?q=80&w=1000' },
-                        { src: '46712.jpg', fallback: 'https://images.unsplash.com/photo-1598375971485-9f5b3303d76e?q=80&w=1000' },
-                        { src: '46711.jpg', fallback: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=1000' },
-                        { src: '46697.jpg', fallback: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=1000' },
-                        { src: '46689.jpg', fallback: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=1000' },
-                        { src: '45534.jpg', fallback: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1000' }
-                    ];
-
-                    farmImages.forEach((img) => {
+                    for(let i=1; i<=20; i++) {
+                        let imgName = 'farm' + i + '.jpg';
                         document.write(`
-                            <div class="min-w-[85vw] md:min-w-[45vw] lg:min-w-[30vw] h-[350px] md:h-[450px] snap-center relative rounded-[2rem] overflow-hidden cursor-pointer shadow-xl dark:shadow-none border border-gray-200 dark:border-gray-800 transition-transform duration-500 hover:-translate-y-2 group/img" onclick="openLightbox('${img.src}', '${img.fallback}')">
-                                <img src="${img.src}" onerror="this.src='${img.fallback}'" alt="" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-700">
-                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition duration-500 flex items-center justify-center">
+                            <div class="min-w-[85vw] md:min-w-[45vw] lg:min-w-[30vw] h-[350px] md:h-[450px] snap-center relative rounded-[2rem] overflow-hidden cursor-pointer shadow-xl dark:shadow-none border border-gray-200 dark:border-gray-800 transition-transform duration-500 hover:-translate-y-2 group/img img-placeholder" onclick="openLightbox('${imgName}')">
+                                <span class="absolute z-0 text-gray-500 font-bold opacity-50">Upload ${imgName}</span>
+                                <img src="${imgName}" alt="" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-700 relative z-10" onerror="this.style.opacity='0'">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition duration-500 flex items-center justify-center z-20">
                                     <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white text-2xl border border-white/50">
                                         <i class="fas fa-expand"></i>
                                     </div>
                                 </div>
+                                <div class="absolute bottom-6 left-8 bg-black/50 backdrop-blur-md px-4 py-1 rounded-full text-white text-xs font-bold border border-white/20 z-20">
+                                    SAFARI FARM PHOTO ${i}
+                                </div>
                             </div>
                         `);
-                    });
+                    }
                 </script>
             </div>
 
@@ -255,19 +223,22 @@
             <div class="flex flex-col md:flex-row items-center gap-16 reveal">
                 <div class="w-full md:w-1/2 relative group">
                     <div class="absolute inset-0 bg-black dark:bg-gold-500 rounded-[3rem] transform rotate-3 group-hover:rotate-6 transition duration-500 opacity-10 dark:opacity-20"></div>
-                    <img src="71794.jpg" onerror="this.src='logo.png'" class="rounded-[3rem] shadow-2xl object-cover w-full h-[450px] relative z-10 border-4 border-white dark:border-gray-800">
+                    <div class="rounded-[3rem] shadow-2xl w-full h-[450px] relative z-10 border-4 border-white dark:border-gray-800 img-placeholder overflow-hidden">
+                        <span class="absolute z-0 text-gray-500 font-bold opacity-50">Upload logo.png</span>
+                        <img src="logo.png" class="object-cover w-full h-full relative z-10" onerror="this.style.opacity='0'">
+                    </div>
                 </div>
                 <div class="w-full md:w-1/2">
                     <h2 class="text-4xl md:text-6xl font-extrabold mb-6 text-black dark:text-white tracking-tight">About The <span class="gold-gradient">Farm</span></h2>
                     <p class="text-gray-700 dark:text-gray-300 text-xl leading-relaxed mb-8">
-                        Safari Farm ko ek luxury standard par design kiya gaya hai. Humara farm hygiene, temperature control aur strict biosecurity protocols follow karta hai.
+                        Safari Farm ek aam farm nahi, ek premium luxury hatchery hai. Humare yahan har ek chick strict hygiene, temperature control, aur biosecurity protocols ke under pala jata hai.
                     </p>
                     <div class="space-y-6">
                         <div class="flex items-center gap-5 p-5 bg-white dark:bg-[#111] rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
                             <div class="w-14 h-14 bg-gray-100 dark:bg-black rounded-full flex items-center justify-center text-black dark:text-gold-500 text-xl"><i class="fas fa-temperature-high"></i></div>
                             <div>
-                                <h4 class="font-extrabold text-black dark:text-white text-lg">Smart Climate Control</h4>
-                                <p class="text-gray-500 dark:text-gray-400">Automatic temperature & humidity adjust.</p>
+                                <h4 class="font-extrabold text-black dark:text-white text-lg">Smart Incubators</h4>
+                                <p class="text-gray-500 dark:text-gray-400">Automatic temperature & humidity adjust machines.</p>
                             </div>
                         </div>
                     </div>
@@ -324,7 +295,10 @@
     <!-- 🔍 LIGHTBOX MODAL FOR GALLERY -->
     <div id="lightbox" class="fixed inset-0 bg-black/95 z-[200] hidden items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-lg">
         <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/50 hover:text-white text-4xl transition"><i class="fas fa-times"></i></button>
-        <img id="lightbox-img" src="" class="max-w-[90%] max-h-[90vh] object-contain rounded-2xl shadow-2xl transform scale-95 transition-transform duration-300">
+        <div class="max-w-[90%] max-h-[90vh] rounded-2xl shadow-2xl transform scale-95 transition-transform duration-300 img-placeholder overflow-hidden relative">
+            <span class="absolute z-0 text-gray-500 font-bold opacity-50">Loading Image...</span>
+            <img id="lightbox-img" src="" class="w-full h-full object-contain relative z-10" onerror="this.style.opacity='0'">
+        </div>
     </div>
 
     <!-- AI CHATBOT -->
@@ -345,13 +319,13 @@
         <div id="chatArea" class="h-[400px] overflow-y-auto p-5 space-y-5 bg-gray-50 dark:bg-black text-[15px] font-medium scroll-smooth">
             <div class="flex gap-3 max-w-[85%]">
                 <div class="w-8 h-8 rounded-full bg-black dark:bg-gray-800 flex-shrink-0 flex items-center justify-center text-white text-xs mt-1 shadow-sm"><i class="fas fa-robot"></i></div>
-                <div class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-4 rounded-2xl rounded-tl-sm shadow-sm border border-gray-100 dark:border-gray-800">
-                    Hello! 👋 Main Safari Farm ka Smart AI hoon. Aap chicks ke price, gallery, ya farm details pooch sakte hain!
+                <div class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-4 rounded-2xl rounded-tl-sm shadow-sm border border-gray-100 dark:border-gray-800 leading-relaxed">
+                    Namaste! 🙏 Main Safari Farm ka Smart AI hoon. Aap mujhse murgiyon ke rate, farm ki details, incubators, ya delivery ke baare mein kuch bhi pooch sakte hain!
                 </div>
             </div>
         </div>
         <div class="p-4 bg-white dark:bg-[#111] flex gap-3 border-t border-gray-100 dark:border-gray-800">
-            <input type="text" id="userInput" placeholder="Type a message..." class="flex-1 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white rounded-full px-6 py-3.5 outline-none focus:ring-2 focus:ring-black dark:focus:ring-gold-500 font-medium" onkeypress="if(event.key === 'Enter') processUserMessage()">
+            <input type="text" id="userInput" placeholder="Apna sawaal type karein..." class="flex-1 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white rounded-full px-6 py-3.5 outline-none focus:ring-2 focus:ring-black dark:focus:ring-gold-500 font-medium" onkeypress="if(event.key === 'Enter') processUserMessage()">
             <button onclick="processUserMessage()" class="bg-black dark:bg-gold-500 text-white dark:text-black w-14 h-14 rounded-full hover:scale-105 font-bold flex items-center justify-center shadow-lg transition"><i class="fas fa-paper-plane text-xl"></i></button>
         </div>
     </div>
@@ -412,11 +386,11 @@
         }
 
         // --- Gallery Lightbox ---
-        function openLightbox(src, fallback) {
+        function openLightbox(src) {
             const lb = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
+            img.style.opacity = '1';
             img.src = src;
-            img.onerror = () => img.src = fallback;
             lb.classList.remove('hidden'); lb.classList.add('flex');
             setTimeout(() => { lb.classList.remove('opacity-0'); img.classList.remove('scale-95'); img.classList.add('scale-100'); }, 10);
         }
@@ -470,7 +444,7 @@
             setTimeout(() => { popup.classList.add('hidden'); popup.classList.remove('flex'); }, 300);
         }
 
-        // --- AI Chatbot ---
+        // --- NEXT LEVEL AI CHATBOT (SUPER BRAIN) ---
         let aiOpen = false;
         function toggleAI() {
             const box = document.getElementById('aiBox');
@@ -479,32 +453,58 @@
         }
 
         const botBrain = [
-            { keys: ['hi', 'hello', 'hlw'], reply: 'Hello ji! 👋 Safari Farm mein aapka swagat hai. Main aapko chicks, gallery ya farm ki details de sakta hoon.' },
-            { keys: ['silkie'], reply: '🐔 <b>Silkie:</b> ₹80/chick. Luxury decorative breed.' },
-            { keys: ['sultan'], reply: '🐔 <b>Sultan:</b> ₹80/chick. Royal ornamental breed.' },
-            { keys: ['brahma'], reply: '🐔 <b>Brahma:</b> ₹1100/chick. Giant farming breed.' },
-            { keys: ['sonali'], reply: '🐔 <b>Sonali:</b> ₹25 - ₹32/chick. Best commercial farming breed.' },
-            { keys: ['desi'], reply: '🐔 <b>Desi:</b> ₹40 - ₹60/chick. Pure natural immunity.' },
-            { keys: ['quail', 'bater'], reply: '🐔 <b>Quail:</b> ₹13/chick. High egg production.' },
-            { keys: ['turkey'], reply: '🐔 <b>Turkey:</b> ₹160/chick. Heavy premium meat bird.' },
-            { keys: ['kadaknath', 'black'], reply: '🐔 <b>Kadaknath:</b> ₹50 - ₹60/chick. Black meat, high protein.' },
-            { keys: ['price', 'rate', 'dam'], reply: 'Humare paas Desi (₹40-60), Sonali (₹25-32), Kadaknath (₹50-60), Brahma (₹1100) hain. Aapko kiska rate janna hai?' },
-            { keys: ['gallery', 'photo', 'image'], reply: '📸 Gallery dekhne ke liye menu se "Gallery" par click karein. Wahan farm ki sabhi tasveerein hain!' },
-            { keys: ['delivery', 'location', 'address', 'contact'], reply: '📍 Address: Sujapur, Malda, WB. Call/WhatsApp: <b>7063482623</b>. Pan-India delivery available.' },
+            // Greetings (Hindi/English/Bengali)
+            { keys: ['hi', 'hello', 'hlw', 'namaste', 'hey', 'salam', 'nomoshkar'], reply: 'Namaste! 🙏 Main Safari Farm ka Smart AI hoon. Aap mujhse murgiyon ke rate, farm ki details, incubators, ya delivery ke baare mein kuch bhi pooch sakte hain.' },
+            { keys: ['kaise ho', 'how are you', 'kemon acho', 'kya haal'], reply: 'Main ekdum badhiya hoon! Aapko apni poultry farm ke liye kaunsi information chahiye?' },
+            
+            // Owners Information
+            { keys: ['owner', 'malik', 'who', 'kadir', 'rifat', 'founder', 'bhai'], reply: '👨‍💼 Safari Farm ke founders aur owners **Kadir aur Rifat brothers** hain. Unka vision hai India ke har farmer ko premium quality aur disease-free chicks provide karna.' },
+            
+            // Farm Information
+            { keys: ['farm', 'about', 'kya hai', 'safari'], reply: '🏡 **Safari Farm** ek luxury hatchery startup hai. Humare yahan 100% vaccinated chicks paale jate hain. Hum hygiene, climate control, aur strict biosecurity protocols follow karte hain.' },
+            
+            // Incubator Information
+            { keys: ['incubator', 'machine', 'egg', 'ande ki machine', 'anda'], reply: '🥚 Humare paas **Fully Automatic Incubators** hain jisme digital temperature, humidity control, aur auto egg turning system hai. High hatch rate ki guarantee! Booking ke liye +91 7063482623 par call karein.' },
+            
+            // Chicks & Specific Prices
+            { keys: ['silkie'], reply: '🐔 <b>Silkie:</b> ₹80 per chick. Luxury aur decorative breed hai. (Min order: 100)' },
+            { keys: ['sultan'], reply: '🐔 <b>Sultan:</b> ₹80 per chick. Royal ornamental breed. (Min order: 100)' },
+            { keys: ['brahma'], reply: '🐔 <b>Brahma:</b> ₹1100 per chick. Giant size farming breed. (Min order: 10)' },
+            { keys: ['sonali'], reply: '🐔 <b>Sonali:</b> ₹25 - ₹32 per chick. Best for commercial farming. (Min order: 500)' },
+            { keys: ['desi'], reply: '🐔 <b>Desi:</b> ₹40 - ₹60 per chick. High natural immunity. (Min order: 500)' },
+            { keys: ['quail', 'bater'], reply: '🐔 <b>Quail (Bater):</b> ₹13 per chick. High egg production. (Min order: 500)' },
+            { keys: ['turkey'], reply: '🐔 <b>Turkey:</b> ₹160 per chick. Heavy premium meat bird. (Min order: 50)' },
+            { keys: ['kadaknath', 'karaknath', 'black'], reply: '🐔 <b>Kadaknath:</b> ₹50 - ₹60 per chick. Black meat, medicinal values. (Min order: 100)' },
+            { keys: ['price', 'rate', 'dam', 'daam', 'list', 'kitne', 'koto'], reply: '💰 *Price List:*\n- Desi: ₹40-60\n- Sonali: ₹25-32\n- Kadaknath: ₹50-60\n- Brahma: ₹1100\n- Silkie/Sultan: ₹80\n- Quail: ₹13\n- Turkey: ₹160\n(Aapko specific detail chahiye toh breed ka naam likhein).' },
+            
+            // Location & Delivery
+            { keys: ['delivery', 'transport', 'bhejne', 'bhej', 'paathabe'], reply: '🚚 Hum poore India mein **Safe and Secure Delivery** provide karte hain bulk orders par. Transport me chicks ki safety ka poora dhyan rakha jata hai.' },
+            { keys: ['location', 'address', 'kahan', 'where', 'jagah', 'kothay'], reply: '📍 **Humara Address:** Baranagar Danga Station Road, Near Al Amin Mission, Sujapur, Malda, West Bengal, India.' },
+            { keys: ['contact', 'number', 'phone', 'call', 'whatsapp'], reply: '📞 Order ya enquiry ke liye Kadir & Rifat bhai se is number par call/WhatsApp karein: **7063482623**.' },
         ];
 
         function processUserMessage() {
             let input = document.getElementById('userInput'); let text = input.value.trim(); if(text === '') return;
             let chat = document.getElementById('chatArea');
+            
             chat.innerHTML += `<div class="flex justify-end mb-4"><div class="bg-black dark:bg-gold-500 text-white dark:text-black p-3.5 rounded-2xl rounded-tr-sm shadow-md max-w-[85%] leading-relaxed font-bold">${text}</div></div>`;
             chat.scrollTop = chat.scrollHeight; input.value = '';
 
             let typingId = 'typing-' + Date.now();
-            chat.innerHTML += `<div id="${typingId}" class="flex gap-3 max-w-[85%] mb-4"><div class="w-8 h-8 rounded-full bg-black dark:bg-gray-800 flex-shrink-0 flex items-center justify-center text-white text-xs mt-1 shadow-sm"><i class="fas fa-robot"></i></div><div class="bg-white dark:bg-gray-900 p-4 rounded-2xl rounded-tl-sm flex items-center gap-1.5"><div class="w-2 h-2 bg-gray-500 dark:bg-gold-500 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-500 dark:bg-gold-500 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-500 dark:bg-gold-500 rounded-full typing-dot"></div></div></div>`;
+            chat.innerHTML += `<div id="${typingId}" class="flex gap-3 max-w-[85%] mb-4"><div class="w-8 h-8 rounded-full bg-black dark:bg-gray-800 flex-shrink-0 flex items-center justify-center text-white text-xs mt-1 shadow-sm"><i class="fas fa-robot"></i></div><div class="bg-white dark:bg-gray-900 p-4 rounded-2xl rounded-tl-sm flex items-center gap-1.5"><div class="w-2 h-2 bg-gray-500 dark:bg-gold-500 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-gray-500 dark:bg-gold-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div><div class="w-2 h-2 bg-gray-500 dark:bg-gold-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div></div></div>`;
             chat.scrollTop = chat.scrollHeight;
 
-            let lowerText = text.toLowerCase(); let botReply = 'Maaf kijiye, main samjha nahi. Aap chicks ke rate ya gallery pooch sakte hain.';
-            for (let brain of botBrain) { if (brain.keys.some(key => lowerText.includes(key))) { botReply = brain.reply; break; } }
+            let lowerText = text.toLowerCase(); 
+            let botReply = 'Main abhi seekh raha hoon! Par aap Safari farm, murgiyon ke rate, incubators, ya Rifat aur Kadir bhai ke baare me pooch sakte hain. 😊';
+            
+            for (let brain of botBrain) { 
+                if (brain.keys.some(key => lowerText.includes(key))) { 
+                    botReply = brain.reply; 
+                    // Replace new lines with HTML breaks for formatting list
+                    botReply = botReply.replace(/\n/g, '<br>');
+                    break; 
+                } 
+            }
 
             setTimeout(() => {
                 document.getElementById(typingId).remove();
