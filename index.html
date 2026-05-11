@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Safari Farm & Hatchery</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 
 body{
 margin:0;
-font-family:Arial;
-background:#f8fafc;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
 scroll-behavior:smooth;
 }
 
@@ -31,101 +28,8 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+position:relative;
 color:white;
-position:relative;
-}
-
-.hero::before{
-content:'';
-position:absolute;
-inset:0;
-background:rgba(0,0,0,0.6);
-}
-
-.hero-content{
-position:relative;
-z-index:2;
-}
-
-.logo{
-width:120px;
-height:120px;
-border-radius:50%;
-border:5px solid gold;
-object-fit:cover;
-animation:float 3s infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0);}
-}
-
-.card:hover{
-transform:translateY(-10px) scale(1.03);
-transition:0.4s;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-
-<nav class="bg-green-900 text-white p-4 sticky top-0 z-50 shadow-2xl">
-
-<div class="max-w-7xl mx-auto flex items-center justify-between">
-
-<div class="flex items-center gap-4">
-
-<img src="logo.png" class="logo">
-
-<div>
-
-<h1 class="text-3xl font-black text-yellow-300">
-Safari Farm & Hatchery
-</h1>
-
-<p class="text-sm text-gray-200">
-Premium Chicks & Hatchery Solutions
-</p>
-
-</div>
-
-</div>
-
-<div class="hidden md:flex gap-8 text-lg font-bold">
-
-<a href="#products">Products</a>
-<a href="#assistant">AI Assistant</a>
-<a href="#contact">Contact</a>
-
-</div>
-
-</div>
-
-</nav>
-
-<!-- HERO -->
-
-<section> <style>
-
-.hero{
-height:100vh;
-background:url('farmbg.jpg');
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:white;
-position:relative;
-overflow:hidden;
 }
 
 .hero::before{
@@ -133,19 +37,18 @@ content:'';
 position:absolute;
 inset:0;
 background:rgba(0,0,0,0.65);
-backdrop-filter:blur(2px);
 }
 
 .hero-content{
 position:relative;
 z-index:2;
-animation:fadeUp 2s ease;
+animation:fadeUp 1.5s ease;
 }
 
 @keyframes fadeUp{
 0%{
 opacity:0;
-transform:translateY(50px);
+transform:translateY(40px);
 }
 100%{
 opacity:1;
@@ -153,7 +56,31 @@ transform:translateY(0);
 }
 }
 
+.product-card{
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 0 20px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.product-card:hover{
+transform:translateY(-10px);
+}
+
+.product-card img{
+width:100%;
+height:260px;
+object-fit:cover;
+cursor:pointer;
+}
+
 </style>
+</head>
+
+<body>
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -161,74 +88,24 @@ transform:translateY(0);
 
 <img
 src="logo.png"
-class="w-32 h-32 rounded-full border-4 border-yellow-400 object-cover mx-auto mb-8 animate-bounce"
+class="w-32 h-32 rounded-full border-4 border-yellow-400 object-cover mx-auto mb-6"
 >
 
-<h1 class="text-5xl md:text-7xl font-black mb-6 text-yellow-300">
+<h1 class="text-5xl md:text-7xl font-black text-yellow-300 mb-5">
 Safari Farm & Hatchery
 </h1>
 
-<p class="text-xl md:text-2xl mb-8 text-gray-200">
-Healthy Chicks • Hatchery • Incubators • Farm Support
+<p class="text-xl md:text-2xl mb-8">
+Premium Chicks & Hatchery Solutions
 </p>
 
 <a
 href="https://wa.me/917063482623"
 target="_blank"
-class="bg-yellow-500 hover:bg-yellow-400 text-black px-10 py-5 rounded-full text-xl font-black inline-block shadow-2xl"
+class="bg-yellow-500 text-black px-10 py-4 rounded-full font-black text-xl inline-block"
 >
-
 Order Now
-
 </a>
-
-</div>
-
-</section>
-
-<div class="hero-content px-6">
-
-<h1 class="text-5xl md:text-7xl font-black mb-6">
-Safari Farm & Hatchery
-</h1>
-
-<p class="text-xl md:text-2xl mb-8">
-Healthy Chicks • Hatchery • Incubators • Farm Support
-</p>
-
-<button class="bg-yellow-500 hover:bg-yellow-400 text-black px-10 py-4 rounded-full text-xl font-black">
-Order Now
-</button>
-
-</div>
-
-</section>
-
-<!-- FEATURES -->
-
-<section class="py-20 bg-white">
-
-<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
-
-<div class="bg-green-50 p-8 rounded-3xl shadow-xl text-center">
-<i class="fas fa-shield-heart text-5xl text-green-700 mb-5"></i>
-<h3 class="text-2xl font-bold">Healthy Chicks</h3>
-</div>
-
-<div class="bg-green-50 p-8 rounded-3xl shadow-xl text-center">
-<i class="fas fa-truck text-5xl text-green-700 mb-5"></i>
-<h3 class="text-2xl font-bold">Fast Delivery</h3>
-</div>
-
-<div class="bg-green-50 p-8 rounded-3xl shadow-xl text-center">
-<i class="fas fa-star text-5xl text-green-700 mb-5"></i>
-<h3 class="text-2xl font-bold">Premium Quality</h3>
-</div>
-
-<div class="bg-green-50 p-8 rounded-3xl shadow-xl text-center">
-<i class="fas fa-headset text-5xl text-green-700 mb-5"></i>
-<h3 class="text-2xl font-bold">24/7 Support</h3>
-</div>
 
 </div>
 
@@ -236,211 +113,40 @@ Order Now
 
 <!-- PRODUCTS -->
 
-<section id="products" class="py-20 bg-stone-100">
+<section class="py-16 px-5">
 
-<h2 class="text-5xl font-black text-center text-green-900 mb-16">
-Our Chicks Collection
+<h2 class="text-5xl font-black text-center mb-14 text-green-900">
+Our Chicks
 </h2>
 
-<div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
 
 <!-- SILKIE -->
 
-<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
+<div class="product-card">
 
-<img src="silkie.jpg"
-class="w-full h-64 object-cover">
+<img
+src="silkie.jpg"
+onclick="openProduct('Silkie','₹70 - ₹100','Minimum Order: 100')"
+>
 
-<div class="p-6">
+<div class="p-5">
 
-<h3 class="text-3xl font-black mb-3">
+<h3 class="text-3xl font-black mb-2">
 Silkie
 </h3>
 
-<p class="mb-4 text-gray-600">
-Premium fluffy breed
+<p class="text-2xl font-black text-green-700">
+₹70 - ₹100
 </p>
 
-<p class="text-3xl font-black text-green-800 mb-5">
-₹80
-</p>
+<button
+onclick="openProduct('Silkie','₹70 - ₹100','Minimum Order: 100')"
+class="mt-4 bg-yellow-500 w-full py-3 rounded-xl font-black text-xl"
+>
 
-<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
 Buy Now
-</button>
 
-</div>
-
-</div>
-
-<!-- BRAHMA -->
-
-<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
-
-<img src="brahma.jpg"
-class="w-full h-64 object-cover">
-
-<div class="p-6">
-
-<h3 class="text-3xl font-black mb-3">
-Brahma
-</h3>
-
-<p class="mb-4 text-gray-600">
-Large premium breed
-</p>
-
-<p class="text-3xl font-black text-green-800 mb-5">
-₹1100
-</p>
-
-<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
-Buy Now
-</button>
-
-</div>
-
-</div>
-
-<!-- SONALI -->
-
-<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
-
-<img src="sonali.jpg"
-class="w-full h-64 object-cover">
-
-<div class="p-6">
-
-<h3 class="text-3xl font-black mb-3">
-Sonali
-</h3>
-
-<p class="mb-4 text-gray-600">
-Commercial premium chicks
-</p>
-
-<p class="text-3xl font-black text-green-800 mb-5">
-₹32
-</p>
-
-<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
-Buy Now
-</button>
-
-</div>
-
-</div>
-
-<!-- TURKEY -->
-
-<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
-
-<img src="turkey.jpg"
-class="w-full h-64 object-cover">
-
-<div class="p-6">
-
-<h3 class="text-3xl font-black mb-3">
-Turkey
-</h3>
-
-<p class="mb-4 text-gray-600">
-Healthy turkey chicks
-</p>
-
-<p class="text-3xl font-black text-green-800 mb-5">
-₹160
-</p>
-
-<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
-Buy Now
-</button>
-
-</div>
-
-</div>
-
-<!-- KADAKNATH -->
-
-<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
-
-<img src="kadaknath.jpg"
-class="w-full h-64 object-cover">
-
-<div class="p-6">
-
-<h3 class="text-3xl font-black mb-3">
-Kadaknath
-</h3>
-
-<p class="mb-4 text-gray-600">
-Black meat breed
-</p>
-
-<p class="text-3xl font-black text-green-800 mb-5">
-₹60
-</p>
-
-<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
-Buy Now
-</button>
-
-</div>
-
-</div>
-
-<!-- DESI -->
-
-<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
-
-<img src="desi.jpg"
-class="w-full h-64 object-cover">
-
-<div class="p-6">
-
-<h3 class="text-3xl font-black mb-3">
-Desi
-</h3>
-
-<p class="mb-4 text-gray-600">
-Healthy local chicks
-</p>
-
-<p class="text-3xl font-black text-green-800 mb-5">
-₹60
-</p>
-
-<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
-Buy Now
-</button>
-
-</div>
-
-</div>
-
-<!-- QUAIL -->
-
-<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
-
-<img src="quail.jpg"
-class="w-full h-64 object-cover">
-
-<div class="p-6">
-
-<h3 class="text-3xl font-black mb-3">
-Quail
-</h3>
-
-<p class="mb-4 text-gray-600">
-Small premium chicks
-</p>
-
-<p class="text-3xl font-black text-green-800 mb-5">
-₹13
-</p>
-
-<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
-Buy Now
 </button>
 
 </div>
@@ -449,116 +155,222 @@ Buy Now
 
 <!-- SULTAN -->
 
-<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
+<div class="product-card">
 
-<img src="sultan.jpg"
-class="w-full h-64 object-cover">
+<img
+src="sultan.jpg"
+onclick="openProduct('Sultan','₹70 - ₹100','Minimum Order: 100')"
+>
 
-<div class="p-6">
+<div class="p-5">
 
-<h3 class="text-3xl font-black mb-3">
+<h3 class="text-3xl font-black mb-2">
 Sultan
 </h3>
 
-<p class="mb-4 text-gray-600">
-Royal decorative breed
+<p class="text-2xl font-black text-green-700">
+₹70 - ₹100
 </p>
 
-<p class="text-3xl font-black text-green-800 mb-5">
-₹80
-</p>
-
-<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
-Buy Now
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- AI ASSISTANT -->
-
-<section id="assistant" class="py-20 bg-yellow-50">
-
-<div class="max-w-6xl mx-auto px-6">
-
-<h2 class="text-5xl font-black text-center text-green-900 mb-16">
-Safari Farm Smart AI Assistant
-</h2>
-
-<div class="bg-white rounded-3xl shadow-2xl grid md:grid-cols-2 overflow-hidden">
-
-<div class="bg-green-900 text-white p-10">
-
-<h3 class="text-4xl font-black mb-6">
-Safari Farm Expert 🐣
-</h3>
-
-<p class="text-lg text-gray-200 mb-8 leading-relaxed">
-
-This AI knows everything about:
-Silkie, Brahma, Sonali, Turkey,
-Quail, Kadaknath, incubators,
-vaccination, feeding, chicks care,
-delivery and Safari Farm services.
-
-</p>
-
-<ul class="space-y-4 text-lg">
-
-<li>✔ Chicks Information</li>
-<li>✔ Incubator Training</li>
-<li>✔ Feed Guidance</li>
-<li>✔ Vaccination Tips</li>
-<li>✔ Farm Support</li>
-<li>✔ Bengali / Hindi / English</li>
-
-</ul>
-
-</div>
-
-<div class="p-8 bg-gray-50">
-
-<div class="space-y-6">
-
-<div>
-
-<div class="bg-yellow-200 p-4 rounded-2xl font-bold mb-3">
-👤 Safari Farm ki special ki?
-</div>
-
-<div class="bg-green-100 p-4 rounded-2xl">
-🤖 Safari Farm & Hatchery is managed by Rifat & Kadir. We provide healthy chicks, incubators and farm support.
-</div>
-
-</div>
-
-<div>
-
-<div class="bg-yellow-200 p-4 rounded-2xl font-bold mb-3">
-👤 Incubator kaise use karte hai?
-</div>
-
-<div class="bg-green-100 p-4 rounded-2xl">
-🤖 Maintain proper temperature and humidity. Safari Farm incubators support automatic egg turning.
-</div>
-
-</div>
-
-</div>
-
-<input
-type="text"
-placeholder="Ask in Bengali / Hindi / English..."
-class="w-full p-4 rounded-2xl border mt-8"
+<button
+onclick="openProduct('Sultan','₹70 - ₹100','Minimum Order: 100')"
+class="mt-4 bg-yellow-500 w-full py-3 rounded-xl font-black text-xl"
 >
 
-<button class="w-full bg-green-800 text-white py-4 rounded-2xl mt-4 font-bold">
-Send
+Buy Now
+
+</button>
+
+</div>
+
+</div>
+
+<!-- BRAHMA -->
+
+<div class="product-card">
+
+<img
+src="brahma.jpg"
+onclick="openProduct('Brahma','₹1000 - ₹1200','Minimum Order: 10')"
+>
+
+<div class="p-5">
+
+<h3 class="text-3xl font-black mb-2">
+Brahma
+</h3>
+
+<p class="text-2xl font-black text-green-700">
+₹1000 - ₹1200
+</p>
+
+<button
+onclick="openProduct('Brahma','₹1000 - ₹1200','Minimum Order: 10')"
+class="mt-4 bg-yellow-500 w-full py-3 rounded-xl font-black text-xl"
+>
+
+Buy Now
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SONALI -->
+
+<div class="product-card">
+
+<img
+src="sonali.jpg"
+onclick="openProduct('Sonali','₹20 - ₹30','Minimum Order: 500')"
+>
+
+<div class="p-5">
+
+<h3 class="text-3xl font-black mb-2">
+Sonali
+</h3>
+
+<p class="text-2xl font-black text-green-700">
+₹20 - ₹30
+</p>
+
+<button
+onclick="openProduct('Sonali','₹20 - ₹30','Minimum Order: 500')"
+class="mt-4 bg-yellow-500 w-full py-3 rounded-xl font-black text-xl"
+>
+
+Buy Now
+
+</button>
+
+</div>
+
+</div>
+
+<!-- DESI -->
+
+<div class="product-card">
+
+<img
+src="desi.jpg"
+onclick="openProduct('Desi','₹30 - ₹60','Minimum Order: 500')"
+>
+
+<div class="p-5">
+
+<h3 class="text-3xl font-black mb-2">
+Desi
+</h3>
+
+<p class="text-2xl font-black text-green-700">
+₹30 - ₹60
+</p>
+
+<button
+onclick="openProduct('Desi','₹30 - ₹60','Minimum Order: 500')"
+class="mt-4 bg-yellow-500 w-full py-3 rounded-xl font-black text-xl"
+>
+
+Buy Now
+
+</button>
+
+</div>
+
+</div>
+
+<!-- KARAKNATH -->
+
+<div class="product-card">
+
+<img
+src="kadaknath.jpg"
+onclick="openProduct('Karaknath','₹40 - ₹70','Minimum Order: 100')"
+>
+
+<div class="p-5">
+
+<h3 class="text-3xl font-black mb-2">
+Karaknath
+</h3>
+
+<p class="text-2xl font-black text-green-700">
+₹40 - ₹70
+</p>
+
+<button
+onclick="openProduct('Karaknath','₹40 - ₹70','Minimum Order: 100')"
+class="mt-4 bg-yellow-500 w-full py-3 rounded-xl font-black text-xl"
+>
+
+Buy Now
+
+</button>
+
+</div>
+
+</div>
+
+<!-- TURKEY -->
+
+<div class="product-card">
+
+<img
+src="turkey.jpg"
+onclick="openProduct('Turkey','₹100 - ₹170','Minimum Order: 50')"
+>
+
+<div class="p-5">
+
+<h3 class="text-3xl font-black mb-2">
+Turkey
+</h3>
+
+<p class="text-2xl font-black text-green-700">
+₹100 - ₹170
+</p>
+
+<button
+onclick="openProduct('Turkey','₹100 - ₹170','Minimum Order: 50')"
+class="mt-4 bg-yellow-500 w-full py-3 rounded-xl font-black text-xl"
+>
+
+Buy Now
+
+</button>
+
+</div>
+
+</div>
+
+<!-- QUAIL -->
+
+<div class="product-card">
+
+<img
+src="quail.jpg"
+onclick="openProduct('Quail','₹10 - ₹15','Minimum Order: 500')"
+>
+
+<div class="p-5">
+
+<h3 class="text-3xl font-black mb-2">
+Quail
+</h3>
+
+<p class="text-2xl font-black text-green-700">
+₹10 - ₹15
+</p>
+
+<button
+onclick="openProduct('Quail','₹10 - ₹15','Minimum Order: 500')"
+class="mt-4 bg-yellow-500 w-full py-3 rounded-xl font-black text-xl"
+>
+
+Buy Now
+
 </button>
 
 </div>
@@ -569,73 +381,87 @@ Send
 
 </section>
 
-<!-- ORDER -->
+<!-- PRODUCT POPUP -->
 
-<section class="py-20 bg-gradient-to-r from-green-900 to-green-700 text-white">
+<div id="popup"
+style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+z-index:9999;
+justify-content:center;
+align-items:center;
+padding:20px;
+">
 
-<div class="max-w-5xl mx-auto px-6 text-center">
+<div
+style="
+background:white;
+padding:30px;
+border-radius:30px;
+max-width:450px;
+width:100%;
+text-align:center;
+position:relative;
+">
 
-<h2 class="text-5xl font-black mb-6">
-Place Your Order
+<button
+onclick="closePopup()"
+style="
+position:absolute;
+right:15px;
+top:10px;
+font-size:35px;
+background:none;
+border:none;
+">
+
+×
+
+</button>
+
+<h2 id="popupTitle"
+style="
+font-size:40px;
+font-weight:900;
+color:#14532d;
+margin-bottom:15px;
+">
+
 </h2>
 
-<p class="text-xl text-green-100 mb-12">
-Order premium chicks directly from Safari Farm & Hatchery.
+<p id="popupPrice"
+style="
+font-size:30px;
+font-weight:900;
+color:#ca8a04;
+margin-bottom:10px;
+">
+
 </p>
 
-<div class="grid md:grid-cols-3 gap-8">
+<p id="popupMinimum"
+style="
+font-size:22px;
+font-weight:700;
+margin-bottom:20px;
+">
 
-<div class="bg-white/10 p-8 rounded-3xl backdrop-blur-lg shadow-2xl">
-
-<i class="fas fa-phone text-5xl text-yellow-300 mb-5"></i>
-
-<h3 class="text-2xl font-bold mb-3">
-Call Now
-</h3>
-
-<p class="text-xl">
-7063482623
 </p>
-
-</div>
-
-<div class="bg-white/10 p-8 rounded-3xl backdrop-blur-lg shadow-2xl">
-
-<i class="fas fa-envelope text-5xl text-yellow-300 mb-5"></i>
-
-<h3 class="text-2xl font-bold mb-3">
-Email
-</h3>
-
-<p class="text-lg break-all">
-rifatsahin000@gmail.com
-</p>
-
-</div>
-
-<div class="bg-white/10 p-8 rounded-3xl backdrop-blur-lg shadow-2xl">
-
-<i class="fas fa-location-dot text-5xl text-yellow-300 mb-5"></i>
-
-<h3 class="text-2xl font-bold mb-3">
-Location
-</h3>
-
-<p>
-West Bengal, Malda, Sujapur,
-Baranagar Danga Station Road,
-Near Al Amin Mission
-</p>
-
-</div>
-
-</div>
 
 <a
 href="https://wa.me/917063482623"
 target="_blank"
-class="inline-block bg-[#25D366] text-white px-10 py-5 rounded-full text-xl font-black mt-12"
->
+style="
+background:#16a34a;
+color:white;
+padding:15px 30px;
+border-radius:20px;
+font-weight:900;
+text-decoration:none;
+display:inline-block;
+">
 
 Order on WhatsApp
 
@@ -643,66 +469,21 @@ Order on WhatsApp
 
 </div>
 
-</section>
-
-<!-- FOOTER -->
-
-<footer id="contact"
-class="bg-green-950 text-white py-10 text-center">
-
-<h3 class="text-3xl font-black mb-4">
-Safari Farm & Hatchery
-</h3>
-
-<p class="text-gray-400 mb-3">
-Premium Chicks & Hatchery Solutions
-</p>
-
-<p class="text-gray-500">
-© 2026 Safari Farm & Hatchery
-</p>
-
-</footer>
-<!-- WHATSAPP FLOATING BUTTON -->
-
-<a
-href="https://wa.me/917063482623"
-target="_blank"
-style="
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-width:70px;
-height:70px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:40px;
-color:white;
-z-index:999;
-text-decoration:none;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
-">
-
-💬
-
-</a>
+</div>
 
 <!-- AI ASSISTANT -->
 
 <div
 style="
 position:fixed;
-bottom:110px;
-right:20px;
-width:340px;
+bottom:100px;
+right:15px;
+width:300px;
 background:white;
 border-radius:25px;
 overflow:hidden;
-box-shadow:0 0 30px rgba(0,0,0,0.2);
-z-index:999;
+box-shadow:0 0 20px rgba(0,0,0,0.2);
+z-index:9999;
 ">
 
 <div
@@ -721,7 +502,7 @@ Safari Farm AI 🤖
 <div
 id="chat"
 style="
-height:280px;
+height:220px;
 overflow:auto;
 padding:15px;
 background:#f5f5f5;
@@ -735,7 +516,7 @@ border-radius:15px;
 margin-bottom:10px;
 ">
 
-🤖 Ask anything about chicks, incubators and Safari Farm.
+🤖 Ask about chicks, prices, incubators or Safari Farm.
 
 </div>
 
@@ -750,7 +531,7 @@ padding:10px;
 
 <input
 id="input"
-placeholder="Ask..."
+placeholder="Ask something..."
 style="
 flex:1;
 padding:12px;
@@ -778,156 +559,63 @@ Send
 
 </div>
 
-<!-- PRODUCT POPUP -->
+<!-- WHATSAPP -->
 
-<div
-id="popup"
+<a
+href="https://wa.me/917063482623"
+target="_blank"
 style="
-display:none;
 position:fixed;
-inset:0;
-background:rgba(0,0,0,0.7);
-z-index:9999;
+bottom:20px;
+right:20px;
+background:#25D366;
+width:70px;
+height:70px;
+border-radius:50%;
+display:flex;
 justify-content:center;
 align-items:center;
-">
-
-<div
-style="
-background:white;
-max-width:500px;
-width:90%;
-padding:30px;
-border-radius:30px;
-text-align:center;
-">
-
-<h2 id="title"
-style="
-font-size:40px;
-font-weight:900;
-color:#14532d;
-">
-
-</h2>
-
-<p id="price"
-style="
-font-size:30px;
-font-weight:900;
-color:#ca8a04;
-margin:20px 0;
-">
-
-</p>
-
-<p id="minimum"
-style="
-font-size:22px;
-font-weight:700;
-margin-bottom:20px;
-">
-
-</p>
-
-<button
-onclick="closePopup()"
-style="
-background:red;
+font-size:35px;
 color:white;
-padding:12px 25px;
-border:none;
-border-radius:15px;
-font-weight:900;
+text-decoration:none;
+z-index:99999;
 ">
 
-Close
+💬
 
-</button>
-
-</div>
-
-</div>
+</a>
 
 <script>
 
-const products={
+function openProduct(title,price,minimum){
 
-silkie:{
-price:"₹70-₹100",
-minimum:"Minimum Order: 100"
-},
+document.getElementById('popup').style.display='flex';
 
-sultan:{
-price:"₹70-₹100",
-minimum:"Minimum Order: 100"
-},
+document.getElementById('popupTitle').innerText=title;
 
-karaknath:{
-price:"₹40-₹70",
-minimum:"Minimum Order: 100"
-},
+document.getElementById('popupPrice').innerText=price;
 
-turkey:{
-price:"₹100-₹170",
-minimum:"Minimum Order: 50"
-},
-
-brahma:{
-price:"₹1000-₹1200",
-minimum:"Minimum Order: 10"
-},
-
-sonali:{
-price:"₹20-₹30",
-minimum:"Minimum Order: 500"
-},
-
-desi:{
-price:"₹30-₹60",
-minimum:"Minimum Order: 500"
-},
-
-quail:{
-price:"₹10-₹15",
-minimum:"Minimum Order: 500"
-}
-
-};
-
-function openProduct(name){
-
-document.getElementById("popup").style.display="flex";
-
-document.getElementById("title").innerText=name;
-
-document.getElementById("price").innerText=
-products[name].price;
-
-document.getElementById("minimum").innerText=
-products[name].minimum;
+document.getElementById('popupMinimum').innerText=minimum;
 
 }
 
 function closePopup(){
 
-document.getElementById("popup").style.display="none";
+document.getElementById('popup').style.display='none';
 
 }
 
-<script>
-
 function sendAI(){
 
-let input=document.getElementById("input");
+let input=document.getElementById('input');
 
 let message=input.value.trim();
 
-if(message==="") return;
+if(message==='') return;
 
 let lower=message.toLowerCase();
 
-let chat=document.getElementById("chat");
+let chat=document.getElementById('chat');
 
 chat.innerHTML+=`
 <div style="
@@ -936,90 +624,51 @@ padding:12px;
 border-radius:15px;
 margin-bottom:10px;
 text-align:right;
-font-size:18px;
 ">
 👤 ${message}
 </div>
 `;
 
-let reply="";
+let reply='Welcome to Safari Farm & Hatchery.';
 
-if(lower.includes("hello") || lower.includes("hi")){
-
-reply="Hello 👋 Welcome to Safari Farm & Hatchery. Ask about chicks, incubators, prices or farming support.";
-
+if(lower.includes('silkie')){
+reply='Silkie chicks available. Price ₹70-₹100. Minimum order 100.';
 }
 
-else if(lower.includes("silkie")){
-
-reply="🐔 Silkie premium fluffy chicks available.\n\n💰 Price: ₹70-₹100\n📦 Minimum Order: 100\n✨ Best for show, pet and decoration.";
-
+else if(lower.includes('brahma')){
+reply='Brahma chicks available. Price ₹1000-₹1200. Minimum order 10.';
 }
 
-else if(lower.includes("sultan")){
-
-reply="🐔 Sultan royal breed available.\n\n💰 Price: ₹70-₹100\n📦 Minimum Order: 100\n✨ Beautiful white feathers and premium quality.";
-
+else if(lower.includes('sonali')){
+reply='Sonali chicks available. Price ₹20-₹30. Minimum order 500.';
 }
 
-else if(lower.includes("brahma")){
-
-reply="🐔 Brahma giant breed available.\n\n💰 Price: ₹1000-₹1200\n📦 Minimum Order: 10\n✨ Heavy weight premium farm breed.";
-
+else if(lower.includes('quail')){
+reply='Quail chicks available. Price ₹10-₹15. Minimum order 500.';
 }
 
-else if(lower.includes("sonali")){
-
-reply="🐔 Sonali commercial chicks available.\n\n💰 Price: ₹20-₹30\n📦 Minimum Order: 500\n✨ Fast growth and strong immunity.";
-
+else if(lower.includes('desi')){
+reply='Desi chicks available. Price ₹30-₹60. Minimum order 500.';
 }
 
-else if(lower.includes("desi")){
-
-reply="🐔 Desi healthy Indian chicks available.\n\n💰 Price: ₹30-₹60\n📦 Minimum Order: 500\n✨ Strong natural immunity.";
-
+else if(lower.includes('karaknath')){
+reply='Karaknath chicks available. Price ₹40-₹70. Minimum order 100.';
 }
 
-else if(lower.includes("quail")){
-
-reply="🐔 Quail chicks available.\n\n💰 Price: ₹10-₹15\n📦 Minimum Order: 500\n✨ Small bird with high egg production.";
-
+else if(lower.includes('turkey')){
+reply='Turkey chicks available. Price ₹100-₹170. Minimum order 50.';
 }
 
-else if(lower.includes("karaknath")){
-
-reply="🐔 Karaknath black meat chicks available.\n\n💰 Price: ₹40-₹70\n📦 Minimum Order: 100\n✨ High protein premium breed.";
-
+else if(lower.includes('incubator')){
+reply='Automatic incubators available with digital temperature control.';
 }
 
-else if(lower.includes("turkey")){
-
-reply="🐔 Turkey chicks available.\n\n💰 Price: ₹100-₹170\n📦 Minimum Order: 50\n✨ Large healthy farm birds.";
-
+else if(lower.includes('contact')){
+reply='Call: 7063482623';
 }
 
-else if(lower.includes("incubator")){
-
-reply="🥚 Automatic incubators available.\n\n✨ Digital temperature control\n✨ Automatic egg turning\n✨ High hatch success rate.";
-
-}
-
-else if(lower.includes("location") || lower.includes("address")){
-
-reply="📍 Safari Farm & Hatchery\nWest Bengal, Malda, Sujapur, Baranagar Danga Station Road Near Al Amin Mission.";
-
-}
-
-else if(lower.includes("contact") || lower.includes("number")){
-
-reply="📞 Contact: 7063482623\n📧 Email: rifatsahin000@gmail.com";
-
-}
-
-else{
-
-reply="🤖 Sorry, I am still learning. Please ask about chicks, prices, incubators or Safari Farm.";
-
+else if(lower.includes('location')){
+reply='West Bengal Malda Sujapur Baranagar Danga Station Road Near Al Amin Mission.';
 }
 
 chat.innerHTML+=`
@@ -1028,29 +677,18 @@ background:#dcfce7;
 padding:12px;
 border-radius:15px;
 margin-bottom:10px;
-font-size:18px;
-white-space:pre-line;
 ">
 🤖 ${reply}
 </div>
 `;
 
-input.value="";
-
 chat.scrollTop=chat.scrollHeight;
 
-}
-
-</script>}
-</div>
-`;
-
-input.value="";
-
-chat.scrollTop=chat.scrollHeight;
+input.value='';
 
 }
 
 </script>
+
 </body>
 </html>
