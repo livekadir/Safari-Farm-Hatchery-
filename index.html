@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Safari Farm & Hatchery</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f8fafc;
+scroll-behavior:smooth;
+}
+
+.hero{
+height:100vh;
+background:url('farmbg.jpg');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.6);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.logo{
+width:120px;
+height:120px;
+border-radius:50%;
+border:5px solid gold;
+object-fit:cover;
+animation:float 3s infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+transition:0.4s;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="bg-green-900 text-white p-4 sticky top-0 z-50 shadow-2xl">
+
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+
+<div class="flex items-center gap-4">
+
+<img src="logo.png" class="logo">
+
+<div>
+
+<h1 class="text-3xl font-black text-yellow-300">
+Safari Farm & Hatchery
+</h1>
+
+<p class="text-sm text-gray-200">
+Premium Chicks & Hatchery Solutions
+</p>
+
+</div>
+
+</div>
+
+<div class="hidden md:flex gap-8 text-lg font-bold">
+
+<a href="#products">Products</a>
+<a href="#assistant">AI Assistant</a>
+<a href="#contact">Contact</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section> <style>
+
+.hero{
+height:100vh;
+background:url('farmbg.jpg');
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(2px);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+animation:fadeUp 2s ease;
+}
+
+@keyframes fadeUp{
+0%{
+opacity:0;
+transform:translateY(50px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+
+<section class="hero">
+
+<div class="hero-content px-6">
+
+<img
+src="logo.png"
+class="w-32 h-32 rounded-full border-4 border-yellow-400 object-cover mx-auto mb-8 animate-bounce"
+>
+
+<h1 class="text-5xl md:text-7xl font-black mb-6 text-yellow-300">
+Safari Farm & Hatchery
+</h1>
+
+<p class="text-xl md:text-2xl mb-8 text-gray-200">
+Healthy Chicks • Hatchery • Incubators • Farm Support
+</p>
+
+<a
+href="https://wa.me/917063482623"
+target="_blank"
+class="bg-yellow-500 hover:bg-yellow-400 text-black px-10 py-5 rounded-full text-xl font-black inline-block shadow-2xl"
+>
+
+Order Now
+
+</a>
+
+</div>
+
+</section>
+
+<div class="hero-content px-6">
+
+<h1 class="text-5xl md:text-7xl font-black mb-6">
+Safari Farm & Hatchery
+</h1>
+
+<p class="text-xl md:text-2xl mb-8">
+Healthy Chicks • Hatchery • Incubators • Farm Support
+</p>
+
+<button class="bg-yellow-500 hover:bg-yellow-400 text-black px-10 py-4 rounded-full text-xl font-black">
+Order Now
+</button>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="py-20 bg-white">
+
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+
+<div class="bg-green-50 p-8 rounded-3xl shadow-xl text-center">
+<i class="fas fa-shield-heart text-5xl text-green-700 mb-5"></i>
+<h3 class="text-2xl font-bold">Healthy Chicks</h3>
+</div>
+
+<div class="bg-green-50 p-8 rounded-3xl shadow-xl text-center">
+<i class="fas fa-truck text-5xl text-green-700 mb-5"></i>
+<h3 class="text-2xl font-bold">Fast Delivery</h3>
+</div>
+
+<div class="bg-green-50 p-8 rounded-3xl shadow-xl text-center">
+<i class="fas fa-star text-5xl text-green-700 mb-5"></i>
+<h3 class="text-2xl font-bold">Premium Quality</h3>
+</div>
+
+<div class="bg-green-50 p-8 rounded-3xl shadow-xl text-center">
+<i class="fas fa-headset text-5xl text-green-700 mb-5"></i>
+<h3 class="text-2xl font-bold">24/7 Support</h3>
+</div>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section id="products" class="py-20 bg-stone-100">
+
+<h2 class="text-5xl font-black text-center text-green-900 mb-16">
+Our Chicks Collection
+</h2>
+
+<div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+<!-- SILKIE -->
+
+<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
+
+<img src="silkie.jpg"
+class="w-full h-64 object-cover">
+
+<div class="p-6">
+
+<h3 class="text-3xl font-black mb-3">
+Silkie
+</h3>
+
+<p class="mb-4 text-gray-600">
+Premium fluffy breed
+</p>
+
+<p class="text-3xl font-black text-green-800 mb-5">
+₹80
+</p>
+
+<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+<!-- BRAHMA -->
+
+<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
+
+<img src="brahma.jpg"
+class="w-full h-64 object-cover">
+
+<div class="p-6">
+
+<h3 class="text-3xl font-black mb-3">
+Brahma
+</h3>
+
+<p class="mb-4 text-gray-600">
+Large premium breed
+</p>
+
+<p class="text-3xl font-black text-green-800 mb-5">
+₹1100
+</p>
+
+<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+<!-- SONALI -->
+
+<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
+
+<img src="sonali.jpg"
+class="w-full h-64 object-cover">
+
+<div class="p-6">
+
+<h3 class="text-3xl font-black mb-3">
+Sonali
+</h3>
+
+<p class="mb-4 text-gray-600">
+Commercial premium chicks
+</p>
+
+<p class="text-3xl font-black text-green-800 mb-5">
+₹32
+</p>
+
+<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+<!-- TURKEY -->
+
+<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
+
+<img src="turkey.jpg"
+class="w-full h-64 object-cover">
+
+<div class="p-6">
+
+<h3 class="text-3xl font-black mb-3">
+Turkey
+</h3>
+
+<p class="mb-4 text-gray-600">
+Healthy turkey chicks
+</p>
+
+<p class="text-3xl font-black text-green-800 mb-5">
+₹160
+</p>
+
+<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+<!-- KADAKNATH -->
+
+<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
+
+<img src="kadaknath.jpg"
+class="w-full h-64 object-cover">
+
+<div class="p-6">
+
+<h3 class="text-3xl font-black mb-3">
+Kadaknath
+</h3>
+
+<p class="mb-4 text-gray-600">
+Black meat breed
+</p>
+
+<p class="text-3xl font-black text-green-800 mb-5">
+₹60
+</p>
+
+<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+<!-- DESI -->
+
+<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
+
+<img src="desi.jpg"
+class="w-full h-64 object-cover">
+
+<div class="p-6">
+
+<h3 class="text-3xl font-black mb-3">
+Desi
+</h3>
+
+<p class="mb-4 text-gray-600">
+Healthy local chicks
+</p>
+
+<p class="text-3xl font-black text-green-800 mb-5">
+₹60
+</p>
+
+<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+<!-- QUAIL -->
+
+<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
+
+<img src="quail.jpg"
+class="w-full h-64 object-cover">
+
+<div class="p-6">
+
+<h3 class="text-3xl font-black mb-3">
+Quail
+</h3>
+
+<p class="mb-4 text-gray-600">
+Small premium chicks
+</p>
+
+<p class="text-3xl font-black text-green-800 mb-5">
+₹13
+</p>
+
+<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+<!-- SULTAN -->
+
+<div class="bg-white rounded-3xl overflow-hidden shadow-2xl card">
+
+<img src="sultan.jpg"
+class="w-full h-64 object-cover">
+
+<div class="p-6">
+
+<h3 class="text-3xl font-black mb-3">
+Sultan
+</h3>
+
+<p class="mb-4 text-gray-600">
+Royal decorative breed
+</p>
+
+<p class="text-3xl font-black text-green-800 mb-5">
+₹80
+</p>
+
+<button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- AI ASSISTANT -->
+
+<section id="assistant" class="py-20 bg-yellow-50">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<h2 class="text-5xl font-black text-center text-green-900 mb-16">
+Safari Farm Smart AI Assistant
+</h2>
+
+<div class="bg-white rounded-3xl shadow-2xl grid md:grid-cols-2 overflow-hidden">
+
+<div class="bg-green-900 text-white p-10">
+
+<h3 class="text-4xl font-black mb-6">
+Safari Farm Expert 🐣
+</h3>
+
+<p class="text-lg text-gray-200 mb-8 leading-relaxed">
+
+This AI knows everything about:
+Silkie, Brahma, Sonali, Turkey,
+Quail, Kadaknath, incubators,
+vaccination, feeding, chicks care,
+delivery and Safari Farm services.
+
+</p>
+
+<ul class="space-y-4 text-lg">
+
+<li>✔ Chicks Information</li>
+<li>✔ Incubator Training</li>
+<li>✔ Feed Guidance</li>
+<li>✔ Vaccination Tips</li>
+<li>✔ Farm Support</li>
+<li>✔ Bengali / Hindi / English</li>
+
+</ul>
+
+</div>
+
+<div class="p-8 bg-gray-50">
+
+<div class="space-y-6">
+
+<div>
+
+<div class="bg-yellow-200 p-4 rounded-2xl font-bold mb-3">
+👤 Safari Farm ki special ki?
+</div>
+
+<div class="bg-green-100 p-4 rounded-2xl">
+🤖 Safari Farm & Hatchery is managed by Rifat & Kadir. We provide healthy chicks, incubators and farm support.
+</div>
+
+</div>
+
+<div>
+
+<div class="bg-yellow-200 p-4 rounded-2xl font-bold mb-3">
+👤 Incubator kaise use karte hai?
+</div>
+
+<div class="bg-green-100 p-4 rounded-2xl">
+🤖 Maintain proper temperature and humidity. Safari Farm incubators support automatic egg turning.
+</div>
+
+</div>
+
+</div>
+
+<input
+type="text"
+placeholder="Ask in Bengali / Hindi / English..."
+class="w-full p-4 rounded-2xl border mt-8"
+>
+
+<button class="w-full bg-green-800 text-white py-4 rounded-2xl mt-4 font-bold">
+Send
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ORDER -->
+
+<section class="py-20 bg-gradient-to-r from-green-900 to-green-700 text-white">
+
+<div class="max-w-5xl mx-auto px-6 text-center">
+
+<h2 class="text-5xl font-black mb-6">
+Place Your Order
+</h2>
+
+<p class="text-xl text-green-100 mb-12">
+Order premium chicks directly from Safari Farm & Hatchery.
+</p>
+
+<div class="grid md:grid-cols-3 gap-8">
+
+<div class="bg-white/10 p-8 rounded-3xl backdrop-blur-lg shadow-2xl">
+
+<i class="fas fa-phone text-5xl text-yellow-300 mb-5"></i>
+
+<h3 class="text-2xl font-bold mb-3">
+Call Now
+</h3>
+
+<p class="text-xl">
+7063482623
+</p>
+
+</div>
+
+<div class="bg-white/10 p-8 rounded-3xl backdrop-blur-lg shadow-2xl">
+
+<i class="fas fa-envelope text-5xl text-yellow-300 mb-5"></i>
+
+<h3 class="text-2xl font-bold mb-3">
+Email
+</h3>
+
+<p class="text-lg break-all">
+rifatsahin000@gmail.com
+</p>
+
+</div>
+
+<div class="bg-white/10 p-8 rounded-3xl backdrop-blur-lg shadow-2xl">
+
+<i class="fas fa-location-dot text-5xl text-yellow-300 mb-5"></i>
+
+<h3 class="text-2xl font-bold mb-3">
+Location
+</h3>
+
+<p>
+West Bengal, Malda, Sujapur,
+Baranagar Danga Station Road,
+Near Al Amin Mission
+</p>
+
+</div>
+
+</div>
+
+<a
+href="https://wa.me/917063482623"
+target="_blank"
+class="inline-block bg-[#25D366] text-white px-10 py-5 rounded-full text-xl font-black mt-12"
+>
+
+Order on WhatsApp
+
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="contact"
+class="bg-green-950 text-white py-10 text-center">
+
+<h3 class="text-3xl font-black mb-4">
+Safari Farm & Hatchery
+</h3>
+
+<p class="text-gray-400 mb-3">
+Premium Chicks & Hatchery Solutions
+</p>
+
+<p class="text-gray-500">
+© 2026 Safari Farm & Hatchery
+</p>
+
+</footer>
+
+</body>
+</html>
