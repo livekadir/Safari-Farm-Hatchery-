@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Safari Farm & Hatchery | Premium Quality</title>
 
+    <!-- Speed Optimization: Preconnect to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -32,6 +37,7 @@
         }
     </script>
     
+    <!-- Icons & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
@@ -65,31 +71,38 @@
         .z-content { position: relative; z-index: 10; width: 100%; }
 
         .section-tight { padding-top: 5rem; padding-bottom: 5rem; }
-        .luxury-card { transition: 0.4s; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255,255,255,0.02); }
+        .luxury-card { transition: 0.4s; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255,255,255,0.02); cursor: pointer;}
         .luxury-card:hover { border-color: #fbbf24; transform: scale(1.02); }
 
         .video-box { position: relative; border-radius: 2.5rem; overflow: hidden; background: #050505; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;}
-        .video-box video { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
-        .video-box:hover video { opacity: 1; scale: 1.03; }
+        .video-box video { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .video-box:hover { border-color: #fbbf24; box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15); }
 
         #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: #f59e0b; z-index: 9999; width: 0%; box-shadow: 0 0 10px #f59e0b; transition: width 0.1s; }
+        
+        /* Modal Animation */
+        #breedModal { backdrop-filter: blur(15px); }
+        .modal-content { transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: scale(0.95); opacity: 0; }
+        .modal-active .modal-content { transform: scale(1); opacity: 1; }
     </style>
 </head>
 <body class="bg-royal-dark text-gray-100 dark:bg-royal-dark dark:text-gray-100 light:bg-white light:text-black">
 
-    <div id="loader" class="transition-opacity duration-700">
+    <!-- PRELOADER -->
+    <div id="loader" class="transition-opacity duration-500">
         <div>
             <h1 class="text-4xl md:text-7xl font-black gold-gradient italic tracking-tighter animate-pulse">SAFARI FARM</h1>
             <div class="mt-4 flex flex-col items-center">
                 <p class="text-gold-500 text-[10px] md:text-[14px] font-black tracking-[0.4em] uppercase">Safari Farm & Hatchery</p>
-                <p class="text-white/40 text-[9px] font-bold tracking-[0.2em] mt-1">TWO BROTHERS STYLE</p>
+                <p class="text-white/40 text-[9px] font-bold tracking-[0.2em] mt-1">XPRESS LOADING...</p>
             </div>
         </div>
     </div>
 
+    <!-- SCROLL PROGRESS BAR -->
     <div id="scroll-progress"></div>
 
+    <!-- WHATSAPP OFFER BAR -->
     <a href="https://chat.whatsapp.com/FyJGSXc1kjJGosyY492Q4j" target="_blank" class="bg-red-600 hover:bg-red-700 text-white py-2.5 w-full fixed top-0 z-[1500] overflow-hidden flex items-center shadow-lg transition-colors cursor-pointer mt-1">
         <div class="animate-marquee whitespace-nowrap text-[12px] md:text-sm font-black tracking-widest uppercase italic flex items-center gap-4">
             <span>🎉 CLICK HERE TO JOIN OUR WHATSAPP GROUP!</span>
@@ -98,6 +111,7 @@
         </div>
     </a>
 
+    <!-- HEADER / NAVBAR -->
     <nav class="fixed top-10 w-full z-[1000] glass-nav py-3 px-4 md:px-12 shadow-md mt-1">
         <div class="w-full flex justify-between items-center max-w-[1920px] mx-auto">
             <button onclick="toggleMenu()" class="w-10 h-10 flex items-center justify-center text-gold-500 text-xl hover:bg-gold-500/10 rounded-full transition">
@@ -117,6 +131,7 @@
         </div>
     </nav>
 
+    <!-- MOBILE MENU (SMOOTH SCROLL LINKS) -->
     <div id="mobileMenu" class="fixed inset-0 bg-[#050505]/98 backdrop-blur-3xl z-[9999] hidden flex-col items-center justify-center gap-6 text-2xl md:text-4xl font-black uppercase italic tracking-tighter transition-all">
         <button onclick="toggleMenu()" class="absolute top-6 right-6 md:top-10 md:right-10 text-gold-500 text-4xl hover:scale-110 transition"><i class="fas fa-times"></i></button>
         <a href="#home" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Home</a>
@@ -128,9 +143,69 @@
         <a href="#contact" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Contact</a>
     </div>
 
+    <!-- 🚀 VIP BREED DETAILS MODAL (POP-UP) 🚀 -->
+    <div id="breedModal" class="fixed inset-0 bg-black/80 z-[8000] hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="modal-content bg-[#111] border border-gold-500/30 w-full max-w-[450px] rounded-[2.5rem] overflow-hidden relative shadow-2xl mt-10 mb-10">
+            <!-- Close Button -->
+            <button onclick="closeBreedModal()" class="absolute top-4 right-4 z-50 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full text-white border border-white/20 flex items-center justify-center hover:bg-red-600 transition">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Modal Image -->
+            <div class="w-full h-56 bg-black relative">
+                <img id="modalImg" src="" class="w-full h-full object-cover opacity-80">
+                <div class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
+                    <h2 id="modalName" class="text-4xl font-black italic uppercase gold-gradient drop-shadow-lg leading-none">Breed Name</h2>
+                    <p id="modalPrice" class="text-white text-xl font-black mt-1">₹00</p>
+                </div>
+            </div>
+
+            <!-- Modal Content (Specs) -->
+            <div class="p-6 space-y-4">
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
+                    <i class="fas fa-box-open text-gold-500 text-2xl mt-1"></i>
+                    <div>
+                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Minimum Order (Kitna Lena Hoga)</h4>
+                        <p id="modalMin" class="text-sm font-bold text-white mt-1">Loading...</p>
+                    </div>
+                </div>
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
+                    <i class="fas fa-bowl-rice text-gold-500 text-2xl mt-1"></i>
+                    <div>
+                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Feed Type (Kya Khayega)</h4>
+                        <p id="modalFeed" class="text-sm font-bold text-white mt-1">Loading...</p>
+                    </div>
+                </div>
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
+                    <i class="fas fa-temperature-half text-gold-500 text-2xl mt-1"></i>
+                    <div>
+                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Temperature (Taapman)</h4>
+                        <p id="modalTemp" class="text-sm font-bold text-white mt-1">Loading...</p>
+                    </div>
+                </div>
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
+                    <i class="fas fa-hand-holding-heart text-gold-500 text-2xl mt-1"></i>
+                    <div>
+                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Care & Vaccine (Dekh Bhal)</h4>
+                        <p id="modalCare" class="text-sm font-bold text-white mt-1">Loading...</p>
+                    </div>
+                </div>
+
+                <!-- Modal Buy Button -->
+                <a id="modalBuyBtn" href="#" target="_blank" class="block w-full py-4 mt-6 bg-gold-500 text-black text-center rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition shadow-[0_5px_20px_rgba(245,158,11,0.4)]">
+                    <i class="fab fa-whatsapp mr-2"></i> Book Now
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL -->
+
+
+    <!-- MAIN CONTENT START -->
     <div class="farm-bg-overlay mt-12">
     <div class="z-content">
 
+        <!-- HERO SECTION -->
         <section id="home" class="min-h-[90vh] flex items-center justify-center text-center pt-32 full-screen-section pb-10">
             <div class="reveal active">
                 <span class="inline-block px-4 py-1.5 bg-gold-500/10 rounded-full text-[9px] font-black tracking-[0.4em] text-gold-400 mb-6 border border-gold-500/20 uppercase">Scientifically Proven Hatchery</span>
@@ -143,36 +218,95 @@
             </div>
         </section>
 
+        <!-- CHICKS SECTION -->
         <section id="chicks" class="section-tight full-screen-section bg-black/40 border-y border-white/5 pt-28">
             <div class="w-full max-w-[1700px] mx-auto px-4">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-5xl md:text-[120px] font-black uppercase italic tracking-tighter leading-none"><span class="gold-gradient">Elite</span> Chicks</h2>
                     <p class="text-gray-500 font-bold tracking-[0.5em] text-[10px] mt-4 uppercase">100% Vaccinated Stock</p>
+                    <p class="text-gold-500 text-xs mt-2 animate-pulse">👉 Click any bird for full details!</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <script>
+                        // 🚀 ADVANCED DATA STRUCTURE WITH FULL DETAILS 🚀
                         const birds = [
-                            { n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg' },
-                            { n: 'Quail (Bater)', p: '₹13', i: 'quail.jpg' },
-                            { n: 'Silkie', p: '₹80 (Offer!)', i: 'silkie.jpg' },
-                            { n: 'Brahma', p: '₹1100', i: 'brahma.jpg' },
-                            { n: 'Sonali', p: '₹25-32', i: 'sonali.jpg' },
-                            { n: 'Turkey', p: '₹160', i: 'turkey.jpg' },
-                            { n: 'Desi', p: '₹40-60', i: 'desi.jpg' },
-                            { n: 'Sultan', p: '₹80', i: 'sultan.jpg' }
+                            { 
+                                n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg', 
+                                min: 'Minimum 100 Chicks', 
+                                feed: 'Pre-starter crumb feed (0-14 days)', 
+                                temp: '32°C - 35°C in Brooder', 
+                                care: 'Vaccinated. Keep litter dry. Requires good space to roam after 1 month.'
+                            },
+                            { 
+                                n: 'Quail (Bater)', p: '₹13', i: 'quail.jpg',
+                                min: 'Minimum 500 Chicks', 
+                                feed: 'Quail starter mash (High protein)', 
+                                temp: '35°C - 37°C in Brooder (Very sensitive)', 
+                                care: 'Use shallow water drinkers to prevent drowning. Fast growers, ready in 4-5 weeks.'
+                            },
+                            { 
+                                n: 'Silkie', p: '₹80 (Offer!)', i: 'silkie.jpg',
+                                min: 'Minimum 50 Chicks', 
+                                feed: 'Standard chick starter', 
+                                temp: '33°C - 35°C in Brooder', 
+                                care: 'Keep away from mud/water to protect feathers. Very gentle breed, needs safe enclosure.'
+                            },
+                            { 
+                                n: 'Brahma', p: '₹1100', i: 'brahma.jpg',
+                                min: 'Minimum 10 Chicks', 
+                                feed: 'Premium starter crumbles', 
+                                temp: '32°C - 34°C in Brooder', 
+                                care: 'Giant breed. Needs heavy calcium later. Keep floor dry to protect foot feathers.'
+                            },
+                            { 
+                                n: 'Sonali', p: '₹25-32', i: 'sonali.jpg',
+                                min: 'Minimum 200 Chicks', 
+                                feed: 'Broiler starter feed', 
+                                temp: '32°C - 34°C in Brooder', 
+                                care: 'Excellent for meat & eggs. Fast growth. Basic vaccination F1 & LaSota required.'
+                            },
+                            { 
+                                n: 'Turkey', p: '₹160', i: 'turkey.jpg',
+                                min: 'Minimum 50 Chicks', 
+                                feed: 'Turkey Starter (28% Protein strictly)', 
+                                temp: '35°C - 37°C in Brooder', 
+                                care: 'Needs warm bright light to learn eating. Very sensitive in first 2 weeks.'
+                            },
+                            { 
+                                n: 'Desi', p: '₹40-60', i: 'desi.jpg',
+                                min: 'Minimum 100 Chicks', 
+                                feed: 'Cracked grains & starter feed', 
+                                temp: '32°C - 35°C in Brooder', 
+                                care: 'Very hardy. Best for free-range. Basic F1 vaccine done.'
+                            },
+                            { 
+                                n: 'Sultan', p: '₹80', i: 'sultan.jpg',
+                                min: 'Minimum 50 Chicks', 
+                                feed: 'Standard chick starter', 
+                                temp: '33°C - 35°C in Brooder', 
+                                care: 'Ornamental breed. Keep head crest clean and dry. Provide safe enclosed space.'
+                            }
                         ];
-                        birds.forEach(item => {
-                            let offerBadge = item.n === 'Silkie' ? '<span class="absolute top-4 right-4 bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest animate-pulse z-20 shadow-lg border border-red-400">Offer Active</span>' : '';
+                        
+                        // Generating Cards that open Modal
+                        birds.forEach((item, index) => {
+                            let offerBadge = item.n === 'Silkie' ? '<span class="absolute top-4 right-4 bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest animate-pulse z-20 shadow-lg border border-red-400">Offer</span>' : '';
+                            
                             document.write(`
-                                <div class="bg-white/5 backdrop-blur-3xl p-5 rounded-[3rem] border border-white/10 reveal group luxury-card shadow-xl relative overflow-hidden">
+                                <div onclick="openBreedModal(${index})" class="bg-white/5 backdrop-blur-3xl p-5 rounded-[3rem] border border-white/10 reveal group luxury-card shadow-xl relative overflow-hidden">
                                     ${offerBadge}
                                     <div class="h-60 rounded-[2.5rem] overflow-hidden mb-6 bg-black relative">
                                         <img src="${item.i}" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100">
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                                            <span class="bg-gold-500 text-black px-4 py-2 rounded-full font-black text-[10px] uppercase tracking-widest">View Details</span>
+                                        </div>
                                     </div>
                                     <h3 class="text-2xl font-black mb-1 italic group-hover:gold-gradient transition uppercase">${item.n}</h3>
-                                    <p class="text-gold-500 font-black text-xl mb-6 tracking-tighter">${item.p}</p>
-                                    <a href="https://wa.me/917063482623?text=Order:${item.n}" class="block py-4 bg-black text-white dark:bg-white/5 dark:text-white text-center rounded-3xl font-black text-[10px] tracking-widest uppercase border border-white/10 hover:bg-gold-500 hover:text-black transition">Buy Now</a>
+                                    <p class="text-gold-500 font-black text-xl mb-4 tracking-tighter">${item.p}</p>
+                                    <button class="block w-full py-4 bg-white/5 border border-white/10 text-white text-center rounded-3xl font-black text-[10px] tracking-widest uppercase group-hover:bg-gold-500 group-hover:text-black transition">
+                                        Check Details & Buy
+                                    </button>
                                 </div>
                             `);
                         });
@@ -181,6 +315,7 @@
             </div>
         </section>
 
+        <!-- MACHINERY SECTION -->
         <section id="incubators" class="section-tight bg-white/5 backdrop-blur-sm full-screen-section pt-28">
             <div class="w-full">
                 <div class="text-center mb-16 reveal px-6">
@@ -210,22 +345,18 @@
             </div>
         </section>
 
+        <!-- FACEBOOK LIVE FEED -->
         <section id="updates" class="section-tight full-screen-section bg-black/40 border-t border-white/5 pt-28 pb-20">
             <div class="w-full px-6 max-w-[1500px] mx-auto text-center">
                 <div class="reveal mb-12">
                     <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-4"><span class="text-[#1877F2]">Live</span> Farm Updates 📢</h2>
                     <p class="text-gray-400 font-medium text-sm md:text-base">Check our latest offers directly from our Facebook Page.</p>
                 </div>
-                
                 <div class="reveal flex justify-center w-full my-8">
                     <div class="bg-white/5 p-4 rounded-[2rem] border border-white/10 shadow-[0_10px_40px_rgba(24,119,242,0.15)] w-full max-w-[350px] mx-auto flex flex-col justify-center">
-                        <iframe 
-                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Froofsafarifarm%2F&tabs=timeline&width=320&height=350&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
-                            width="100%" height="350" style="border:none;overflow:hidden; border-radius: 1rem; background: white;" scrolling="yes" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                        </iframe>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Froofsafarifarm%2F&tabs=timeline&width=320&height=350&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="100%" height="350" style="border:none;overflow:hidden; border-radius: 1rem; background: white;" scrolling="yes" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                     </div>
                 </div>
-                
                 <div class="mt-8 reveal">
                     <a href="https://www.facebook.com/roofsafarifarm/" target="_blank" class="inline-flex items-center gap-3 py-3 px-8 border border-[#1877F2] text-[#1877F2] font-black rounded-full uppercase text-[10px] tracking-widest hover:bg-[#1877F2] hover:text-white transition shadow-xl">
                         <i class="fab fa-facebook-f text-lg"></i> Follow us on Facebook
@@ -234,72 +365,72 @@
             </div>
         </section>
 
+        <!-- 🎥 XPRESS LOADING VIDEOS (Preload None & Controls added) 🎥 -->
         <section id="videos" class="section-tight full-screen-section bg-white/5 backdrop-blur-sm border-t border-white/5 pt-28">
             <div class="w-full px-6 mb-20">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter">Safari Shorts</h2>
                     <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] mt-4 uppercase">Live action from our Farm</p>
+                    <p class="text-gold-500 text-xs mt-2 animate-pulse">👉 Tap to Play!</p>
                 </div>
                 
+                <!-- Videos Grid -->
                 <div class="flex overflow-x-auto gap-5 px-4 md:px-16 hide-scrollbar pb-10">
                     
-                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl">
-                        <video src="video1.mp4" autoplay loop muted playsinline poster="farm1.jpg" preload="metadata"></video>
-                        <div class="absolute bottom-6 left-5 z-20">
-                            <h4 class="text-lg font-black uppercase italic drop-shadow-md">Active Chicks</h4>
-                            <p class="text-gold-500 text-[9px] tracking-widest uppercase font-bold">100% Healthy</p>
+                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative">
+                        <!-- Removed autoplay, added preload="none" and controls -->
+                        <video src="video1.mp4" playsinline controls preload="none" poster="farm1.jpg"></video>
+                        <div class="absolute bottom-16 left-5 z-20 pointer-events-none">
+                            <h4 class="text-lg font-black uppercase italic drop-shadow-md text-white">Active Chicks</h4>
                         </div>
                     </div>
 
-                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl">
-                        <video src="video2.mp4" autoplay loop muted playsinline poster="farm2.jpg" preload="metadata"></video>
-                        <div class="absolute bottom-6 left-5 z-20">
-                            <h4 class="text-lg font-black uppercase italic drop-shadow-md">Incubator Setup</h4>
-                            <p class="text-gold-500 text-[9px] tracking-widest uppercase font-bold">High Success</p>
+                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative">
+                        <video src="video2.mp4" playsinline controls preload="none" poster="farm2.jpg"></video>
+                        <div class="absolute bottom-16 left-5 z-20 pointer-events-none">
+                            <h4 class="text-lg font-black uppercase italic drop-shadow-md text-white">Incubator Setup</h4>
                         </div>
                     </div>
 
-                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl">
-                        <video src="video3.mp4" autoplay loop muted playsinline poster="farm3.jpg" preload="metadata"></video>
-                        <div class="absolute bottom-6 left-5 z-20">
-                            <h4 class="text-lg font-black uppercase italic drop-shadow-md">Farm Care</h4>
-                            <p class="text-gold-500 text-[9px] tracking-widest uppercase font-bold">Two Brothers</p>
+                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative">
+                        <video src="video3.mp4" playsinline controls preload="none" poster="farm3.jpg"></video>
+                        <div class="absolute bottom-16 left-5 z-20 pointer-events-none">
+                            <h4 class="text-lg font-black uppercase italic drop-shadow-md text-white">Farm Care</h4>
                         </div>
                     </div>
 
-                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl">
-                        <video src="video4.mp4" autoplay loop muted playsinline poster="farm4.jpg" preload="metadata"></video>
-                        <div class="absolute bottom-6 left-5 z-20">
-                            <h4 class="text-lg font-black uppercase italic drop-shadow-md">Premium Delivery</h4>
-                            <p class="text-gold-500 text-[9px] tracking-widest uppercase font-bold">Safe & Secure</p>
+                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative">
+                        <video src="video4.mp4" playsinline controls preload="none" poster="farm4.jpg"></video>
+                        <div class="absolute bottom-16 left-5 z-20 pointer-events-none">
+                            <h4 class="text-lg font-black uppercase italic drop-shadow-md text-white">Premium Delivery</h4>
                         </div>
                     </div>
 
-                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl">
-                        <video src="video5.mp4" autoplay loop muted playsinline poster="farm5.jpg" preload="metadata"></video>
-                        <div class="absolute bottom-6 left-5 z-20">
-                            <h4 class="text-lg font-black uppercase italic drop-shadow-md">Happy Birds</h4>
-                            <p class="text-gold-500 text-[9px] tracking-widest uppercase font-bold">Quality Breeds</p>
+                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative">
+                        <video src="video5.mp4" playsinline controls preload="none" poster="farm5.jpg"></video>
+                        <div class="absolute bottom-16 left-5 z-20 pointer-events-none">
+                            <h4 class="text-lg font-black uppercase italic drop-shadow-md text-white">Happy Birds</h4>
                         </div>
                     </div>
 
                 </div>
             </div>
 
+            <!-- 📸 XPRESS LAZY LOADING PHOTOS (20 IMAGES) 📸 -->
             <div class="w-full mb-16 reveal px-6">
                 <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter leading-none text-center">Farm Photos</h2>
             </div>
             <div class="flex overflow-x-auto gap-6 px-6 md:px-16 hide-scrollbar pb-10" id="gallery">
                 <script>
-                    // Loop updated from 12 to 20!
                     for(let i=1; i<=20; i++) {
-                        // Added loading="lazy" so website doesn't hang!
+                        // loading="lazy" is crucial for speed here
                         document.write(`<div class="min-w-[280px] md:min-w-[350px] h-[400px] rounded-[3.5rem] bg-black overflow-hidden flex-shrink-0 border border-white/10 group shadow-3xl"><img src="farm${i}.jpg" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:scale-110"></div>`);
                     }
                 </script>
             </div>
         </section>
 
+        <!-- REVIEWS & ABOUT -->
         <section id="about" class="section-tight full-screen-section bg-black/40 border-t border-white/5 pt-28">
             <div class="w-full px-6 max-w-[1600px] mx-auto mb-28">
                 <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter leading-none text-center mb-16 reveal">Happy Farmers</h2>
@@ -336,12 +467,13 @@
                 </div>
             </div>
 
+            <!-- STORY -->
             <div class="w-full grid md:grid-cols-2 gap-16 items-center px-6 max-w-[1600px] mx-auto mb-20">
                 <div class="reveal">
                     <h2 class="text-6xl md:text-[120px] font-black gold-gradient uppercase tracking-tighter italic mb-8 leading-none">Our Story</h2>
                     <p class="text-gray-400 text-lg md:text-2xl leading-relaxed mb-10 font-medium italic">Two Brothers bringing science to the farm. Safari Farm is built on purity and professional medical standards.</p>
                     <div class="flex items-center gap-6 p-8 bg-white/5 rounded-[3rem] border border-white/10 shadow-2xl">
-                        <img src="farm3.jpg" onerror="this.src='logo.png'" class="w-20 h-20 rounded-[2rem] object-cover border-2 border-gold-500 animate-float">
+                        <img src="farm3.jpg" onerror="this.src='logo.png'" loading="lazy" class="w-20 h-20 rounded-[2rem] object-cover border-2 border-gold-500 animate-float">
                         <div>
                             <h4 class="font-black text-white text-xl uppercase tracking-tighter">Safari Quality</h4>
                             <p class="text-[10px] text-gold-500 font-bold uppercase tracking-[0.4em] mt-2">100% Medical Care</p>
@@ -350,13 +482,14 @@
                 </div>
                 <div class="reveal text-center relative">
                     <div class="absolute -inset-16 bg-gold-500/5 blur-[120px] rounded-full"></div>
-                    <img src="logo.png" class="relative w-64 md:w-[450px] h-64 md:h-[450px] rounded-full border-4 border-gold-500 mx-auto mb-10 object-cover shadow-3xl bg-black p-1.5">
+                    <img src="logo.png" loading="lazy" class="relative w-64 md:w-[450px] h-64 md:h-[450px] rounded-full border-4 border-gold-500 mx-auto mb-10 object-cover shadow-3xl bg-black p-1.5">
                     <h3 class="text-4xl md:text-6xl font-black uppercase tracking-tighter italic">Kadir & Rifat</h3>
                     <p class="text-gold-500 font-black uppercase text-[10px] md:text-xs tracking-[1em] mt-2">Founders & Visionaries</p>
                 </div>
             </div>
         </section>
 
+        <!-- FAQs & TIPS -->
         <section class="section-tight full-screen-section bg-white/5 backdrop-blur-sm pt-20">
             <div class="w-full px-6 max-w-[1500px] mx-auto grid md:grid-cols-2 gap-16">
                 <div class="reveal">
@@ -388,7 +521,9 @@
             </div>
         </section>
 
+        <!-- DELIVERY & POLICY -->
         <section id="terms" class="section-tight full-screen-section bg-black/40 border-t border-white/5 pt-20">
+            <!-- DELIVERY INFO -->
             <div class="w-full text-center px-6 mb-28">
                 <h2 class="text-6xl md:text-[120px] font-black mb-16 uppercase italic tracking-tighter leading-none">Delivery 🚚</h2>
                 <div class="grid md:grid-cols-3 gap-8 max-w-[1500px] mx-auto">
@@ -407,6 +542,7 @@
                 </div>
             </div>
 
+            <!-- POLICY -->
             <div class="w-full px-6 max-w-[1500px] mx-auto">
                 <h2 class="text-5xl md:text-9xl font-black gold-gradient uppercase italic tracking-tighter mb-16 text-center leading-none">Policies</h2>
                 <div class="grid md:grid-cols-2 gap-10">
@@ -430,6 +566,7 @@
             </div>
         </section>
 
+        <!-- CONTACT -->
         <section id="contact" class="section-tight text-center full-screen-section bg-white/5 backdrop-blur-sm border-t border-white/10 pt-28">
             <div class="w-full">
                 <h2 class="text-7xl md:text-[140px] font-black gold-gradient uppercase mb-20 italic tracking-tighter leading-none px-6">Contact</h2>
@@ -456,7 +593,7 @@
                     </a>
                 </div>
                 <div class="reveal pb-6">
-                    <img src="logo.png" class="w-24 h-24 mx-auto mb-6 rounded-full border border-gold-500 shadow-2xl bg-black">
+                    <img src="logo.png" loading="lazy" class="w-24 h-24 mx-auto mb-6 rounded-full border border-gold-500 shadow-2xl bg-black">
                     <p class="text-[10px] text-gray-600 font-black uppercase tracking-[1em]">© 2026 SAFARI FARM | TWO BROTHERS STYLE</p>
                 </div>
             </div>
@@ -465,6 +602,7 @@
     </div>
     </div>
 
+    <!-- AI WINDOW -->
     <div id="aiWindow">
         <div class="p-6 bg-black flex justify-between items-center border-b border-white/5 shadow-2xl">
             <div class="flex items-center gap-4">
@@ -491,6 +629,10 @@
         </div>
     </div>
 
+    <!-- 🚀 FLOATING BUTTONS & BACK TO TOP 🚀 -->
+    <button onclick="window.scrollTo({top:0, behavior:'smooth'})" id="backToTopBtn" class="fixed bottom-28 right-8 w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full z-[3000] flex items-center justify-center text-xl shadow-xl hover:bg-gold-500 hover:text-black transition-all opacity-0 translate-y-10">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     <button onclick="toggleAI()" class="fixed bottom-8 left-8 w-16 h-16 bg-black border-2 border-gold-500 text-gold-500 rounded-full z-[4000] flex items-center justify-center text-3xl shadow-3xl hover:scale-110 transition-all">
         <i class="fas fa-brain animate-pulse"></i>
     </button>
@@ -499,12 +641,24 @@
     </a>
 
     <script>
+        // Modal Data (Access globally)
+        const modalData = [
+            { n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg', min: 'Minimum 100 Chicks', feed: 'Pre-starter crumb feed (0-14 days)', temp: '32°C - 35°C in Brooder', care: 'Vaccinated. Keep litter dry. Requires good space to roam after 1 month.'},
+            { n: 'Quail (Bater)', p: '₹13', i: 'quail.jpg', min: 'Minimum 500 Chicks', feed: 'Quail starter mash (High protein)', temp: '35°C - 37°C in Brooder (Very sensitive)', care: 'Use shallow water drinkers to prevent drowning. Fast growers, ready in 4-5 weeks.'},
+            { n: 'Silkie', p: '₹80 (Offer!)', i: 'silkie.jpg', min: 'Minimum 50 Chicks', feed: 'Standard chick starter', temp: '33°C - 35°C in Brooder', care: 'Keep away from mud/water to protect feathers. Very gentle breed, needs safe enclosure.'},
+            { n: 'Brahma', p: '₹1100', i: 'brahma.jpg', min: 'Minimum 10 Chicks', feed: 'Premium starter crumbles', temp: '32°C - 34°C in Brooder', care: 'Giant breed. Needs heavy calcium later. Keep floor dry to protect foot feathers.'},
+            { n: 'Sonali', p: '₹25-32', i: 'sonali.jpg', min: 'Minimum 200 Chicks', feed: 'Broiler starter feed', temp: '32°C - 34°C in Brooder', care: 'Excellent for meat & eggs. Fast growth. Basic vaccination F1 & LaSota required.'},
+            { n: 'Turkey', p: '₹160', i: 'turkey.jpg', min: 'Minimum 50 Chicks', feed: 'Turkey Starter (28% Protein strictly)', temp: '35°C - 37°C in Brooder', care: 'Needs warm bright light to learn eating. Very sensitive in first 2 weeks.'},
+            { n: 'Desi', p: '₹40-60', i: 'desi.jpg', min: 'Minimum 100 Chicks', feed: 'Cracked grains & starter feed', temp: '32°C - 35°C in Brooder', care: 'Very hardy. Best for free-range. Basic F1 vaccine done.'},
+            { n: 'Sultan', p: '₹80', i: 'sultan.jpg', min: 'Minimum 50 Chicks', feed: 'Standard chick starter', temp: '33°C - 35°C in Brooder', care: 'Ornamental breed. Keep head crest clean and dry. Provide safe enclosed space.'}
+        ];
+
         window.onload = () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.style.opacity = '0';
-                setTimeout(() => loader.style.display = 'none', 700);
-            }, 1000);
+                setTimeout(() => loader.style.display = 'none', 400); // Faster loader fade
+            }, 600); // Faster load time overall
             reveal();
         }
 
@@ -513,8 +667,47 @@
             var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             var scrolled = (winScroll / height) * 100;
             document.getElementById("scroll-progress").style.width = scrolled + "%";
+            
+            // Back to top button logic
+            const backBtn = document.getElementById('backToTopBtn');
+            if (winScroll > 800) {
+                backBtn.style.opacity = '1';
+                backBtn.style.transform = 'translateY(0)';
+            } else {
+                backBtn.style.opacity = '0';
+                backBtn.style.transform = 'translateY(10px)';
+            }
+            
             reveal();
         };
+
+        // Modal Functions
+        function openBreedModal(index) {
+            const bird = modalData[index];
+            document.getElementById('modalImg').src = bird.i;
+            document.getElementById('modalName').innerText = bird.n;
+            document.getElementById('modalPrice').innerText = bird.p;
+            document.getElementById('modalMin').innerText = bird.min;
+            document.getElementById('modalFeed').innerText = bird.feed;
+            document.getElementById('modalTemp').innerText = bird.temp;
+            document.getElementById('modalCare').innerText = bird.care;
+            document.getElementById('modalBuyBtn').href = "https://wa.me/917063482623?text=Order:" + bird.n;
+            
+            const modal = document.getElementById('breedModal');
+            modal.classList.remove('hidden');
+            // Small delay to allow display:block to apply before animating opacity/scale
+            setTimeout(() => { modal.classList.add('modal-active'); }, 10);
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closeBreedModal() {
+            const modal = document.getElementById('breedModal');
+            modal.classList.remove('modal-active');
+            setTimeout(() => { 
+                modal.classList.add('hidden'); 
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }, 300);
+        }
 
         function toggleTheme() {
             const html = document.documentElement;
