@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Safari Farm & Hatchery | Premium Quality</title>
+    <title>Safari Farm & Hatchery | Premium Bengal</title>
 
-    <!-- Speed Optimization: Preconnect to fonts -->
+    <!-- Speed Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -24,12 +24,12 @@
                     fontFamily: { sans: ['Outfit', 'sans-serif'] },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',
-                        'marquee': 'marquee 20s linear infinite',
+                        'marquee': 'marquee 25s linear infinite',
                         'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
-                        marquee: { '0%': { transform: 'translateX(100vw)' }, '100%': { transform: 'translateX(-100vw)' } },
+                        marquee: { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(-100%)' } },
                         'pulse-glow': { '0%, 100%': { opacity: 1, boxShadow: '0 0 20px #25D366' }, '50%': { opacity: .8, boxShadow: '0 0 40px #25D366' } }
                     }
                 }
@@ -42,14 +42,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
     <style>
+        /* SCROLL BAR & OVERFLOW FIXES */
         * { -webkit-tap-highlight-color: transparent; outline: none; box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+        /* FIX: 100vw removed to stop horizontal scroll */
+        html, body { margin: 0; padding: 0; width: 100%; max-width: 100%; overflow-x: hidden !important; scroll-behavior: smooth; background: #050505; }
         
         #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .full-screen-section { width: 100vw; max-width: 100%; }
+        .full-screen-section { width: 100%; max-width: 100%; overflow: hidden; }
 
         .glass-nav { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(251, 191, 36, 0.15); width: 100%; }
-        .light .glass-nav { background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid rgba(0,0,0,0.05); }
 
         .gold-gradient { background: linear-gradient(135deg, #fbbf24, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
@@ -59,16 +60,17 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+        /* AI Window */
         #aiWindow {
-            position: fixed; bottom: 85px; right: 15px; width: 360px; max-width: calc(100vw - 30px);
+            position: fixed; bottom: 85px; right: 15px; width: 360px; max-width: calc(100% - 30px);
             height: 550px; background: rgba(10, 10, 10, 0.98); border: 1px solid rgba(251, 191, 36, 0.2);
             border-radius: 35px; display: none; flex-direction: column; z-index: 5000;
             box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.9); overflow: hidden;
         }
 
         .farm-bg-overlay { background-image: url('farmold.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative; width: 100%; }
-        .farm-bg-overlay::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.98)); z-index: 1; }
-        .z-content { position: relative; z-index: 10; width: 100%; }
+        .farm-bg-overlay::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.98)); z-index: 1; }
+        .z-content { position: relative; z-index: 10; width: 100%; overflow: hidden; }
 
         .section-tight { padding-top: 5rem; padding-bottom: 5rem; }
         .luxury-card { transition: 0.4s; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255,255,255,0.02); cursor: pointer;}
@@ -82,19 +84,19 @@
         
         /* Modal Animation */
         #breedModal { backdrop-filter: blur(15px); }
-        .modal-content { transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: scale(0.95); opacity: 0; }
+        .modal-content { transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: scale(0.95); opacity: 0; max-height: 90vh; }
         .modal-active .modal-content { transform: scale(1); opacity: 1; }
     </style>
 </head>
-<body class="bg-royal-dark text-gray-100 dark:bg-royal-dark dark:text-gray-100 light:bg-white light:text-black">
+<body class="bg-royal-dark text-gray-100 font-sans">
 
-    <!-- PRELOADER -->
+    <!-- PRELOADER (Bengali Touch) -->
     <div id="loader" class="transition-opacity duration-500">
         <div>
             <h1 class="text-4xl md:text-7xl font-black gold-gradient italic tracking-tighter animate-pulse">SAFARI FARM</h1>
             <div class="mt-4 flex flex-col items-center">
-                <p class="text-gold-500 text-[10px] md:text-[14px] font-black tracking-[0.4em] uppercase">Safari Farm & Hatchery</p>
-                <p class="text-white/40 text-[9px] font-bold tracking-[0.2em] mt-1">XPRESS LOADING...</p>
+                <p class="text-gold-500 text-[12px] md:text-[16px] font-black tracking-[0.3em] uppercase">সাফারি ফার্মে স্বাগতম</p>
+                <p class="text-white/40 text-[9px] font-bold tracking-[0.2em] mt-2">XPRESS LOADING...</p>
             </div>
         </div>
     </div>
@@ -102,12 +104,14 @@
     <!-- SCROLL PROGRESS BAR -->
     <div id="scroll-progress"></div>
 
-    <!-- WHATSAPP OFFER BAR -->
+    <!-- WHATSAPP OFFER BAR (MARQUEE FIX) -->
     <a href="https://chat.whatsapp.com/FyJGSXc1kjJGosyY492Q4j" target="_blank" class="bg-red-600 hover:bg-red-700 text-white py-2.5 w-full fixed top-0 z-[1500] overflow-hidden flex items-center shadow-lg transition-colors cursor-pointer mt-1">
-        <div class="animate-marquee whitespace-nowrap text-[12px] md:text-sm font-black tracking-widest uppercase italic flex items-center gap-4">
-            <span>🎉 CLICK HERE TO JOIN OUR WHATSAPP GROUP!</span>
-            <span class="text-gold-400">🔥 SILKIE CHICKS PAR SPECIAL VIP DISCOUNT!</span>
-            <span>🐣 JOIN NOW FOR DAILY FARM UPDATES & OFFERS! 🚚</span>
+        <div class="w-full overflow-hidden">
+            <div class="animate-marquee whitespace-nowrap text-[12px] md:text-sm font-black tracking-widest uppercase italic flex items-center gap-6">
+                <span>🎉 CLICK HERE TO JOIN OUR WHATSAPP GROUP!</span>
+                <span class="text-gold-400">🔥 সিল্কি মুরগির ওপর বিশেষ ছাড়! (SILKIE OFFER)</span>
+                <span>🐣 JOIN NOW FOR DAILY FARM UPDATES! 🚚</span>
+            </div>
         </div>
     </a>
 
@@ -125,90 +129,113 @@
                 </div>
             </div>
 
-            <button onclick="toggleTheme()" id="themeBtn" class="w-10 h-10 flex items-center justify-center bg-gold-500/10 text-gold-500 rounded-full border border-gold-500/20">
-                <i class="fas fa-moon text-lg"></i>
+            <!-- Translate/Info Icon instead of Theme for better pro feel -->
+            <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="w-10 h-10 flex items-center justify-center bg-gold-500/10 text-gold-500 rounded-full border border-gold-500/20">
+                <i class="fas fa-crown text-lg"></i>
             </button>
         </div>
     </nav>
 
-    <!-- MOBILE MENU (SMOOTH SCROLL LINKS) -->
+    <!-- MOBILE MENU -->
     <div id="mobileMenu" class="fixed inset-0 bg-[#050505]/98 backdrop-blur-3xl z-[9999] hidden flex-col items-center justify-center gap-6 text-2xl md:text-4xl font-black uppercase italic tracking-tighter transition-all">
         <button onclick="toggleMenu()" class="absolute top-6 right-6 md:top-10 md:right-10 text-gold-500 text-4xl hover:scale-110 transition"><i class="fas fa-times"></i></button>
-        <a href="#home" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Home</a>
-        <a href="#chicks" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Premium Chicks</a>
-        <a href="#incubators" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Machinery</a>
+        <a href="#home" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Home (হোম)</a>
+        <a href="#chicks" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Elite Chicks (মুরগি)</a>
+        <a href="#incubators" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Machinery (মেশিন)</a>
         <a href="#updates" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Live Updates</a>
-        <a href="#videos" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Gallery & Videos</a>
-        <a href="#about" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">About & Reviews</a>
+        <a href="#videos" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Farm Videos</a>
+        <a href="#about" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">About Us</a>
         <a href="#contact" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Contact</a>
     </div>
 
-    <!-- 🚀 VIP BREED DETAILS MODAL (POP-UP) 🚀 -->
-    <div id="breedModal" class="fixed inset-0 bg-black/80 z-[8000] hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="modal-content bg-[#111] border border-gold-500/30 w-full max-w-[450px] rounded-[2.5rem] overflow-hidden relative shadow-2xl mt-10 mb-10">
+    <!-- 🚀 SUPER VIP BREED DETAILS MODAL 🚀 -->
+    <div id="breedModal" class="fixed inset-0 bg-black/80 z-[8000] hidden flex items-center justify-center p-4">
+        <div class="modal-content bg-[#0a0a0a] border border-gold-500/30 w-full max-w-[480px] rounded-[2.5rem] relative shadow-2xl flex flex-col h-auto max-h-[90vh]">
             <!-- Close Button -->
-            <button onclick="closeBreedModal()" class="absolute top-4 right-4 z-50 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full text-white border border-white/20 flex items-center justify-center hover:bg-red-600 transition">
+            <button onclick="closeBreedModal()" class="absolute top-4 right-4 z-50 w-10 h-10 bg-black/70 backdrop-blur-md rounded-full text-white border border-white/20 flex items-center justify-center hover:bg-red-600 transition">
                 <i class="fas fa-times"></i>
             </button>
             
-            <!-- Modal Image -->
-            <div class="w-full h-56 bg-black relative">
+            <!-- Image Area (Fixed at top) -->
+            <div class="w-full h-52 shrink-0 bg-black relative rounded-t-[2.5rem] overflow-hidden">
                 <img id="modalImg" src="" class="w-full h-full object-cover opacity-80">
                 <div class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
-                    <h2 id="modalName" class="text-4xl font-black italic uppercase gold-gradient drop-shadow-lg leading-none">Breed Name</h2>
-                    <p id="modalPrice" class="text-white text-xl font-black mt-1">₹00</p>
+                    <p id="modalTag" class="text-gold-400 text-[10px] font-black tracking-widest mb-1"></p>
+                    <div class="flex justify-between items-end">
+                        <h2 id="modalName" class="text-3xl font-black italic uppercase text-white drop-shadow-lg leading-none">Breed</h2>
+                        <p id="modalPrice" class="text-gold-500 text-xl font-black bg-black/50 px-3 py-1 rounded-lg border border-gold-500/30">₹00</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Modal Content (Specs) -->
-            <div class="p-6 space-y-4">
-                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
-                    <i class="fas fa-box-open text-gold-500 text-2xl mt-1"></i>
+            <!-- Details Area (Scrollable) -->
+            <div class="p-5 space-y-3 overflow-y-auto hide-scrollbar flex-1 pb-6">
+                <!-- Origin Box -->
+                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
+                    <i class="fas fa-globe text-gold-500 text-xl mt-1"></i>
                     <div>
-                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Minimum Order (Kitna Lena Hoga)</h4>
-                        <p id="modalMin" class="text-sm font-bold text-white mt-1">Loading...</p>
+                        <h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Origin / Breed (উৎপত্তি)</h4>
+                        <p id="modalOrigin" class="text-xs font-bold text-white mt-0.5">Loading...</p>
                     </div>
                 </div>
-                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
-                    <i class="fas fa-bowl-rice text-gold-500 text-2xl mt-1"></i>
+                <!-- Min Order -->
+                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
+                    <i class="fas fa-box-open text-gold-500 text-xl mt-1"></i>
                     <div>
-                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Feed Type (Kya Khayega)</h4>
-                        <p id="modalFeed" class="text-sm font-bold text-white mt-1">Loading...</p>
+                        <h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Min Order (কমপক্ষে কত পিস)</h4>
+                        <p id="modalMin" class="text-xs font-bold text-white mt-0.5">Loading...</p>
                     </div>
                 </div>
-                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
-                    <i class="fas fa-temperature-half text-gold-500 text-2xl mt-1"></i>
+                <!-- Medicine/Vaccine -->
+                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
+                    <i class="fas fa-syringe text-gold-500 text-xl mt-1"></i>
                     <div>
-                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Temperature (Taapman)</h4>
-                        <p id="modalTemp" class="text-sm font-bold text-white mt-1">Loading...</p>
+                        <h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Medicine (ওষুধ ও ভ্যাকসিন)</h4>
+                        <p id="modalMed" class="text-xs font-bold text-white mt-0.5">Loading...</p>
                     </div>
                 </div>
-                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
-                    <i class="fas fa-hand-holding-heart text-gold-500 text-2xl mt-1"></i>
+                <!-- Feed -->
+                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
+                    <i class="fas fa-bowl-rice text-gold-500 text-xl mt-1"></i>
                     <div>
-                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Care & Vaccine (Dekh Bhal)</h4>
-                        <p id="modalCare" class="text-sm font-bold text-white mt-1">Loading...</p>
+                        <h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Feed Type (কী খাবে)</h4>
+                        <p id="modalFeed" class="text-xs font-bold text-white mt-0.5">Loading...</p>
+                    </div>
+                </div>
+                <!-- Temp -->
+                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
+                    <i class="fas fa-temperature-half text-gold-500 text-xl mt-1"></i>
+                    <div>
+                        <h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Temperature (তাপমাত্রা)</h4>
+                        <p id="modalTemp" class="text-xs font-bold text-white mt-0.5">Loading...</p>
+                    </div>
+                </div>
+                <!-- Care -->
+                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
+                    <i class="fas fa-hand-holding-heart text-gold-500 text-xl mt-1"></i>
+                    <div>
+                        <h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Care (রক্ষণাবেক্ষণ)</h4>
+                        <p id="modalCare" class="text-xs font-bold text-white mt-0.5 leading-relaxed">Loading...</p>
                     </div>
                 </div>
 
-                <!-- Modal Buy Button -->
-                <a id="modalBuyBtn" href="#" target="_blank" class="block w-full py-4 mt-6 bg-gold-500 text-black text-center rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition shadow-[0_5px_20px_rgba(245,158,11,0.4)]">
-                    <i class="fab fa-whatsapp mr-2"></i> Book Now
+                <!-- Buy Button -->
+                <a id="modalBuyBtn" href="#" target="_blank" class="block w-full py-4 mt-4 bg-gold-500 text-black text-center rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition shadow-[0_5px_20px_rgba(245,158,11,0.4)]">
+                    <i class="fab fa-whatsapp text-lg mr-2"></i> Confirm Booking
                 </a>
             </div>
         </div>
     </div>
-    <!-- END MODAL -->
 
 
-    <!-- MAIN CONTENT START -->
-    <div class="farm-bg-overlay mt-12">
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="farm-bg-overlay mt-12 w-full overflow-hidden">
     <div class="z-content">
 
         <!-- HERO SECTION -->
         <section id="home" class="min-h-[90vh] flex items-center justify-center text-center pt-32 full-screen-section pb-10">
-            <div class="reveal active">
-                <span class="inline-block px-4 py-1.5 bg-gold-500/10 rounded-full text-[9px] font-black tracking-[0.4em] text-gold-400 mb-6 border border-gold-500/20 uppercase">Scientifically Proven Hatchery</span>
+            <div class="reveal active px-4">
+                <span class="inline-block px-4 py-1.5 bg-gold-500/10 rounded-full text-[10px] font-black tracking-[0.3em] text-gold-400 mb-6 border border-gold-500/20 uppercase">সাফারি ফার্মে আপনাকে স্বাগত</span>
                 <h2 class="text-6xl md:text-[150px] font-black mb-8 leading-[0.8] tracking-tighter uppercase italic drop-shadow-2xl">PURE<br><span class="gold-gradient">SAFARI.</span></h2>
                 <p class="max-w-2xl mx-auto text-gray-400 font-medium mb-10 text-lg md:text-2xl leading-relaxed">India's most trusted premium chicks startup. Two Brothers Style Excellence.</p>
                 <div class="flex flex-wrap justify-center gap-5">
@@ -223,89 +250,81 @@
             <div class="w-full max-w-[1700px] mx-auto px-4">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-5xl md:text-[120px] font-black uppercase italic tracking-tighter leading-none"><span class="gold-gradient">Elite</span> Chicks</h2>
-                    <p class="text-gray-500 font-bold tracking-[0.5em] text-[10px] mt-4 uppercase">100% Vaccinated Stock</p>
-                    <p class="text-gold-500 text-xs mt-2 animate-pulse">👉 Click any bird for full details!</p>
+                    <p class="text-gray-500 font-bold tracking-[0.5em] text-[10px] mt-4 uppercase">সেরা মানের মুরগি (100% Vaccinated)</p>
+                    <p class="text-gold-500 text-xs mt-3 animate-pulse bg-gold-500/10 inline-block px-4 py-1 rounded-full border border-gold-500/30">👉 Click photo for details!</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <script>
-                        // 🚀 ADVANCED DATA STRUCTURE WITH FULL DETAILS 🚀
+                        // 🚀 NEW MEGA DATA STRUCTURE (BENGALI + HINDI + ENGLISH) 🚀
                         const birds = [
                             { 
-                                n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg', 
-                                min: 'Minimum 100 Chicks', 
-                                feed: 'Pre-starter crumb feed (0-14 days)', 
-                                temp: '32°C - 35°C in Brooder', 
-                                care: 'Vaccinated. Keep litter dry. Requires good space to roam after 1 month.'
+                                n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg', tag: 'কালো মাংসের রাজা (King of Black Meat)',
+                                origin: 'Madhya Pradesh, India (পিওর দেশী)', min: '100 Chicks (কমপক্ষে ১০০ পিস)', 
+                                feed: 'Pre-starter crumb feed (০-১৪ দিন)', temp: '32°C - 35°C (ব্রুডিং তাপমাত্রা)', 
+                                med: 'F1 & LaSota Vaccine Done. Healthy breed.', care: 'লক স্পেস বা ফ্রি-রেঞ্জ। রোগ প্রতিরোধ ক্ষমতা খুব ভালো। (Very High Immunity)'
                             },
                             { 
-                                n: 'Quail (Bater)', p: '₹13', i: 'quail.jpg',
-                                min: 'Minimum 500 Chicks', 
-                                feed: 'Quail starter mash (High protein)', 
-                                temp: '35°C - 37°C in Brooder (Very sensitive)', 
-                                care: 'Use shallow water drinkers to prevent drowning. Fast growers, ready in 4-5 weeks.'
+                                n: 'Quail (Bater)', p: '₹13', i: 'quail.jpg', tag: 'অল্প জায়গায় বেশি লাভ (High Profit)',
+                                origin: 'Asian Quail Breed', min: '500 Chicks (কমপক্ষে ৫০০ পিস)', 
+                                feed: 'Quail starter mash (High Protein)', temp: '35°C - 37°C (খুবই সেনসিটিভ)', 
+                                med: 'Low medicine required. Hardy bird.', care: 'জলে ডুবে যেন না যায় তাই ছোট পাত্র দিন। (Use shallow water). Ready in 4-5 weeks.'
                             },
                             { 
-                                n: 'Silkie', p: '₹80 (Offer!)', i: 'silkie.jpg',
-                                min: 'Minimum 50 Chicks', 
-                                feed: 'Standard chick starter', 
-                                temp: '33°C - 35°C in Brooder', 
-                                care: 'Keep away from mud/water to protect feathers. Very gentle breed, needs safe enclosure.'
+                                n: 'Silkie', p: '₹80', i: 'silkie.jpg', tag: 'তুলোর মতো নরম (Cotton Soft)', offer: true,
+                                origin: 'China (ফ্যান্সি মুরগি)', min: '50 Chicks (কমপক্ষে ৫০ পিস)', 
+                                feed: 'Standard chick starter crumb', temp: '33°C - 35°C', 
+                                med: 'Regular drops (Vimeral/B-complex) in water.', care: 'পালক ভিজে গেলে সমস্যা, তাই জায়গা সবসময় শুকনো রাখবেন। (Keep litter completely dry).'
                             },
                             { 
-                                n: 'Brahma', p: '₹1100', i: 'brahma.jpg',
-                                min: 'Minimum 10 Chicks', 
-                                feed: 'Premium starter crumbles', 
-                                temp: '32°C - 34°C in Brooder', 
-                                care: 'Giant breed. Needs heavy calcium later. Keep floor dry to protect foot feathers.'
+                                n: 'Brahma', p: '₹1100', i: 'brahma.jpg', tag: 'মুরগির রাজা (King of Chickens)',
+                                origin: 'India / US Cross (বড় সাইজ)', min: '10 Chicks (কমপক্ষে ১০ পিস)', 
+                                feed: 'Premium Starter + Calcium Diet', temp: '32°C - 34°C', 
+                                med: 'Regular vaccination + Calcium supplements.', care: 'পায়ের পালক যাতে নোংরা না হয় তাই পরিষ্কার জায়গায় রাখুন। (Needs huge space).'
                             },
                             { 
-                                n: 'Sonali', p: '₹25-32', i: 'sonali.jpg',
-                                min: 'Minimum 200 Chicks', 
-                                feed: 'Broiler starter feed', 
-                                temp: '32°C - 34°C in Brooder', 
-                                care: 'Excellent for meat & eggs. Fast growth. Basic vaccination F1 & LaSota required.'
+                                n: 'Sonali', p: '₹25-32', i: 'sonali.jpg', tag: 'ডিম ও মাংসের সেরা (Meat & Egg)',
+                                origin: 'Bangladesh Crossbreed (সোনালী)', min: '200 Chicks (কমপক্ষে ২০০ পিস)', 
+                                feed: 'Broiler starter / Layer mash', temp: '32°C - 34°C', 
+                                med: 'Gumboro & Ranikhet vaccines mandatory.', care: 'খুব তাড়াতাড়ি বাড়ে। খামারিদের জন্য সবচেয়ে বেশি লাভজনক। (Best for commercial farming).'
                             },
                             { 
-                                n: 'Turkey', p: '₹160', i: 'turkey.jpg',
-                                min: 'Minimum 50 Chicks', 
-                                feed: 'Turkey Starter (28% Protein strictly)', 
-                                temp: '35°C - 37°C in Brooder', 
-                                care: 'Needs warm bright light to learn eating. Very sensitive in first 2 weeks.'
+                                n: 'Turkey', p: '₹160', i: 'turkey.jpg', tag: 'উৎসবের সেরা আকর্ষণ (Premium Meat)',
+                                origin: 'North America', min: '50 Chicks (কমপক্ষে ৫০ পিস)', 
+                                feed: 'Turkey Starter (Strictly 28% Protein)', temp: '35°C - 37°C', 
+                                med: 'Requires regular vitamins in early stage.', care: 'প্রথম ২ সপ্তাহ খাবার চিনতে সমস্যা হয়, উজ্জ্বল আলো দিন। (Needs bright light in brooder).'
                             },
                             { 
-                                n: 'Desi', p: '₹40-60', i: 'desi.jpg',
-                                min: 'Minimum 100 Chicks', 
-                                feed: 'Cracked grains & starter feed', 
-                                temp: '32°C - 35°C in Brooder', 
-                                care: 'Very hardy. Best for free-range. Basic F1 vaccine done.'
+                                n: 'Desi', p: '₹40-60', i: 'desi.jpg', tag: 'গ্রামের খাঁটি মুরগি (Pure Village)',
+                                origin: 'Local Indian Breed (দেশী)', min: '100 Chicks (কমপক্ষে ১০০ পিস)', 
+                                feed: 'Cracked grains (খুদ-কুঁড়ো) & Starter', temp: '32°C - 35°C', 
+                                med: 'Very hardy. Zero to low medicine.', care: 'খোলা মাঠে চরে খেতে ভালোবাসে। (Best for free-range backyard farming).'
                             },
                             { 
-                                n: 'Sultan', p: '₹80', i: 'sultan.jpg',
-                                min: 'Minimum 50 Chicks', 
-                                feed: 'Standard chick starter', 
-                                temp: '33°C - 35°C in Brooder', 
-                                care: 'Ornamental breed. Keep head crest clean and dry. Provide safe enclosed space.'
+                                n: 'Sultan', p: '₹80', i: 'sultan.jpg', tag: 'রাজকীয় সৌন্দর্য (Royal Beauty)',
+                                origin: 'Turkey (শৌখিন মুরগি)', min: '50 Chicks (কমপক্ষে ৫০ পিস)', 
+                                feed: 'Premium chick starter', temp: '33°C - 35°C', 
+                                med: 'Standard vaccines. Sensitive to cold.', care: 'মাথার ঝুঁটি পরিষ্কার রাখতে হবে। শৌখিন খামারিদের জন্য দারুণ। (Great for ornamental farms).'
                             }
                         ];
                         
-                        // Generating Cards that open Modal
                         birds.forEach((item, index) => {
-                            let offerBadge = item.n === 'Silkie' ? '<span class="absolute top-4 right-4 bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest animate-pulse z-20 shadow-lg border border-red-400">Offer</span>' : '';
+                            let offerBadge = item.offer ? '<span class="absolute top-4 right-4 bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest animate-pulse z-20 shadow-lg border border-red-400">Offer Active</span>' : '';
                             
                             document.write(`
                                 <div onclick="openBreedModal(${index})" class="bg-white/5 backdrop-blur-3xl p-5 rounded-[3rem] border border-white/10 reveal group luxury-card shadow-xl relative overflow-hidden">
                                     ${offerBadge}
-                                    <div class="h-60 rounded-[2.5rem] overflow-hidden mb-6 bg-black relative">
+                                    <div class="h-60 rounded-[2.5rem] overflow-hidden mb-5 bg-black relative">
                                         <img src="${item.i}" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100">
-                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
-                                            <span class="bg-gold-500 text-black px-4 py-2 rounded-full font-black text-[10px] uppercase tracking-widest">View Details</span>
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
+                                            <span class="bg-gold-500 text-black px-5 py-2 rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl">সব ডিটেইলস দেখুন</span>
                                         </div>
                                     </div>
+                                    <p class="text-gold-400 text-[9px] font-bold tracking-widest uppercase mb-1 truncate">${item.tag}</p>
                                     <h3 class="text-2xl font-black mb-1 italic group-hover:gold-gradient transition uppercase">${item.n}</h3>
-                                    <p class="text-gold-500 font-black text-xl mb-4 tracking-tighter">${item.p}</p>
+                                    <p class="text-white font-black text-xl mb-4 tracking-tighter">${item.p}</p>
                                     <button class="block w-full py-4 bg-white/5 border border-white/10 text-white text-center rounded-3xl font-black text-[10px] tracking-widest uppercase group-hover:bg-gold-500 group-hover:text-black transition">
-                                        Check Details & Buy
+                                        Details & Book <i class="fas fa-arrow-right ml-1"></i>
                                     </button>
                                 </div>
                             `);
@@ -320,7 +339,7 @@
             <div class="w-full">
                 <div class="text-center mb-16 reveal px-6">
                     <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter">Machinery</h2>
-                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] mt-4 uppercase">Slide Models & Parts</p>
+                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] mt-4 uppercase">ইনকিউবেটর ও পার্টস</p>
                 </div>
                 <div class="flex overflow-x-auto gap-6 px-6 md:px-16 hide-scrollbar pb-10">
                     <script>
@@ -345,86 +364,73 @@
             </div>
         </section>
 
-        <!-- FACEBOOK LIVE FEED -->
+        <!-- FACEBOOK LIVE FEED (SUPER COMPACT FIX) -->
         <section id="updates" class="section-tight full-screen-section bg-black/40 border-t border-white/5 pt-28 pb-20">
             <div class="w-full px-6 max-w-[1500px] mx-auto text-center">
-                <div class="reveal mb-12">
-                    <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-4"><span class="text-[#1877F2]">Live</span> Farm Updates 📢</h2>
-                    <p class="text-gray-400 font-medium text-sm md:text-base">Check our latest offers directly from our Facebook Page.</p>
+                <div class="reveal mb-8">
+                    <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-2"><span class="text-[#1877F2]">Live</span> Updates 📢</h2>
+                    <p class="text-gray-400 font-medium text-xs md:text-sm uppercase tracking-widest">খামারের দৈনন্দিন খবর</p>
                 </div>
-                <div class="reveal flex justify-center w-full my-8">
-                    <div class="bg-white/5 p-4 rounded-[2rem] border border-white/10 shadow-[0_10px_40px_rgba(24,119,242,0.15)] w-full max-w-[350px] mx-auto flex flex-col justify-center">
-                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Froofsafarifarm%2F&tabs=timeline&width=320&height=350&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="100%" height="350" style="border:none;overflow:hidden; border-radius: 1rem; background: white;" scrolling="yes" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                
+                <div class="reveal flex justify-center w-full">
+                    <!-- FIX: Widget max width reduced to 280px, height 300px for zero interference -->
+                    <div class="bg-white/5 p-3 rounded-[2rem] border border-[#1877F2]/30 shadow-[0_10px_30px_rgba(24,119,242,0.1)] w-full max-w-[280px] mx-auto overflow-hidden bg-[#fff]">
+                        <iframe 
+                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Froofsafarifarm%2F&tabs=timeline&width=260&height=280&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
+                            width="100%" height="280" style="border:none;overflow:hidden; border-radius: 1rem;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                        </iframe>
                     </div>
                 </div>
+                
                 <div class="mt-8 reveal">
                     <a href="https://www.facebook.com/roofsafarifarm/" target="_blank" class="inline-flex items-center gap-3 py-3 px-8 border border-[#1877F2] text-[#1877F2] font-black rounded-full uppercase text-[10px] tracking-widest hover:bg-[#1877F2] hover:text-white transition shadow-xl">
-                        <i class="fab fa-facebook-f text-lg"></i> Follow us on Facebook
+                        <i class="fab fa-facebook-f text-lg"></i> Open Facebook
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- 🎥 XPRESS LOADING VIDEOS (Preload None & Controls added) 🎥 -->
+        <!-- 🎥 XPRESS VIDEOS (PRELOAD NONE FOR SPEED) -->
         <section id="videos" class="section-tight full-screen-section bg-white/5 backdrop-blur-sm border-t border-white/5 pt-28">
             <div class="w-full px-6 mb-20">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter">Safari Shorts</h2>
-                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] mt-4 uppercase">Live action from our Farm</p>
-                    <p class="text-gold-500 text-xs mt-2 animate-pulse">👉 Tap to Play!</p>
+                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] mt-4 uppercase">ভিডিও গ্যালারি</p>
+                    <p class="text-gold-500 text-[10px] mt-2 animate-pulse tracking-widest">👉 TAP TO PLAY 👈</p>
                 </div>
                 
-                <!-- Videos Grid -->
                 <div class="flex overflow-x-auto gap-5 px-4 md:px-16 hide-scrollbar pb-10">
-                    
-                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative">
-                        <!-- Removed autoplay, added preload="none" and controls -->
-                        <video src="video1.mp4" playsinline controls preload="none" poster="farm1.jpg"></video>
-                        <div class="absolute bottom-16 left-5 z-20 pointer-events-none">
-                            <h4 class="text-lg font-black uppercase italic drop-shadow-md text-white">Active Chicks</h4>
-                        </div>
+                    <!-- Video 1 -->
+                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative border-2 border-white/10">
+                        <video src="video1.mp4" playsinline controls preload="none" poster="farm1.jpg" class="rounded-[2.5rem]"></video>
                     </div>
-
-                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative">
-                        <video src="video2.mp4" playsinline controls preload="none" poster="farm2.jpg"></video>
-                        <div class="absolute bottom-16 left-5 z-20 pointer-events-none">
-                            <h4 class="text-lg font-black uppercase italic drop-shadow-md text-white">Incubator Setup</h4>
-                        </div>
+                    <!-- Video 2 -->
+                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative border-2 border-white/10">
+                        <video src="video2.mp4" playsinline controls preload="none" poster="farm2.jpg" class="rounded-[2.5rem]"></video>
                     </div>
-
-                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative">
-                        <video src="video3.mp4" playsinline controls preload="none" poster="farm3.jpg"></video>
-                        <div class="absolute bottom-16 left-5 z-20 pointer-events-none">
-                            <h4 class="text-lg font-black uppercase italic drop-shadow-md text-white">Farm Care</h4>
-                        </div>
+                    <!-- Video 3 -->
+                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative border-2 border-white/10">
+                        <video src="video3.mp4" playsinline controls preload="none" poster="farm3.jpg" class="rounded-[2.5rem]"></video>
                     </div>
-
-                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative">
-                        <video src="video4.mp4" playsinline controls preload="none" poster="farm4.jpg"></video>
-                        <div class="absolute bottom-16 left-5 z-20 pointer-events-none">
-                            <h4 class="text-lg font-black uppercase italic drop-shadow-md text-white">Premium Delivery</h4>
-                        </div>
+                    <!-- Video 4 -->
+                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative border-2 border-white/10">
+                        <video src="video4.mp4" playsinline controls preload="none" poster="farm4.jpg" class="rounded-[2.5rem]"></video>
                     </div>
-
-                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative">
-                        <video src="video5.mp4" playsinline controls preload="none" poster="farm5.jpg"></video>
-                        <div class="absolute bottom-16 left-5 z-20 pointer-events-none">
-                            <h4 class="text-lg font-black uppercase italic drop-shadow-md text-white">Happy Birds</h4>
-                        </div>
+                    <!-- Video 5 -->
+                    <div class="min-w-[240px] md:min-w-[300px] h-[400px] md:h-[420px] video-box flex-shrink-0 reveal shadow-2xl relative border-2 border-white/10">
+                        <video src="video5.mp4" playsinline controls preload="none" poster="farm5.jpg" class="rounded-[2.5rem]"></video>
                     </div>
-
                 </div>
             </div>
 
-            <!-- 📸 XPRESS LAZY LOADING PHOTOS (20 IMAGES) 📸 -->
+            <!-- 📸 XPRESS LAZY PHOTOS -->
             <div class="w-full mb-16 reveal px-6">
                 <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter leading-none text-center">Farm Photos</h2>
             </div>
             <div class="flex overflow-x-auto gap-6 px-6 md:px-16 hide-scrollbar pb-10" id="gallery">
                 <script>
                     for(let i=1; i<=20; i++) {
-                        // loading="lazy" is crucial for speed here
-                        document.write(`<div class="min-w-[280px] md:min-w-[350px] h-[400px] rounded-[3.5rem] bg-black overflow-hidden flex-shrink-0 border border-white/10 group shadow-3xl"><img src="farm${i}.jpg" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:scale-110"></div>`);
+                        document.write(`<div class="min-w-[260px] md:min-w-[350px] h-[380px] rounded-[3.5rem] bg-black overflow-hidden flex-shrink-0 border border-white/10 group shadow-3xl"><img src="farm${i}.jpg" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:scale-110"></div>`);
                     }
                 </script>
             </div>
@@ -439,7 +445,7 @@
                         <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="text-gray-300 italic mb-6">"Bohot badhiya chicks mile Safari Farm se. Mortality rate ekdum zero tha aur delivery time par aayi."</p>
                         <div class="flex items-center gap-3">
-                            <img src="logo.png" class="w-8 h-8 rounded-full border border-gold-500">
+                            <img src="logo.png" loading="lazy" class="w-8 h-8 rounded-full border border-gold-500">
                             <h4 class="font-black uppercase tracking-widest text-[10px] text-gold-500">Rajesh, Assam</h4>
                         </div>
                     </div>
@@ -447,7 +453,7 @@
                         <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="text-gray-300 italic mb-6">"Incubator parts original the. Malik ne call par sab samjhaya ki temperature kaise set karna hai."</p>
                         <div class="flex items-center gap-3">
-                            <img src="logo.png" class="w-8 h-8 rounded-full border border-gold-500">
+                            <img src="logo.png" loading="lazy" class="w-8 h-8 rounded-full border border-gold-500">
                             <h4 class="font-black uppercase tracking-widest text-[10px] text-gold-500">Amit Kumar, Bihar</h4>
                         </div>
                     </div>
@@ -455,7 +461,7 @@
                         <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="text-gray-300 italic mb-6">"Silkie aur Kadaknath dono order kiye the. Murgiyan ekdum healthy aur active hain. Best hatchery!"</p>
                         <div class="flex items-center gap-3">
-                            <img src="logo.png" class="w-8 h-8 rounded-full border border-gold-500">
+                            <img src="logo.png" loading="lazy" class="w-8 h-8 rounded-full border border-gold-500">
                             <h4 class="font-black uppercase tracking-widest text-[10px] text-gold-500">Sourav, West Bengal</h4>
                         </div>
                     </div>
@@ -496,16 +502,12 @@
                     <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-10"><span class="gold-gradient">Farm FAQs</span> 💡</h2>
                     <div class="space-y-6">
                         <div class="bg-black/60 p-6 rounded-3xl border border-white/10">
-                            <h4 class="font-black uppercase text-gold-500 mb-2">🚚 Delivery Kaise Hoti Hai?</h4>
+                            <h4 class="font-black uppercase text-gold-500 mb-2">🚚 Delivery Kaise Hoti Hai? (ডেলিভারি)</h4>
                             <p class="text-sm text-gray-400 font-medium">Hum Pan-India Train aur Bus ke through safe delivery karte hain. Aapko nazdeeki station se collect karna hota hai.</p>
                         </div>
                         <div class="bg-black/60 p-6 rounded-3xl border border-white/10">
-                            <h4 class="font-black uppercase text-gold-500 mb-2">💰 Payment System Kya Hai?</h4>
+                            <h4 class="font-black uppercase text-gold-500 mb-2">💰 Payment System (পেমেন্ট)</h4>
                             <p class="text-sm text-gray-400 font-medium">Order confirm karne ke liye advance payment zaroori hai. Extra transport charges client ko khud dene hote hain.</p>
-                        </div>
-                        <div class="bg-black/60 p-6 rounded-3xl border border-white/10">
-                            <h4 class="font-black uppercase text-gold-500 mb-2">🥚 Hatching Chart?</h4>
-                            <p class="text-sm text-gray-400 font-medium">Bater: 18 Din | Murgi: 21 Din | Turkey: 28 Din. Temp 37.5°C se 37.8°C maintain karein.</p>
                         </div>
                     </div>
                 </div>
@@ -515,7 +517,7 @@
                         <i class="fas fa-temperature-half text-6xl text-white/5 absolute -right-4 -top-4 scale-150"></i>
                         <i class="fas fa-temperature-half text-5xl text-gold-500 mb-6 relative z-10"></i>
                         <h3 class="text-2xl font-black uppercase italic mb-4 relative z-10">Brooding Care</h3>
-                        <p class="text-gray-400 font-medium leading-relaxed mb-6 relative z-10">Pehle 7 din chicks ke liye sabse zaroori hote hain. Brooder ka temperature 33°C-35°C hona chahiye. Niche saaf burda bichhayein. Pehle paani mein thoda jaggery (gur) aur anti-stress medicine mila kar dein.</p>
+                        <p class="text-gray-400 font-medium leading-relaxed mb-6 relative z-10">প্রথম ৭ দিন মুরগির বাচ্চার জন্য সবচেয়ে গুরুত্বপূর্ণ। (First 7 days are crucial). Brooder ka temperature 33°C-35°C hona chahiye. Niche saaf burda bichhayein.</p>
                     </div>
                 </div>
             </div>
@@ -566,7 +568,7 @@
             </div>
         </section>
 
-        <!-- CONTACT -->
+        <!-- CONTACT & FOOTER -->
         <section id="contact" class="section-tight text-center full-screen-section bg-white/5 backdrop-blur-sm border-t border-white/10 pt-28">
             <div class="w-full">
                 <h2 class="text-7xl md:text-[140px] font-black gold-gradient uppercase mb-20 italic tracking-tighter leading-none px-6">Contact</h2>
@@ -592,15 +594,16 @@
                         <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase truncate px-2">rifatsahin000</p>
                     </a>
                 </div>
-                <div class="reveal pb-6">
+                <div class="reveal pb-6 pt-10 text-center">
                     <img src="logo.png" loading="lazy" class="w-24 h-24 mx-auto mb-6 rounded-full border border-gold-500 shadow-2xl bg-black">
                     <p class="text-[10px] text-gray-600 font-black uppercase tracking-[1em]">© 2026 SAFARI FARM | TWO BROTHERS STYLE</p>
+                    <p class="text-[8px] text-gold-500/50 font-black uppercase tracking-[0.5em] mt-2">Made with ❤️ in Bengal</p>
                 </div>
             </div>
         </section>
 
     </div>
-    </div>
+    </div> <!-- END WRAPPER -->
 
     <!-- AI WINDOW -->
     <div id="aiWindow">
@@ -620,7 +623,7 @@
         <div id="chatBox" class="flex-1 overflow-y-auto p-6 space-y-8 bg-[#0a0a0a] text-sm scroll-smooth">
             <div class="flex gap-4 items-start">
                 <div class="w-8 h-8 rounded-lg bg-gold-500/10 flex-shrink-0 flex items-center justify-center text-gold-500 border border-gold-500/20 font-black text-[9px]">S.F</div>
-                <div class="bg-white/5 p-5 rounded-[2rem] rounded-tl-none border border-white/5 leading-relaxed text-gray-300">Nomoshkar! 🙏 Main Safari Farm ka Assistant hoon. Machinary, Chicks ya Rates ke baare mein poochein!</div>
+                <div class="bg-white/5 p-5 rounded-[2rem] rounded-tl-none border border-white/5 leading-relaxed text-gray-300">নমস্কার! 🙏 Safari Farm-এ স্বাগতম। Machinary, Chicks ya Rates ke baare mein poochein!</div>
             </div>
         </div>
         <div class="p-6 bg-black/95 backdrop-blur-xl border-t border-white/5 flex gap-4">
@@ -643,22 +646,22 @@
     <script>
         // Modal Data (Access globally)
         const modalData = [
-            { n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg', min: 'Minimum 100 Chicks', feed: 'Pre-starter crumb feed (0-14 days)', temp: '32°C - 35°C in Brooder', care: 'Vaccinated. Keep litter dry. Requires good space to roam after 1 month.'},
-            { n: 'Quail (Bater)', p: '₹13', i: 'quail.jpg', min: 'Minimum 500 Chicks', feed: 'Quail starter mash (High protein)', temp: '35°C - 37°C in Brooder (Very sensitive)', care: 'Use shallow water drinkers to prevent drowning. Fast growers, ready in 4-5 weeks.'},
-            { n: 'Silkie', p: '₹80 (Offer!)', i: 'silkie.jpg', min: 'Minimum 50 Chicks', feed: 'Standard chick starter', temp: '33°C - 35°C in Brooder', care: 'Keep away from mud/water to protect feathers. Very gentle breed, needs safe enclosure.'},
-            { n: 'Brahma', p: '₹1100', i: 'brahma.jpg', min: 'Minimum 10 Chicks', feed: 'Premium starter crumbles', temp: '32°C - 34°C in Brooder', care: 'Giant breed. Needs heavy calcium later. Keep floor dry to protect foot feathers.'},
-            { n: 'Sonali', p: '₹25-32', i: 'sonali.jpg', min: 'Minimum 200 Chicks', feed: 'Broiler starter feed', temp: '32°C - 34°C in Brooder', care: 'Excellent for meat & eggs. Fast growth. Basic vaccination F1 & LaSota required.'},
-            { n: 'Turkey', p: '₹160', i: 'turkey.jpg', min: 'Minimum 50 Chicks', feed: 'Turkey Starter (28% Protein strictly)', temp: '35°C - 37°C in Brooder', care: 'Needs warm bright light to learn eating. Very sensitive in first 2 weeks.'},
-            { n: 'Desi', p: '₹40-60', i: 'desi.jpg', min: 'Minimum 100 Chicks', feed: 'Cracked grains & starter feed', temp: '32°C - 35°C in Brooder', care: 'Very hardy. Best for free-range. Basic F1 vaccine done.'},
-            { n: 'Sultan', p: '₹80', i: 'sultan.jpg', min: 'Minimum 50 Chicks', feed: 'Standard chick starter', temp: '33°C - 35°C in Brooder', care: 'Ornamental breed. Keep head crest clean and dry. Provide safe enclosed space.'}
+            { n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg', tag: 'কালো মাংসের রাজা (King of Black Meat)', origin: 'Madhya Pradesh, India (পিওর দেশী)', min: '100 Chicks (কমপক্ষে ১০০ পিস)', feed: 'Pre-starter crumb feed (০-১৪ দিন)', temp: '32°C - 35°C (ব্রুডিং তাপমাত্রা)', med: 'F1 & LaSota Vaccine Done. Healthy breed.', care: 'লক স্পেস বা ফ্রি-রেঞ্জ। রোগ প্রতিরোধ ক্ষমতা খুব ভালো। (Very High Immunity)'},
+            { n: 'Quail (Bater)', p: '₹13', i: 'quail.jpg', tag: 'অল্প জায়গায় বেশি লাভ (High Profit)', origin: 'Asian Quail Breed', min: '500 Chicks (কমপক্ষে ৫০০ পিস)', feed: 'Quail starter mash (High Protein)', temp: '35°C - 37°C (খুবই সেনসিটিভ)', med: 'Low medicine required. Hardy bird.', care: 'জলে ডুবে যেন না যায় তাই ছোট পাত্র দিন। (Use shallow water). Ready in 4-5 weeks.'},
+            { n: 'Silkie', p: '₹80 (Offer!)', i: 'silkie.jpg', tag: 'তুলোর মতো নরম (Cotton Soft)', origin: 'China (ফ্যান্সি মুরগি)', min: '50 Chicks (কমপক্ষে ৫০ পিস)', feed: 'Standard chick starter crumb', temp: '33°C - 35°C', med: 'Regular drops (Vimeral/B-complex) in water.', care: 'পালক ভিজে গেলে সমস্যা, তাই জায়গা সবসময় শুকনো রাখবেন। (Keep litter completely dry).'},
+            { n: 'Brahma', p: '₹1100', i: 'brahma.jpg', tag: 'মুরগির রাজা (King of Chickens)', origin: 'India / US Cross (বড় সাইজ)', min: '10 Chicks (কমপক্ষে ১০ পিস)', feed: 'Premium Starter + Calcium Diet', temp: '32°C - 34°C', med: 'Regular vaccination + Calcium supplements.', care: 'পায়ের পালক যাতে নোংরা না হয় তাই পরিষ্কার জায়গায় রাখুন। (Needs huge space).'},
+            { n: 'Sonali', p: '₹25-32', i: 'sonali.jpg', tag: 'ডিম ও মাংসের সেরা (Meat & Egg)', origin: 'Bangladesh Crossbreed (সোনালী)', min: '200 Chicks (কমপক্ষে ২০০ পিস)', feed: 'Broiler starter / Layer mash', temp: '32°C - 34°C', med: 'Gumboro & Ranikhet vaccines mandatory.', care: 'খুব তাড়াতাড়ি বাড়ে। খামারিদের জন্য সবচেয়ে বেশি লাভজনক। (Best for commercial farming).'},
+            { n: 'Turkey', p: '₹160', i: 'turkey.jpg', tag: 'উৎসবের সেরা আকর্ষণ (Premium Meat)', origin: 'North America', min: '50 Chicks (কমপক্ষে ৫০ পিস)', feed: 'Turkey Starter (Strictly 28% Protein)', temp: '35°C - 37°C', med: 'Requires regular vitamins in early stage.', care: 'প্রথম ২ সপ্তাহ খাবার চিনতে সমস্যা হয়, উজ্জ্বল আলো দিন। (Needs bright light in brooder).'},
+            { n: 'Desi', p: '₹40-60', i: 'desi.jpg', tag: 'গ্রামের খাঁটি মুরগি (Pure Village)', origin: 'Local Indian Breed (দেশী)', min: '100 Chicks (কমপক্ষে ১০০ পিস)', feed: 'Cracked grains (খুদ-কুঁড়ো) & Starter', temp: '32°C - 35°C', med: 'Very hardy. Zero to low medicine.', care: 'খোলা মাঠে চরে খেতে ভালোবাসে। (Best for free-range backyard farming).'},
+            { n: 'Sultan', p: '₹80', i: 'sultan.jpg', tag: 'রাজকীয় সৌন্দর্য (Royal Beauty)', origin: 'Turkey (শৌখিন মুরগি)', min: '50 Chicks (কমপক্ষে ৫০ পিস)', feed: 'Premium chick starter', temp: '33°C - 35°C', med: 'Standard vaccines. Sensitive to cold.', care: 'মাথার ঝুঁটি পরিষ্কার রাখতে হবে। শৌখিন খামারিদের জন্য দারুণ। (Great for ornamental farms).'}
         ];
 
         window.onload = () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.style.opacity = '0';
-                setTimeout(() => loader.style.display = 'none', 400); // Faster loader fade
-            }, 600); // Faster load time overall
+                setTimeout(() => loader.style.display = 'none', 300); 
+            }, 400); // Super Fast Load
             reveal();
         }
 
@@ -668,7 +671,6 @@
             var scrolled = (winScroll / height) * 100;
             document.getElementById("scroll-progress").style.width = scrolled + "%";
             
-            // Back to top button logic
             const backBtn = document.getElementById('backToTopBtn');
             if (winScroll > 800) {
                 backBtn.style.opacity = '1';
@@ -685,19 +687,23 @@
         function openBreedModal(index) {
             const bird = modalData[index];
             document.getElementById('modalImg').src = bird.i;
+            document.getElementById('modalTag').innerText = bird.tag;
             document.getElementById('modalName').innerText = bird.n;
             document.getElementById('modalPrice').innerText = bird.p;
+            
+            document.getElementById('modalOrigin').innerText = bird.origin;
             document.getElementById('modalMin').innerText = bird.min;
+            document.getElementById('modalMed').innerText = bird.med;
             document.getElementById('modalFeed').innerText = bird.feed;
             document.getElementById('modalTemp').innerText = bird.temp;
             document.getElementById('modalCare').innerText = bird.care;
+            
             document.getElementById('modalBuyBtn').href = "https://wa.me/917063482623?text=Order:" + bird.n;
             
             const modal = document.getElementById('breedModal');
             modal.classList.remove('hidden');
-            // Small delay to allow display:block to apply before animating opacity/scale
             setTimeout(() => { modal.classList.add('modal-active'); }, 10);
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeBreedModal() {
@@ -705,20 +711,8 @@
             modal.classList.remove('modal-active');
             setTimeout(() => { 
                 modal.classList.add('hidden'); 
-                document.body.style.overflow = 'auto'; // Restore scrolling
+                document.body.style.overflow = 'auto'; 
             }, 300);
-        }
-
-        function toggleTheme() {
-            const html = document.documentElement;
-            const btn = document.getElementById('themeBtn');
-            if(html.classList.contains('dark')) {
-                html.classList.remove('dark'); html.classList.add('light');
-                btn.innerHTML = '<i class="fas fa-sun text-xl"></i>';
-            } else {
-                html.classList.remove('light'); html.classList.add('dark');
-                btn.innerHTML = '<i class="fas fa-moon text-xl"></i>';
-            }
         }
 
         function toggleMenu() {
