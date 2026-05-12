@@ -19,7 +19,7 @@
                     fontFamily: { sans: ['Outfit', 'sans-serif'] },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',
-                        'marquee': 'marquee 15s linear infinite',
+                        'marquee': 'marquee 20s linear infinite',
                     },
                     keyframes: {
                         float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
@@ -38,7 +38,6 @@
         html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
         
         #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; text-align: center; }
-        
         .full-screen-section { width: 100vw; max-width: 100%; }
 
         .glass-nav { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(251, 191, 36, 0.15); width: 100%; }
@@ -67,7 +66,6 @@
         .luxury-card { transition: 0.4s; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255,255,255,0.02); }
         .luxury-card:hover { border-color: #fbbf24; transform: scale(1.02); }
 
-        /* Video Container */
         .video-box { position: relative; border-radius: 3rem; overflow: hidden; background: #000; }
         .video-box video { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
         .video-box:hover video { opacity: 1; scale: 1.05; }
@@ -85,16 +83,18 @@
         </div>
     </div>
 
-    <div class="bg-gold-500 text-black py-2 w-full fixed top-0 z-[1500] overflow-hidden flex items-center border-b border-black">
-        <div class="animate-marquee whitespace-nowrap text-[11px] md:text-xs font-black tracking-widest uppercase italic">
-            🎉 SPECIAL OFFER: Advance booking par special VIP discount! 🚚 Pan-India Delivery via Train & Bus! 🐣 100% Vaccinated Elite Chicks!
+    <a href="https://chat.whatsapp.com/FyJGSXc1kjJGosyY492Q4j" target="_blank" class="bg-red-600 hover:bg-red-700 text-white py-2.5 w-full fixed top-0 z-[1500] overflow-hidden flex items-center shadow-lg transition-colors cursor-pointer">
+        <div class="animate-marquee whitespace-nowrap text-[12px] md:text-sm font-black tracking-widest uppercase italic flex items-center gap-4">
+            <span>🎉 CLICK HERE TO JOIN OUR WHATSAPP GROUP!</span>
+            <span class="text-gold-400">🔥 SILKIE CHICKS PAR SPECIAL VIP DISCOUNT!</span>
+            <span>🐣 JOIN NOW FOR DAILY FARM UPDATES & OFFERS! 🚚</span>
         </div>
-    </div>
+    </a>
 
-    <div class="farm-bg-overlay mt-8">
+    <div class="farm-bg-overlay mt-10">
     <div class="z-content">
 
-    <nav class="fixed top-8 w-full z-[1000] glass-nav py-3 px-4 md:px-12">
+    <nav class="fixed top-10 w-full z-[1000] glass-nav py-3 px-4 md:px-12">
         <div class="w-full flex justify-between items-center max-w-[1920px] mx-auto">
             <button onclick="toggleMenu()" class="w-10 h-10 flex items-center justify-center text-gold-500 text-xl hover:bg-gold-500/10 rounded-full transition">
                 <i class="fas fa-bars-staggered"></i>
@@ -147,7 +147,7 @@
                     const birds = [
                         { n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg' },
                         { n: 'Quail (Bater)', p: '₹13', i: 'quail.jpg' },
-                        { n: 'Silkie', p: '₹80', i: 'silkie.jpg' },
+                        { n: 'Silkie', p: '₹80 (Offer!)', i: 'silkie.jpg' }, // Offer Added here
                         { n: 'Brahma', p: '₹1100', i: 'brahma.jpg' },
                         { n: 'Sonali', p: '₹25-32', i: 'sonali.jpg' },
                         { n: 'Turkey', p: '₹160', i: 'turkey.jpg' },
@@ -155,8 +155,11 @@
                         { n: 'Sultan', p: '₹80', i: 'sultan.jpg' }
                     ];
                     birds.forEach(item => {
+                        let offerBadge = item.n === 'Silkie' ? '<span class="absolute top-4 right-4 bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest animate-pulse z-20">Offer</span>' : '';
+                        
                         document.write(`
-                            <div class="bg-white/5 backdrop-blur-3xl p-5 rounded-[3rem] border border-white/10 reveal group luxury-card shadow-xl">
+                            <div class="bg-white/5 backdrop-blur-3xl p-5 rounded-[3rem] border border-white/10 reveal group luxury-card shadow-xl relative">
+                                ${offerBadge}
                                 <div class="h-60 rounded-[2.5rem] overflow-hidden mb-6 bg-black relative">
                                     <img src="${item.i}" onerror="this.src='logo.png'" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100">
                                 </div>
@@ -257,14 +260,20 @@
                 </div>
                 <div class="bg-black/60 p-10 rounded-[3rem] border border-white/10 reveal shadow-xl">
                     <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-gray-300 italic mb-6">"Incubator parts original the. Malik ne call par sab samjhaya ki temperature kaise set karna hai. 100% Trusted."</p>
+                    <p class="text-gray-300 italic mb-6">"Incubator parts original the. Malik ne call par sab samjhaya ki temperature kaise set karna hai."</p>
                     <h4 class="font-black uppercase tracking-widest">- Amit Kumar, Bihar</h4>
                 </div>
                 <div class="bg-black/60 p-10 rounded-[3rem] border border-white/10 reveal shadow-xl">
                     <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-gray-300 italic mb-6">"Silkie aur Kadaknath dono order kiye the. Murgiyan ekdum healthy aur active hain. Best hatchery in Bengal!"</p>
+                    <p class="text-gray-300 italic mb-6">"Silkie aur Kadaknath dono order kiye the. Murgiyan ekdum healthy aur active hain. Best hatchery!"</p>
                     <h4 class="font-black uppercase tracking-widest">- Sourav, West Bengal</h4>
                 </div>
+            </div>
+            
+            <div class="text-center mt-14 reveal">
+                <a href="https://wa.me/917063482623?text=Hello Safari Farm, I want to submit a 5-star review for the website: " target="_blank" class="inline-flex items-center gap-3 py-4 px-10 border border-gold-500/50 text-gold-500 font-black rounded-full uppercase text-[10px] tracking-widest hover:bg-gold-500 hover:text-black transition shadow-[0_10px_30px_rgba(245,158,11,0.2)]">
+                    <i class="fas fa-pen-to-square text-lg"></i> Write a Review
+                </a>
             </div>
         </div>
     </section>
@@ -276,11 +285,11 @@
                 <div class="space-y-6">
                     <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
                         <h4 class="font-black uppercase text-gold-500 mb-2">🚚 Delivery Kaise Hoti Hai?</h4>
-                        <p class="text-sm text-gray-400 font-medium">Hum Pan-India Train aur Bus ke through safe delivery karte hain. Aapko apne nazdeeki station se collect karna hota hai.</p>
+                        <p class="text-sm text-gray-400 font-medium">Hum Pan-India Train aur Bus ke through safe delivery karte hain. Aapko nazdeeki station se collect karna hota hai.</p>
                     </div>
                     <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
                         <h4 class="font-black uppercase text-gold-500 mb-2">💰 Payment System Kya Hai?</h4>
-                        <p class="text-sm text-gray-400 font-medium">Order confirm karne ke liye advance payment zaroori hai. Extra transport charges client ko station par khud dene hote hain.</p>
+                        <p class="text-sm text-gray-400 font-medium">Order confirm karne ke liye advance payment zaroori hai. Extra transport charges client ko khud dene hote hain.</p>
                     </div>
                     <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
                         <h4 class="font-black uppercase text-gold-500 mb-2">🥚 Incubation Days (Hatching Chart)?</h4>
@@ -290,39 +299,18 @@
             </div>
             <div class="reveal">
                 <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-10"><span class="gold-gradient">Expert Tips</span> 🩺</h2>
-                <div class="bg-black/40 p-10 rounded-[3rem] border border-white/10 h-full flex flex-col justify-center">
-                    <i class="fas fa-temperature-half text-5xl text-gold-500 mb-6"></i>
-                    <h3 class="text-2xl font-black uppercase italic mb-4">Brooding Care</h3>
-                    <p class="text-gray-400 font-medium leading-relaxed mb-6">Pehle 7 din chicks ke liye sabse zaroori hote hain. Brooder ka temperature 33°C-35°C hona chahiye. Niche saaf aur sookha burda (litter) bichhayein. Pehle paani mein thoda jaggery (gur) aur anti-stress medicine mila kar dein.</p>
-                    <a href="https://wa.me/917063482623?text=Mujhe%20Farm%20Care%20ki%20details%20chahiye" class="inline-block py-3 px-8 bg-gold-500 text-black font-black uppercase tracking-widest text-[10px] rounded-full w-max hover:scale-105 transition">Ask AI/Malik</a>
+                <div class="bg-black/40 p-10 rounded-[3rem] border border-white/10 h-full flex flex-col justify-center relative overflow-hidden">
+                    <i class="fas fa-temperature-half text-6xl text-white/5 absolute -right-4 -top-4 scale-150"></i>
+                    <i class="fas fa-temperature-half text-5xl text-gold-500 mb-6 relative z-10"></i>
+                    <h3 class="text-2xl font-black uppercase italic mb-4 relative z-10">Brooding Care</h3>
+                    <p class="text-gray-400 font-medium leading-relaxed mb-6 relative z-10">Pehle 7 din chicks ke liye sabse zaroori hote hain. Brooder ka temperature 33°C-35°C hona chahiye. Niche saaf burda bichhayein. Pehle paani mein thoda jaggery (gur) aur anti-stress medicine mila kar dein.</p>
+                    <a href="https://wa.me/917063482623?text=Mujhe%20Farm%20Care%20ki%20details%20chahiye" class="inline-block py-3 px-8 bg-gold-500 text-black font-black uppercase tracking-widest text-[10px] rounded-full w-max hover:scale-105 transition relative z-10 shadow-xl">Ask AI/Malik</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section-tight px-6 full-screen-section bg-black/40 border-t border-white/5">
-        <div class="w-full grid md:grid-cols-2 gap-16 items-center">
-            <div class="reveal">
-                <h2 class="text-6xl md:text-[120px] font-black gold-gradient uppercase tracking-tighter italic mb-8 leading-none">Our Story</h2>
-                <p class="text-gray-400 text-lg md:text-2xl leading-relaxed mb-10 font-medium italic">Two Brothers bringing science to the farm. Safari Farm is built on purity and professional medical standards.</p>
-                <div class="flex items-center gap-6 p-8 bg-white/5 rounded-[3rem] border border-white/10 shadow-2xl">
-                    <img src="farm3.jpg" class="w-20 h-20 rounded-[2rem] object-cover border-2 border-gold-500 animate-float">
-                    <div>
-                        <h4 class="font-black text-white text-xl uppercase tracking-tighter">Safari Quality</h4>
-                        <p class="text-[10px] text-gold-500 font-bold uppercase tracking-[0.4em] mt-2">100% Medical Care</p>
-                    </div>
-                </div>
-            </div>
-            <div class="reveal text-center relative">
-                <div class="absolute -inset-16 bg-gold-500/5 blur-[120px] rounded-full"></div>
-                <img src="logo.png" class="relative w-64 md:w-[450px] h-64 md:h-[450px] rounded-full border-4 border-gold-500 mx-auto mb-10 object-cover shadow-3xl bg-black p-1.5">
-                <h3 class="text-4xl md:text-6xl font-black uppercase tracking-tighter italic">Kadir & Rifat</h3>
-                <p class="text-gold-500 font-black uppercase text-[10px] md:text-xs tracking-[1em] mt-2">Founders & Visionaries</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="terms" class="section-tight border-y border-white/5 full-screen-section">
+    <section id="terms" class="section-tight border-y border-white/5 full-screen-section bg-black/40">
         <div class="w-full px-6 max-w-[1500px] mx-auto">
             <h2 class="text-5xl md:text-9xl font-black gold-gradient uppercase italic tracking-tighter mb-16 text-center leading-none">Policies</h2>
             <div class="grid md:grid-cols-2 gap-10">
@@ -349,23 +337,32 @@
     <section id="contact" class="section-tight text-center full-screen-section">
         <div class="w-full">
             <h2 class="text-7xl md:text-[140px] font-black gold-gradient uppercase mb-20 italic tracking-tighter leading-none px-6">Contact</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1600px] mx-auto mb-20 px-6">
-                <a href="https://maps.app.goo.gl/9Lo99GGgt1TVvm5c8?g_st=ac" target="_blank" class="bg-white/5 p-12 rounded-[5rem] border border-white/10 hover:border-gold-500 transition group reveal">
-                    <i class="fas fa-location-dot text-6xl mb-8 text-gold-500 group-hover:rotate-12 transition"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1700px] mx-auto mb-20 px-6">
+                <a href="https://www.facebook.com/share/1CZyd8GaGz/" target="_blank" class="bg-white/5 p-10 rounded-[4rem] border border-white/10 hover:border-[#1877F2] transition group reveal shadow-xl">
+                    <i class="fab fa-facebook text-6xl mb-6 text-[#1877F2] group-hover:scale-110 transition"></i>
+                    <h3 class="text-2xl font-black uppercase italic text-white">Facebook</h3>
+                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Follow Safari Farm</p>
+                </a>
+                
+                <a href="https://maps.app.goo.gl/9Lo99GGgt1TVvm5c8?g_st=ac" target="_blank" class="bg-white/5 p-10 rounded-[4rem] border border-white/10 hover:border-gold-500 transition group reveal shadow-xl">
+                    <i class="fas fa-location-dot text-6xl mb-6 text-gold-500 group-hover:rotate-12 transition"></i>
                     <h3 class="text-2xl font-black uppercase italic">Maps</h3>
-                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Open Google Location</p>
+                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Open Location</p>
                 </a>
-                <a href="tel:+917063482623" class="bg-white/5 p-12 rounded-[5rem] border border-white/10 hover:border-gold-500 transition group reveal">
-                    <i class="fas fa-phone-flip text-6xl mb-8 text-gold-500 group-hover:scale-110 transition"></i>
+                
+                <a href="tel:+917063482623" class="bg-white/5 p-10 rounded-[4rem] border border-white/10 hover:border-gold-500 transition group reveal shadow-xl">
+                    <i class="fas fa-phone-flip text-6xl mb-6 text-gold-500 group-hover:scale-110 transition"></i>
                     <h3 class="text-2xl font-black uppercase italic">Call</h3>
-                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Direct Contact Malik</p>
+                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Direct Call Malik</p>
                 </a>
-                <a href="mailto:rifatsahin000@gmail.com" class="bg-white/5 p-12 rounded-[5rem] border border-white/10 hover:border-gold-500 transition group reveal">
-                    <i class="fas fa-at text-6xl mb-8 text-gold-500 group-hover:-translate-y-2 transition"></i>
+                
+                <a href="mailto:rifatsahin000@gmail.com" class="bg-white/5 p-10 rounded-[4rem] border border-white/10 hover:border-gold-500 transition group reveal shadow-xl">
+                    <i class="fas fa-at text-6xl mb-6 text-gold-500 group-hover:-translate-y-2 transition"></i>
                     <h3 class="text-2xl font-black uppercase italic">Gmail</h3>
-                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase truncate px-4">rifatsahin000</p>
+                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase truncate px-2">rifatsahin000</p>
                 </a>
             </div>
+            
             <div class="reveal pb-6">
                 <img src="logo.png" class="w-24 h-24 mx-auto mb-6 rounded-full border border-gold-500 shadow-2xl bg-black">
                 <p class="text-[10px] text-gray-600 font-black uppercase tracking-[1em]">© 2026 SAFARI FARM | TWO BROTHERS STYLE</p>
