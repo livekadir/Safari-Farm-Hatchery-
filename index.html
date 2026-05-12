@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Safari Farm & Hatchery | Two Brothers Style</title>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -20,16 +19,17 @@
                     fontFamily: { sans: ['Outfit', 'sans-serif'] },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',
+                        'marquee': 'marquee 15s linear infinite',
                     },
                     keyframes: {
-                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } }
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+                        marquee: { '0%': { transform: 'translateX(100vw)' }, '100%': { transform: 'translateX(-100vw)' } }
                     }
                 }
             }
         }
     </script>
     
-    <!-- Icons & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
@@ -66,11 +66,15 @@
         .section-tight { padding-top: 4rem; padding-bottom: 4rem; }
         .luxury-card { transition: 0.4s; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255,255,255,0.02); }
         .luxury-card:hover { border-color: #fbbf24; transform: scale(1.02); }
+
+        /* Video Container */
+        .video-box { position: relative; border-radius: 3rem; overflow: hidden; background: #000; }
+        .video-box video { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
+        .video-box:hover video { opacity: 1; scale: 1.05; }
     </style>
 </head>
 <body class="bg-royal-dark text-gray-100 dark:bg-royal-dark dark:text-gray-100 light:bg-white light:text-black">
 
-    <!-- 1. PRELOADER -->
     <div id="loader" class="transition-opacity duration-700">
         <div>
             <h1 class="text-4xl md:text-7xl font-black gold-gradient italic tracking-tighter animate-pulse">SAFARI FARM</h1>
@@ -81,11 +85,16 @@
         </div>
     </div>
 
-    <div class="farm-bg-overlay">
+    <div class="bg-gold-500 text-black py-2 w-full fixed top-0 z-[1500] overflow-hidden flex items-center border-b border-black">
+        <div class="animate-marquee whitespace-nowrap text-[11px] md:text-xs font-black tracking-widest uppercase italic">
+            🎉 SPECIAL OFFER: Advance booking par special VIP discount! 🚚 Pan-India Delivery via Train & Bus! 🐣 100% Vaccinated Elite Chicks!
+        </div>
+    </div>
+
+    <div class="farm-bg-overlay mt-8">
     <div class="z-content">
 
-    <!-- 2. UNIQUE PROFILE HEADER -->
-    <nav class="fixed top-0 w-full z-[1000] glass-nav py-3 px-4 md:px-12">
+    <nav class="fixed top-8 w-full z-[1000] glass-nav py-3 px-4 md:px-12">
         <div class="w-full flex justify-between items-center max-w-[1920px] mx-auto">
             <button onclick="toggleMenu()" class="w-10 h-10 flex items-center justify-center text-gold-500 text-xl hover:bg-gold-500/10 rounded-full transition">
                 <i class="fas fa-bars-staggered"></i>
@@ -104,20 +113,17 @@
         </div>
     </nav>
 
-    <!-- MOBILE MENU (100% FIXED BACKGROUND) -->
-    <div id="mobileMenu" class="fixed inset-0 z-[9999] hidden flex-col items-center justify-center gap-8 text-2xl md:text-4xl font-black uppercase italic tracking-tighter" style="background-color: rgba(5, 5, 5, 0.98); backdrop-filter: blur(10px);">
-        <button onclick="toggleMenu()" class="absolute top-8 right-8 text-gold-500 text-4xl hover:scale-110 transition"><i class="fas fa-times"></i></button>
+    <div id="mobileMenu" class="fixed inset-0 bg-[#050505]/95 backdrop-blur-2xl z-[9999] hidden flex-col items-center justify-center gap-6 text-2xl md:text-4xl font-black uppercase italic tracking-tighter transition-all">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 md:top-10 md:right-10 text-gold-500 text-4xl hover:scale-110 transition"><i class="fas fa-times"></i></button>
         <a href="#home" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Home</a>
-        <a href="#chicks" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Premium Chicks</a>
+        <a href="#chicks" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Elite Chicks</a>
         <a href="#incubators" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Machinery</a>
-        <a href="#gallery" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Gallery</a>
-        <a href="#about" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">About Farm</a>
-        <a href="#terms" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Policy</a>
+        <a href="#videos" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Farm Videos</a>
+        <a href="#reviews" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Reviews & FAQs</a>
         <a href="#contact" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Contact</a>
     </div>
 
-    <!-- 3. HERO SECTION -->
-    <section id="home" class="min-h-screen flex items-center justify-center text-center pt-24 full-screen-section">
+    <section id="home" class="min-h-screen flex items-center justify-center text-center pt-32 full-screen-section">
         <div class="reveal active">
             <span class="inline-block px-4 py-1.5 bg-gold-500/10 rounded-full text-[9px] font-black tracking-[0.4em] text-gold-400 mb-6 border border-gold-500/20 uppercase">Scientifically Proven Hatchery</span>
             <h2 class="text-6xl md:text-[150px] font-black mb-8 leading-[0.8] tracking-tighter uppercase italic drop-shadow-2xl">PURE<br><span class="gold-gradient">SAFARI.</span></h2>
@@ -129,21 +135,42 @@
         </div>
     </section>
 
-    <!-- 4. DYNAMIC CHICKS SECTION -->
     <section id="chicks" class="section-tight full-screen-section">
         <div class="w-full max-w-[1700px] mx-auto px-4">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-5xl md:text-[120px] font-black uppercase italic tracking-tighter leading-none"><span class="gold-gradient">Elite</span> Chicks</h2>
                 <p class="text-gray-500 font-bold tracking-[0.5em] text-[10px] mt-4 uppercase">100% Vaccinated Stock</p>
             </div>
-            
-            <div id="dynamic-chicks-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Data will load here -->
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <script>
+                    const birds = [
+                        { n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg' },
+                        { n: 'Quail (Bater)', p: '₹13', i: 'quail.jpg' },
+                        { n: 'Silkie', p: '₹80', i: 'silkie.jpg' },
+                        { n: 'Brahma', p: '₹1100', i: 'brahma.jpg' },
+                        { n: 'Sonali', p: '₹25-32', i: 'sonali.jpg' },
+                        { n: 'Turkey', p: '₹160', i: 'turkey.jpg' },
+                        { n: 'Desi', p: '₹40-60', i: 'desi.jpg' },
+                        { n: 'Sultan', p: '₹80', i: 'sultan.jpg' }
+                    ];
+                    birds.forEach(item => {
+                        document.write(`
+                            <div class="bg-white/5 backdrop-blur-3xl p-5 rounded-[3rem] border border-white/10 reveal group luxury-card shadow-xl">
+                                <div class="h-60 rounded-[2.5rem] overflow-hidden mb-6 bg-black relative">
+                                    <img src="${item.i}" onerror="this.src='logo.png'" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100">
+                                </div>
+                                <h3 class="text-2xl font-black mb-1 italic group-hover:gold-gradient transition uppercase">${item.n}</h3>
+                                <p class="text-gold-500 font-black text-xl mb-6 tracking-tighter">${item.p}</p>
+                                <a href="https://wa.me/917063482623?text=Order:${item.n}" class="block py-4 bg-black text-white dark:bg-white/5 dark:text-white text-center rounded-3xl font-black text-[10px] tracking-widest uppercase border border-white/10 hover:bg-gold-500 hover:text-black transition">Buy Now</a>
+                            </div>
+                        `);
+                    });
+                </script>
             </div>
         </div>
     </section>
 
-    <!-- 5. MACHINERY SLIDER -->
     <section id="incubators" class="section-tight bg-white/5 backdrop-blur-sm full-screen-section">
         <div class="w-full">
             <div class="text-center mb-16 reveal px-6">
@@ -152,39 +179,63 @@
             </div>
 
             <div class="flex overflow-x-auto gap-6 px-6 md:px-16 hide-scrollbar pb-10">
-                <div class="min-w-[320px] md:min-w-[450px] bg-black/60 p-8 rounded-[4rem] border border-white/10 flex-shrink-0 reveal shadow-3xl">
-                    <img src="incubator1.jpg" class="w-full h-56 object-cover rounded-[3rem] mb-8 border border-white/5 bg-gray-900 shadow-lg">
-                    <h3 class="text-2xl font-black mb-4 gold-gradient italic uppercase tracking-tighter">XHW-3001 Model</h3>
-                    <p class="text-3xl font-black text-white mb-8 tracking-tighter">₹1600</p>
-                    <a href="https://wa.me/917063482623?text=Inquiry:XHW3001" class="block w-full py-4 border-2 border-gold-500/40 text-gold-500 text-center rounded-3xl font-black uppercase text-[10px] tracking-widest hover:bg-gold-500 hover:text-black transition">Enquire Now</a>
-                </div>
+                <script>
+                    const machines = [
+                        { n: 'XHW-3001 Model', p: '₹1600', i: 'incubator1.jpg' },
+                        { n: 'STC-3028 Full Auto', p: '₹5000', i: 'incubator2.jpg' },
+                        { n: 'Mist Maker Part', p: 'Buy Part', i: 'parts1.jpg' },
+                        { n: 'High DC Fan', p: 'Buy Part', i: 'parts2.jpg' }
+                    ];
+                    machines.forEach(item => {
+                        document.write(`
+                            <div class="min-w-[320px] md:min-w-[450px] bg-black/60 p-8 rounded-[4rem] border border-white/10 flex-shrink-0 reveal shadow-3xl">
+                                <img src="${item.i}" onerror="this.src='logo.png'" class="w-full h-56 object-cover rounded-[3rem] mb-8 border border-white/5 bg-gray-900 shadow-lg">
+                                <h3 class="text-2xl font-black mb-4 gold-gradient italic uppercase tracking-tighter">${item.n}</h3>
+                                <p class="text-3xl font-black text-white mb-8 tracking-tighter">${item.p}</p>
+                                <a href="https://wa.me/917063482623?text=Inquiry:${item.n}" class="block w-full py-4 border-2 border-gold-500/40 text-gold-500 text-center rounded-3xl font-black uppercase text-[10px] tracking-widest hover:bg-gold-500 hover:text-black transition">Enquire Now</a>
+                            </div>
+                        `);
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
 
-                <div class="min-w-[320px] md:min-w-[450px] bg-gold-500 p-8 rounded-[4rem] flex-shrink-0 reveal shadow-3xl">
-                    <img src="incubator2.jpg" class="w-full h-56 object-cover rounded-[3rem] mb-8 border-4 border-black/10 bg-black">
-                    <h3 class="text-2xl font-black text-black italic uppercase tracking-tighter leading-none mb-4">STC-3028 Full Auto</h3>
-                    <p class="text-4xl font-black text-black mb-8 tracking-tighter">₹5000</p>
-                    <a href="https://wa.me/917063482623?text=Inquiry:STC3028" class="block w-full py-5 bg-black text-gold-500 text-center rounded-[2.5rem] font-black uppercase text-[10px] tracking-widest hover:scale-105 transition shadow-2xl">Buy Full Kit</a>
+    <section id="videos" class="section-tight full-screen-section bg-black/40 border-y border-white/5">
+        <div class="w-full px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter">Safari Shorts</h2>
+                <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] mt-4 uppercase">Live action from our Farm</p>
+            </div>
+            <div class="flex overflow-x-auto gap-6 px-4 md:px-16 hide-scrollbar pb-10">
+                <div class="min-w-[280px] md:min-w-[350px] h-[500px] video-box flex-shrink-0 reveal border border-white/10 shadow-3xl">
+                    <video src="video1.mp4" autoplay loop muted playsinline poster="farm1.jpg"></video>
+                    <div class="absolute bottom-6 left-6 z-20">
+                        <h4 class="text-xl font-black uppercase italic drop-shadow-md">Active Chicks</h4>
+                        <p class="text-gold-500 text-[10px] tracking-widest uppercase font-bold">100% Healthy</p>
+                    </div>
                 </div>
-                
-                <div class="min-w-[280px] bg-white/5 p-8 rounded-[3.5rem] border border-white/10 flex-shrink-0 flex flex-col items-center">
-                    <img src="parts1.jpg" class="w-full h-40 object-cover rounded-3xl mb-6 opacity-80 border border-white/5">
-                    <h3 class="text-lg font-black mb-8 uppercase tracking-widest">Mist Maker Part</h3>
-                    <a href="https://wa.me/917063482623" class="mt-auto py-3 px-8 bg-white/5 rounded-2xl font-black text-[9px] uppercase text-gold-500 border border-gold-500/20">Buy Part</a>
+                <div class="min-w-[280px] md:min-w-[350px] h-[500px] video-box flex-shrink-0 reveal border border-white/10 shadow-3xl">
+                    <video src="video2.mp4" autoplay loop muted playsinline poster="farm2.jpg"></video>
+                    <div class="absolute bottom-6 left-6 z-20">
+                        <h4 class="text-xl font-black uppercase italic drop-shadow-md">Incubator Setup</h4>
+                        <p class="text-gold-500 text-[10px] tracking-widest uppercase font-bold">High Success</p>
+                    </div>
                 </div>
-
-                <div class="min-w-[280px] bg-white/5 p-8 rounded-[3.5rem] border border-white/10 flex-shrink-0 flex flex-col items-center">
-                    <img src="parts2.jpg" class="w-full h-40 object-cover rounded-3xl mb-6 opacity-80 border border-white/5">
-                    <h3 class="text-lg font-black mb-8 uppercase tracking-widest">High DC Fan</h3>
-                    <a href="https://wa.me/917063482623" class="mt-auto py-3 px-8 bg-white/5 rounded-2xl font-black text-[9px] uppercase text-gold-500 border border-gold-500/20">Buy Part</a>
+                <div class="min-w-[280px] md:min-w-[350px] h-[500px] video-box flex-shrink-0 reveal border border-white/10 shadow-3xl">
+                    <video src="video3.mp4" autoplay loop muted playsinline poster="farm3.jpg"></video>
+                    <div class="absolute bottom-6 left-6 z-20">
+                        <h4 class="text-xl font-black uppercase italic drop-shadow-md">Farm Care</h4>
+                        <p class="text-gold-500 text-[10px] tracking-widest uppercase font-bold">Two Brothers</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. GALLERY -->
     <section id="gallery" class="section-tight full-screen-section overflow-hidden">
         <div class="w-full mb-16 reveal px-6">
-            <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter leading-none text-center">Farm Life</h2>
+            <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter leading-none text-center">Farm Photos</h2>
         </div>
         <div class="flex overflow-x-auto gap-6 px-6 md:px-16 hide-scrollbar pb-10">
             <script>
@@ -195,8 +246,61 @@
         </div>
     </section>
 
-    <!-- 7. ABOUT -->
-    <section id="about" class="section-tight px-6 full-screen-section">
+    <section id="reviews" class="section-tight full-screen-section bg-white/5 backdrop-blur-sm">
+        <div class="w-full px-6 max-w-[1600px] mx-auto">
+            <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter leading-none text-center mb-16 reveal">Happy Farmers</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black/60 p-10 rounded-[3rem] border border-white/10 reveal shadow-xl">
+                    <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-6">"Bohot badhiya chicks mile Safari Farm se. Mortality rate ekdum zero tha aur delivery time par aayi."</p>
+                    <h4 class="font-black uppercase tracking-widest">- Rajesh, Assam</h4>
+                </div>
+                <div class="bg-black/60 p-10 rounded-[3rem] border border-white/10 reveal shadow-xl">
+                    <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-6">"Incubator parts original the. Malik ne call par sab samjhaya ki temperature kaise set karna hai. 100% Trusted."</p>
+                    <h4 class="font-black uppercase tracking-widest">- Amit Kumar, Bihar</h4>
+                </div>
+                <div class="bg-black/60 p-10 rounded-[3rem] border border-white/10 reveal shadow-xl">
+                    <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-6">"Silkie aur Kadaknath dono order kiye the. Murgiyan ekdum healthy aur active hain. Best hatchery in Bengal!"</p>
+                    <h4 class="font-black uppercase tracking-widest">- Sourav, West Bengal</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-tight full-screen-section">
+        <div class="w-full px-6 max-w-[1500px] mx-auto grid md:grid-cols-2 gap-16">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-10"><span class="gold-gradient">Farm FAQs</span> 💡</h2>
+                <div class="space-y-6">
+                    <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+                        <h4 class="font-black uppercase text-gold-500 mb-2">🚚 Delivery Kaise Hoti Hai?</h4>
+                        <p class="text-sm text-gray-400 font-medium">Hum Pan-India Train aur Bus ke through safe delivery karte hain. Aapko apne nazdeeki station se collect karna hota hai.</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+                        <h4 class="font-black uppercase text-gold-500 mb-2">💰 Payment System Kya Hai?</h4>
+                        <p class="text-sm text-gray-400 font-medium">Order confirm karne ke liye advance payment zaroori hai. Extra transport charges client ko station par khud dene hote hain.</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+                        <h4 class="font-black uppercase text-gold-500 mb-2">🥚 Incubation Days (Hatching Chart)?</h4>
+                        <p class="text-sm text-gray-400 font-medium">Bater (Quail): 18 Din | Murgi (Chicken): 21 Din | Turkey: 28 Din. Temperature 37.5°C se 37.8°C maintain karein.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-10"><span class="gold-gradient">Expert Tips</span> 🩺</h2>
+                <div class="bg-black/40 p-10 rounded-[3rem] border border-white/10 h-full flex flex-col justify-center">
+                    <i class="fas fa-temperature-half text-5xl text-gold-500 mb-6"></i>
+                    <h3 class="text-2xl font-black uppercase italic mb-4">Brooding Care</h3>
+                    <p class="text-gray-400 font-medium leading-relaxed mb-6">Pehle 7 din chicks ke liye sabse zaroori hote hain. Brooder ka temperature 33°C-35°C hona chahiye. Niche saaf aur sookha burda (litter) bichhayein. Pehle paani mein thoda jaggery (gur) aur anti-stress medicine mila kar dein.</p>
+                    <a href="https://wa.me/917063482623?text=Mujhe%20Farm%20Care%20ki%20details%20chahiye" class="inline-block py-3 px-8 bg-gold-500 text-black font-black uppercase tracking-widest text-[10px] rounded-full w-max hover:scale-105 transition">Ask AI/Malik</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-tight px-6 full-screen-section bg-black/40 border-t border-white/5">
         <div class="w-full grid md:grid-cols-2 gap-16 items-center">
             <div class="reveal">
                 <h2 class="text-6xl md:text-[120px] font-black gold-gradient uppercase tracking-tighter italic mb-8 leading-none">Our Story</h2>
@@ -218,8 +322,7 @@
         </div>
     </section>
 
-    <!-- 8. TERMS & POLICY -->
-    <section id="terms" class="section-tight border-y border-white/5 bg-black/40 full-screen-section">
+    <section id="terms" class="section-tight border-y border-white/5 full-screen-section">
         <div class="w-full px-6 max-w-[1500px] mx-auto">
             <h2 class="text-5xl md:text-9xl font-black gold-gradient uppercase italic tracking-tighter mb-16 text-center leading-none">Policies</h2>
             <div class="grid md:grid-cols-2 gap-10">
@@ -235,7 +338,7 @@
                     <h3 class="text-2xl font-black uppercase italic mb-6"><i class="fas fa-shield-heart text-gold-500 mr-3"></i> Machinery Policy</h3>
                     <ul class="space-y-4 text-gray-400 text-sm md:text-base font-medium">
                         <li class="flex gap-3"><i class="fas fa-times-circle text-gold-500 mt-1"></i> <b>No warranty</b> on machinery or incubator parts.</li>
-                        <li class="flex gap-3"><i class="fas fa-times-circle text-gold-500 mt-1"></i> <b>No replacement</b> policy applies on machines.</li>
+                        <li class="flex gap-3"><i class="fas fa-times-circle text-gold-500 mt-1"></i> <b>No replacement</b> policy applies.</li>
                         <li class="flex gap-3"><i class="fas fa-check-circle text-gold-500 mt-1"></i> Replacement only available for <b>Controllers</b>.</li>
                     </ul>
                 </div>
@@ -243,44 +346,24 @@
         </div>
     </section>
 
-    <!-- 9. DELIVERY -->
-    <section class="section-tight full-screen-section text-center px-6">
-        <h2 class="text-6xl md:text-[120px] font-black mb-16 uppercase italic tracking-tighter leading-none">Delivery 🚚</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="p-10 rounded-[4rem] border-2 border-white/5 flex flex-col items-center group luxury-card shadow-xl">
-                <i class="fas fa-train text-5xl mb-6 text-gold-500"></i>
-                <p class="text-[12px] font-black uppercase tracking-[0.3em] italic uppercase">Safe Train Delivery</p>
-            </div>
-            <div class="p-10 rounded-[4rem] border-2 border-white/5 flex flex-col items-center group luxury-card shadow-2xl">
-                <i class="fas fa-hand-holding-heart text-5xl mb-6 text-gold-500"></i>
-                <p class="text-[12px] font-black uppercase tracking-[0.3em] italic uppercase">Self Pick-up Stand</p>
-            </div>
-            <div class="p-10 rounded-[4rem] border-2 border-white/5 flex flex-col items-center group luxury-card shadow-xl">
-                <i class="fas fa-wallet text-5xl mb-6 text-gold-500"></i>
-                <p class="text-[12px] font-black uppercase tracking-[0.3em] italic uppercase">Extra Pay Charges</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 10. CONTACT -->
     <section id="contact" class="section-tight text-center full-screen-section">
         <div class="w-full">
             <h2 class="text-7xl md:text-[140px] font-black gold-gradient uppercase mb-20 italic tracking-tighter leading-none px-6">Contact</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1600px] mx-auto mb-20 px-6">
                 <a href="https://maps.app.goo.gl/9Lo99GGgt1TVvm5c8?g_st=ac" target="_blank" class="bg-white/5 p-12 rounded-[5rem] border border-white/10 hover:border-gold-500 transition group reveal">
-                    <i class="fas fa-location-dot text-6xl mb-8 text-gold-500"></i>
+                    <i class="fas fa-location-dot text-6xl mb-8 text-gold-500 group-hover:rotate-12 transition"></i>
                     <h3 class="text-2xl font-black uppercase italic">Maps</h3>
-                    <p class="text-gray-500 text-[10px] mt-4 font-black uppercase tracking-widest">Open Google Location</p>
+                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Open Google Location</p>
                 </a>
                 <a href="tel:+917063482623" class="bg-white/5 p-12 rounded-[5rem] border border-white/10 hover:border-gold-500 transition group reveal">
                     <i class="fas fa-phone-flip text-6xl mb-8 text-gold-500 group-hover:scale-110 transition"></i>
                     <h3 class="text-2xl font-black uppercase italic">Call</h3>
-                    <p class="text-gray-500 text-[10px] mt-4 font-black uppercase tracking-widest">Call Malik Direct</p>
+                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Direct Contact Malik</p>
                 </a>
                 <a href="mailto:rifatsahin000@gmail.com" class="bg-white/5 p-12 rounded-[5rem] border border-white/10 hover:border-gold-500 transition group reveal">
                     <i class="fas fa-at text-6xl mb-8 text-gold-500 group-hover:-translate-y-2 transition"></i>
                     <h3 class="text-2xl font-black uppercase italic">Gmail</h3>
-                    <p class="text-gray-500 text-[10px] mt-4 font-black uppercase tracking-widest truncate px-4">rifatsahin000</p>
+                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase truncate px-4">rifatsahin000</p>
                 </a>
             </div>
             <div class="reveal pb-6">
@@ -290,7 +373,6 @@
         </div>
     </section>
 
-    <!-- 11. ADVANCED AI -->
     <div id="aiWindow">
         <div class="p-6 bg-black flex justify-between items-center border-b border-white/5 shadow-2xl">
             <div class="flex items-center gap-4">
@@ -308,16 +390,15 @@
         <div id="chatBox" class="flex-1 overflow-y-auto p-6 space-y-8 bg-[#0a0a0a] text-sm scroll-smooth">
             <div class="flex gap-4 items-start">
                 <div class="w-8 h-8 rounded-lg bg-gold-500/10 flex-shrink-0 flex items-center justify-center text-gold-500 border border-gold-500/20 font-black text-[9px]">S.F</div>
-                <div class="bg-white/5 p-5 rounded-[2rem] rounded-tl-none border border-white/5 leading-relaxed text-gray-300">Nomoshkar! 🙏 Main Safari Farm ka AI Assistant hoon. Rates ya Policy ke baare mein poochein!</div>
+                <div class="bg-white/5 p-5 rounded-[2rem] rounded-tl-none border border-white/5 leading-relaxed text-gray-300">Nomoshkar! 🙏 Main Safari Farm ka Assistant hoon. Machinary, Chicks ya Rates ke baare mein poochein!</div>
             </div>
         </div>
         <div class="p-6 bg-black/95 backdrop-blur-xl border-t border-white/5 flex gap-4">
-            <input type="text" id="userInput" placeholder="Ask AI anything..." class="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-gold-500 text-sm transition-all placeholder:text-gray-600" onkeypress="if(event.key === 'Enter') handleBot()">
+            <input type="text" id="userInput" placeholder="Ask AI anything..." class="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-gold-500 text-sm transition-all" onkeypress="if(event.key === 'Enter') handleBot()">
             <button onclick="handleBot()" class="w-14 h-14 bg-gold-500 text-black rounded-2xl flex items-center justify-center shadow-3xl hover:scale-110 active:scale-95 transition-all"><i class="fas fa-paper-plane text-xl"></i></button>
         </div>
     </div>
 
-    <!-- FLOATING ACTIONS -->
     <button onclick="toggleAI()" class="fixed bottom-8 left-8 w-16 h-16 bg-black border-2 border-gold-500 text-gold-500 rounded-full z-[4000] flex items-center justify-center text-3xl shadow-3xl hover:scale-110 transition-all">
         <i class="fas fa-brain animate-pulse"></i>
     </button>
@@ -328,77 +409,14 @@
     </div>
     </div>
 
-    <!-- SCRIPTS -->
     <script>
-        // ==========================================
-        // 🔴 GOOGLE SHEET LINK YAHAN DAALEIN 🔴
-        const GOOGLE_SHEET_CSV_URL = ""; 
-        // ==========================================
-
-        const defaultBirds = [
-            { n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg' },
-            { n: 'Quail (Bater)', p: '₹13', i: 'quail.jpg' },
-            { n: 'Silkie', p: '₹80', i: 'silkie.jpg' },
-            { n: 'Brahma', p: '₹1100', i: 'brahma.jpg' },
-            { n: 'Sonali', p: '₹25-32', i: 'sonali.jpg' },
-            { n: 'Turkey', p: '₹160', i: 'turkey.jpg' },
-            { n: 'Desi', p: '₹40-60', i: 'desi.jpg' },
-            { n: 'Sultan', p: '₹80', i: 'sultan.jpg' }
-        ];
-
-        async function loadProductsFromSheet() {
-            const container = document.getElementById('dynamic-chicks-container');
-            let dataList = [];
-
-            if(GOOGLE_SHEET_CSV_URL !== "") {
-                try {
-                    const response = await fetch(GOOGLE_SHEET_CSV_URL);
-                    const csvText = await response.text();
-                    const rows = csvText.split('\n').slice(1);
-                    
-                    rows.forEach(row => {
-                        if(row.trim() === '') return;
-                        const cols = row.split(',');
-                        if(cols.length >= 3) {
-                            dataList.push({
-                                n: cols[0].trim(),
-                                p: cols[1].trim(),
-                                i: cols[2].trim()
-                            });
-                        }
-                    });
-                } catch (error) {
-                    dataList = defaultBirds;
-                }
-            } else {
-                dataList = defaultBirds;
-            }
-
-            let finalHTML = '';
-            dataList.forEach(item => {
-                finalHTML += `
-                    <div class="bg-white/5 backdrop-blur-3xl p-5 rounded-[3rem] border border-white/10 reveal group luxury-card shadow-xl">
-                        <div class="h-60 rounded-[2.5rem] overflow-hidden mb-6 bg-black relative">
-                            <img src="${item.i}" onerror="this.src='logo.png'" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100">
-                        </div>
-                        <h3 class="text-2xl font-black mb-1 italic group-hover:gold-gradient transition uppercase">${item.n}</h3>
-                        <p class="text-gold-500 font-black text-xl mb-6 tracking-tighter">${item.p}</p>
-                        <a href="https://wa.me/917063482623?text=Order:${item.n}" class="block py-4 bg-black text-white dark:bg-white/5 dark:text-white text-center rounded-3xl font-black text-[10px] tracking-widest uppercase border border-white/10 hover:bg-gold-500 hover:text-black transition">Buy Now</a>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = finalHTML;
-            reveal(); 
-        }
-
         window.onload = () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.style.opacity = '0';
                 setTimeout(() => loader.style.display = 'none', 700);
             }, 1000);
-            loadProductsFromSheet(); 
+            reveal();
         }
 
         function toggleTheme() {
@@ -434,11 +452,9 @@
             const input = document.getElementById('userInput');
             const text = input.value.trim();
             if(!text) return;
-
             const chat = document.getElementById('chatBox');
             chat.innerHTML += `<div class="flex justify-end mb-8"><div class="user-msg-item bg-gold-500 text-black p-5 rounded-[2.5rem] rounded-tr-none text-sm font-bold shadow-xl max-w-[85%]">${text}</div></div>`;
-            input.value = '';
-            chat.scrollTop = chat.scrollHeight;
+            input.value = ''; chat.scrollTop = chat.scrollHeight;
 
             const typing = document.createElement('div');
             typing.className = "flex gap-2 px-14 text-[9px] font-black uppercase text-gold-500/50 italic tracking-[0.2em] mb-4";
@@ -446,10 +462,7 @@
             chat.appendChild(typing);
 
             try {
-                const res = await fetch("https://broken-wood-dd3csafari-ai-bot.rifatsahin000.workers.dev", {
-                    method: "POST", headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ message: text })
-                });
+                const res = await fetch("https://broken-wood-dd3csafari-ai-bot.rifatsahin000.workers.dev", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text }) });
                 const data = await res.json();
                 typing.remove();
                 chat.innerHTML += `<div class="flex gap-4 items-start mb-8"><div class="w-9 h-9 rounded-xl bg-gold-500/10 flex-shrink-0 flex items-center justify-center text-gold-500 border border-gold-500/20 font-black text-[10px]">S.F</div><div class="bg-white/5 p-5 rounded-[2.5rem] rounded-tl-none border border-white/5 leading-relaxed text-gray-300 shadow-sm">${data.reply.replace(/\n/g, '<br>')}</div></div>`;
