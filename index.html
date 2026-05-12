@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safari Farm | Premium Chicks Hatchery</title>
+    <title>Safari Farm | Premium Chicks Hatchery Startup</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,7 +13,8 @@
                 extend: {
                     colors: {
                         gold: { 300: '#fde047', 400: '#facc15', 500: '#eab308', 600: '#ca8a04', 700: '#a16207' },
-                        royal: { light: '#f8fafc', dark: '#0a0a0a', darker: '#050505' }
+                        royal: { light: '#f8fafc', dark: '#0a0a0a', darker: '#050505' },
+                        safari: { green: '#006400', beige: '#F5F5DC' }
                     },
                     fontFamily: { sans: ['Outfit', 'sans-serif'] },
                     animation: { 'float': 'float 5s ease-in-out infinite' },
@@ -27,14 +28,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        body { scroll-behavior: smooth; transition: background-color 0.5s ease, color 0.5s ease; }
+        body { scroll-behavior: smooth; transition: background-color 0.5s ease; }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-thumb { background: #ca8a04; border-radius: 10px; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
         .glass-dark { background: rgba(10, 10, 10, 0.75); backdrop-filter: blur(25px); border: 1px solid rgba(250, 204, 21, 0.15); }
-        .glass-light { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+        .glass-light { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(0, 0, 0, 0.05); }
         .gold-gradient { background: linear-gradient(135deg, #facc15, #a16207); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -42,7 +43,14 @@
         .card-hover:hover { transform: translateY(-10px) scale(1.02); z-index: 10; }
         
         #scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: linear-gradient(to right, #facc15, #ca8a04); z-index: 1000; transition: width 0.1s; }
+        
+        /* Fallback background for missing images */
         .img-placeholder { background-color: #1f2937; display: flex; align-items: center; justify-content: center; color: #4b5563; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Full Page Background with Luxury Overlay */
+        .page-bg { background-image: url('farmbg.jpg'); background-attachment: fixed; background-size: cover; background-position: center; position: relative; }
+        .page-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, #0a0a0a99, #050505ee); z-index: 1; }
+        .page-content { position: relative; z-index: 10; }
 
         /* AI CHATBOT LUXURY UI */
         #safariAiBox {
@@ -57,40 +65,33 @@
         .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px; }
         .dark .chat-body { background: #080808; }
         .msg { padding: 10px 14px; border-radius: 15px; font-size: 14px; max-width: 85%; line-height: 1.4; }
-        .msg.user { background: #eab308; color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: bold; }
-        .msg.ai { background: #eee; color: #333; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .msg.user { background: #eab308; color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: bold; shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .msg.ai { background: #eee; color: #333; align-self: flex-start; border-bottom-left-radius: 2px; shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .dark .msg.ai { background: #222; color: #eee; }
         .chat-footer { padding: 10px; display: flex; gap: 5px; border-top: 1px solid #ddd; background: white; }
         .dark .chat-footer { background: #111; border-color: #333; }
-        .chat-footer input { flex: 1; padding: 10px; border: none; outline: none; background: transparent; color: inherit; }
+        .chat-footer input { flex: 1; padding: 10px; border: none; outline: none; background: transparent; color: inherit; font-size: 14px; }
     </style>
 </head>
-<body class="bg-royal-light text-gray-900 dark:bg-royal-darker dark:text-gray-100">
+<body class="bg-royal-light text-gray-900 dark:bg-royal-darker dark:text-gray-100 page-bg">
 
     <div id="scroll-progress"></div>
 
+    <div class="page-content">
     <nav class="fixed w-full z-50 transition-all duration-400 pt-5 px-4 md:px-8" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center glass-light dark:glass-dark rounded-full transition-all duration-500 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center glass-light dark:glass-dark rounded-full shadow-lg">
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
                 <img src="logo.png" alt="Safari Farm" class="w-12 h-12 rounded-full border-2 border-green-800 dark:border-gold-500 object-cover shadow-lg bg-gray-800">
                 <div>
-                    <h1 class="text-xl md:text-2xl font-extrabold text-green-900 dark:text-gold-500 tracking-wide uppercase">Safari Farm</h1>
+                    <h1 class="text-xl md:text-2xl font-extrabold text-black dark:text-gold-500 uppercase">Safari Farm</h1>
                 </div>
             </div>
 
-            <div class="hidden md:flex gap-8 items-center font-bold text-xs tracking-widest uppercase">
-                <a href="#home" class="hover:text-gold-500 transition">Home</a>
-                <a href="#chicks" class="hover:text-gold-500 transition">Chicks</a>
-                <a href="#gallery" class="hover:text-gold-500 transition">Gallery</a>
-                <a href="#about" class="hover:text-gold-500 transition">About Us</a>
-                
-                <button onclick="toggleTheme()" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gold-400 hover:scale-110 transition flex items-center justify-center shadow-inner">
+            <div class="hidden md:flex gap-8 items-center font-bold text-xs uppercase tracking-widest">
+                <a href="#home">Home</a><a href="#chicks">Chicks</a><a href="#incubators">Incubators</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a>
+                <button onclick="toggleTheme()" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-gold-600 dark:text-gold-400 flex items-center justify-center hover:scale-110 transition shadow-inner">
                     <i id="themeIcon" class="fas fa-sun text-lg"></i>
                 </button>
-
-                <a href="https://wa.me/917063482623" target="_blank" class="px-7 py-3 bg-black text-white dark:bg-gold-500 dark:text-black rounded-full hover:scale-105 transition flex items-center gap-2 shadow-2xl border border-transparent dark:border-gold-400 font-bold">
-                    <i class="fab fa-whatsapp text-lg"></i> VIP Booking
-                </a>
             </div>
 
             <div class="md:hidden flex items-center gap-4">
@@ -98,52 +99,47 @@
                 <button class="text-2xl text-gray-800 dark:text-gold-400" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-
         <div id="mobileMenu" class="hidden md:hidden glass-light dark:glass-dark flex-col px-6 py-6 gap-6 text-center rounded-3xl mt-4 max-w-7xl mx-auto shadow-2xl">
-            <a href="#home" onclick="toggleMenu()" class="block font-bold uppercase">Home</a>
-            <a href="#chicks" onclick="toggleMenu()" class="block font-bold uppercase">Chicks</a>
-            <a href="#about" onclick="toggleMenu()" class="block font-bold uppercase">About</a>
-            <a href="https://wa.me/917063482623" class="block font-bold text-green-600 dark:text-gold-500 uppercase"><i class="fab fa-whatsapp"></i> Chat Now</a>
+            <a href="#home" onclick="toggleMenu()">Home</a><a href="#chicks" onclick="toggleMenu()">Chicks</a><a href="#about" onclick="toggleMenu()">About</a>
+            <a href="https://wa.me/917063482623" class="text-green-600 dark:text-gold-500 font-bold uppercase"><i class="fab fa-whatsapp"></i> VIP Booking</a>
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center opacity-20 dark:opacity-30" style="background-image: url('farm1.jpg');"></div>
-        <div class="relative z-10 text-center max-w-6xl mx-auto reveal active animate-float mt-10">
-            <h1 class="text-6xl md:text-8xl lg:text-[100px] font-extrabold leading-[1.05] mb-8 text-black dark:text-white">
-                Luxury Chicks. <br> 
-                <span class="gold-gradient">Unmatched Purity.</span>
-            </h1>
-            <p class="text-lg md:text-2xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
-                Healthy, 100% Vaccinated Chicks, Modern Setup, aur poore India mein Safe Delivery. Kadir & Rifat Brothers par aapka bharosa hi humari pehchan hai.
-            </p>
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 text-center relative overflow-hidden">
+        <div class="relative z-10 reveal active animate-float">
+            <h1 class="text-6xl md:text-8xl lg:text-[100px] font-black leading-[1.05] mb-8 text-black dark:text-white">Luxury Chicks. <br> <span class="gold-gradient">Unmatched Purity.</span></h1>
+            <p class="text-lg md:text-2xl mb-12 max-w-3xl mx-auto font-medium leading-relaxed">India's most trusted premium hatchery startup. Healthy, Vaccinated Quails, Exotic Breeds, Modern Incubators, with Safe Pan India Delivery. Kadir & Rifat Brothers aapke bharose ki buniyad hain.</p>
             <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                <a href="#gallery" class="px-10 py-4 bg-black dark:bg-gold-500 text-white dark:text-black font-extrabold rounded-full shadow-2xl uppercase tracking-wider">Farm Gallery</a>
-                <a href="#chicks" class="px-10 py-4 bg-white dark:bg-[#111] text-black dark:text-white font-extrabold rounded-full shadow-xl border border-gray-200 dark:border-gray-800 uppercase tracking-wider">Explore Chicks</a>
+                <a href="https://wa.me/917063482623" class="px-10 py-4 bg-black dark:bg-gold-500 text-white dark:text-black font-extrabold rounded-full shadow-2xl uppercase tracking-wider transition hover:scale-105">VIP Booking</a>
+                <a href="#contact" class="px-10 py-4 bg-white dark:bg-[#111] text-black dark:text-white font-extrabold rounded-full shadow-xl border border-gray-200 dark:border-gray-800 uppercase tracking-wider transition hover:scale-105">Get Free Advice</a>
             </div>
         </div>
     </section>
 
-    <section id="chicks" class="py-32 px-6 relative bg-royal-light dark:bg-royal-darker transition-colors duration-700">
+    <section id="chicks" class="py-32 px-6 bg-white dark:bg-royal-dark transition-colors duration-700 text-center">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl md:text-7xl font-extrabold mb-16 text-center gold-gradient">Luxury Breeds</h2>
+            <h2 class="text-5xl md:text-7xl font-black mb-16 gold-gradient uppercase tracking-widest italic">Luxury Collection</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <script>
                     const chicksList = [
-                        { name: 'Kadaknath', price: '₹50-60', img: 'kadaknath.jpg' },
-                        { name: 'Quail', price: '₹13', img: 'quail.jpg' },
+                        { name: 'Kadaknath', price: '₹50 - ₹60', img: 'kadaknath.jpg' },
+                        { name: 'Quail (Bater)', price: '₹13', img: 'quail.jpg' },
                         { name: 'Silkie', price: '₹80', img: 'silkie.jpg' },
-                        { name: 'Sultan', price: '₹80', img: 'sultan.jpg' },
                         { name: 'Brahma', price: '₹1100', img: 'brahma.jpg' },
-                        { name: 'Sonali', price: '₹25-32', img: 'sonali.jpg' },
+                        { name: 'Sonali', price: '₹25 - ₹32', img: 'sonali.jpg' },
                         { name: 'Turkey', price: '₹160', img: 'turkey.jpg' },
-                        { name: 'Desi', price: '₹40-60', img: 'desi.jpg' }
+                        { name: 'Desi', price: '₹40 - ₹60', img: 'desi.jpg' },
+                        { name: 'Sultan', price: '₹80', img: 'sultan.jpg' }
                     ];
                     chicksList.forEach(p => {
                         document.write(`
-                            <div class="bg-white dark:bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden card-hover reveal border border-gray-100 dark:border-gray-800">
-                                <div class="h-64 img-placeholder"><img src="${p.img}" class="w-full h-full object-cover"></div>
-                                <div class="p-8"><h3 class="text-2xl font-extrabold mb-1">${p.name}</h3><span class="text-gold-500 font-black text-xl">${p.price}</span></div>
+                            <div class="bg-white dark:glass-dark rounded-[2.5rem] overflow-hidden card-hover reveal border dark:border-gray-800 p-4">
+                                <div class="h-64 rounded-3xl overflow-hidden mb-6 img-placeholder shadow-inner">
+                                    <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="text-2xl font-black mb-1">${p.name}</h3>
+                                <p class="text-gold-600 dark:text-gold-500 font-bold text-xl mb-4">${p.price}</p>
+                                <a href="https://wa.me/917063482623?text=I want to buy ${p.name}" class="w-full py-3 bg-gray-50 dark:bg-white/5 text-center block rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-black hover:text-white dark:hover:bg-gold-500 dark:hover:text-black transition">Buy Now</a>
                             </div>
                         `);
                     });
@@ -152,56 +148,114 @@
         </div>
     </section>
 
-    <section id="gallery" class="py-32 px-0 bg-white dark:bg-[#080808] transition-colors duration-700 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 mb-12 reveal"><h2 class="text-5xl md:text-7xl font-extrabold gold-gradient">Farm Gallery</h2></div>
-        <div id="gallery-track" class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 pb-12 pt-4 px-6 md:px-10 scroll-smooth">
-            <script>
-                for(let i=1; i<=10; i++) {
-                    document.write(`<div class="min-w-[320px] h-72 rounded-[2rem] overflow-hidden shadow-2xl img-placeholder border dark:border-gray-800"><img src="farm${i}.jpg" class="w-full h-full object-cover"></div>`);
-                }
-            </script>
-        </div>
-    </section>
-
-    <section id="about" class="py-32 px-6 bg-royal-light dark:bg-[#0a0a0a] transition-colors duration-700">
-        <div class="max-w-5xl mx-auto bg-black dark:bg-[#050505] p-12 md:p-24 rounded-[4rem] text-center reveal border border-gray-800 shadow-2xl relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-            <h2 class="text-4xl md:text-6xl font-extrabold mb-10 text-white">Meet The <span class="text-gold-400">Founders</span></h2>
-            <p class="text-2xl text-gray-300 italic mb-12 leading-relaxed">
-                "Humara maksad sirf chicks sell karna nahi, balki har farmer ko ek bharosemand platform dena hai. Safari Farm ek premium standard set karne ka passion hai."
-            </p>
-            <div class="pt-8 border-t border-white/20">
-                <h3 class="text-3xl font-black text-white uppercase tracking-widest">Kadir & Rifat</h3>
-                <p class="text-gold-500 font-bold uppercase text-[10px] tracking-widest mb-4">Brothers & Co-Founders</p>
-                <div class="text-gray-400 space-y-2 text-sm font-bold uppercase tracking-widest">
-                    <p><i class="fas fa-map-marker-alt text-gold-500 mr-2"></i> Sujapur, Malda, West Bengal, India</p>
-                    <p><i class="fas fa-envelope text-gold-500 mr-2"></i> rifatsahin000@gmail.com</p>
-                    <p><i class="fas fa-phone-alt text-gold-500 mr-2"></i> +91 7063482623</p>
+    <section id="incubators" class="py-32 px-6 bg-gray-100 dark:bg-[#080808] transition-colors duration-700">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-5xl font-black mb-6 text-black dark:text-white">Smart <span class="gold-gradient">Incubators</span></h2>
+            <p class="text-gray-600 dark:text-gray-400 text-lg mb-16 max-w-2xl mx-auto">High hatch rate ki guarantee wale Smart Machines hum khud manufacturing karte hain.</p>
+            <div class="grid md:grid-cols-2 gap-12 text-left">
+                <div class="bg-white dark:glass-dark p-10 rounded-[3rem] reveal border border-gray-100 dark:border-gray-800">
+                    <img src="logo.png" class="w-20 h-20 mb-8 rounded-2xl bg-black"> <h3 class="text-3xl font-extrabold mb-4 gold-gradient uppercase">Fully Automatic Machines</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">Temperature, Humidity Control aur Automatic Egg Turning features ke saath. 90%+ hatching rate. Industrial standard par reliable startup model.</p>
+                    <p class="text-black dark:text-white font-black text-2xl">Starts from: ₹15,000</p>
+                </div>
+                <div class="bg-white dark:glass-dark p-10 rounded-[3rem] reveal border border-gray-100 dark:border-gray-800">
+                    <img src="logo.png" class="w-20 h-20 mb-8 rounded-2xl bg-black"> <h3 class="text-3xl font-extrabold mb-4 gold-gradient uppercase">Thermocol Manual Machines</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">Sasta aur tikau. Small-scale farmers aur hobbyists ke liye best. Easy manual egg turning, proper insulation, aur manual temperature maintenance.</p>
+                    <p class="text-black dark:text-white font-black text-2xl">Starts from: ₹4,500</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 text-center text-gray-500 text-[10px] font-black uppercase tracking-[0.4em] border-t dark:border-gray-800">
-        &copy; 2026 Safari Farm & Hatchery. All Rights Reserved.
+    <section id="gallery" class="py-32 px-0 bg-white dark:bg-royal-dark transition-colors duration-700 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 mb-12 reveal"><h2 class="text-5xl md:text-7xl font-black gold-gradient uppercase tracking-widest italic">Farm Gallery</h2></div>
+        <div id="gallery-track" class="flex overflow-x-auto hide-scrollbar gap-6 px-10 pb-10 pt-4">
+            <script>
+                for(let i=1; i<=20; i++) {
+                    document.write(`<div class="min-w-[320px] h-72 rounded-[2.5rem] overflow-hidden shadow-2xl img-placeholder border border-white dark:border-gray-800 transition hover:-translate-y-2"><img src="farm${i}.jpg" class="w-full h-full object-cover"></div>`);
+                }
+            </script>
+        </div>
+    </section>
+
+    <section id="about" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-6xl font-black mb-8 gold-gradient uppercase tracking-widest">About <span class="dark:text-white">Farm</span></h2>
+                <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6 font-medium">Safari Farm ek aam hatchery nahi, ek premium startup passion hai. Baranagar Danga Station Road, Malda mein sthit, hamara farm highest biosecurity protocols aur strict hygiene temperatures follow karta hai. Har ek chick disease-free guaranteed vaccination program ke under tayyar hota hai.</p>
+                <div class="flex items-center gap-4 bg-white dark:glass-dark p-6 rounded-3xl border dark:border-gray-800">
+                    <img src="logo.png" class="w-16 h-16 rounded-2xl bg-black p-2 border border-gold-500">
+                    <div>
+                        <h4 class="font-bold text-black dark:text-white text-xl">100% Guaranteed Vaccination</h4>
+                        <p class="text-gray-500 dark:text-gray-400">Har chick vaccinated, proper medical guidance available.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-black p-12 rounded-[4rem] text-center border dark:border-gray-800 shadow-[0_0_60px_rgba(0,0,0,0.5)] relative overflow-hidden reveal">
+                <div class="absolute inset-0 bg-gold-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+                <img src="farm2.jpg" alt="Founders Kadir & Rifat" class="w-40 h-40 rounded-full border-4 border-gold-500 mx-auto mb-10 object-cover relative z-10 shadow-2xl img-placeholder"> <p class="text-2xl md:text-3xl text-gray-300 italic mb-12 font-light leading-relaxed">"Humara maksad har farmer ko disease-free, high-purity premium chicks provide karna hai. Safari Brothers aapke bharose ki buniyad hai."</p>
+                <div class="pt-8 border-t border-white/20">
+                    <h3 class="text-3xl font-black text-white uppercase tracking-[0.2em]">Kadir & Rifat</h3>
+                    <p class="text-gold-500 font-bold uppercase text-[10px] mt-2 tracking-[0.5em]">Safari Brothers - Farm Owners</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-24 px-6 bg-white dark:bg-black border-t dark:border-gray-800 transition-colors duration-700 text-center md:text-left">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+            <div>
+                <img src="logo.png" class="w-16 h-16 mb-6 rounded-full border-2 border-gold-500 shadow-xl bg-gray-800 mx-auto md:mx-0">
+                <h3 class="text-2xl font-black mb-6 text-black dark:text-gold-500 uppercase tracking-widest">Safari Farm</h3>
+                <p class="text-gray-600 dark:text-gray-400 font-medium">India's trusted premium hatchery. Quality, Purity, aur Commitment hamari identity hai.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-black mb-6 uppercase text-black dark:text-white tracking-widest">Direct Contact</h3>
+                <div class="space-y-4 font-black tracking-widest text-lg">
+                    <a href="tel:+917063482623" class="flex items-center justify-center md:justify-start gap-3 text-gold-600 dark:text-gold-500 hover:scale-105 transition">
+                        <i class="fas fa-phone-alt"></i> +91 7063482623
+                    </a>
+                    <a href="mailto:rifatsahin000@gmail.com" class="flex items-center justify-center md:justify-start gap-3 text-gold-600 dark:text-gold-500 hover:scale-105 transition">
+                        <i class="fas fa-envelope"></i> mail us
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-black mb-6 uppercase text-black dark:text-white tracking-widest">Our Location</h3>
+                <a href="https://maps.google.com/?q=Baranagar+Danga+Station+Road,+Near+Al+Amin+Mission,+Sujapur,+Malda,+West+Bengal,+India" target="_blank" class="block bg-gray-100 dark:bg-white/5 p-6 rounded-2xl hover:bg-black hover:text-white dark:hover:bg-gold-500 dark:hover:text-black transition cursor-pointer reveal border dark:border-gray-800">
+                    <p class="font-bold text-sm leading-relaxed">
+                        <i class="fas fa-map-marker-alt text-gold-500 mr-2 text-xl mb-2"></i>
+                        📍 Baranagar Danga Station Road,<br> Near Al Amin Mission, Sujapur,<br> Malda, West Bengal, India.
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-[10px] font-black uppercase tracking-[0.4em] pt-12 mt-12 border-t dark:border-gray-800">
+            &copy; 2026 Safari - Farm & Hatchery Malda. Startup Startup.
+        </div>
     </footer>
 
     <div id="safariAiBox">
-        <div class="chat-header">SAFARI FARM AI 🤖</div>
-        <div class="chat-body" id="chatBody">
-            <div class="msg ai">Nomoshkar! 🙏 Main Safari Farm ka AI Assistant hoon. Main aapki kya madad kar sakta hoon?</div>
+        <div class="chat-header">SAFARI FARM AI 🐥</div>
+        <div id="chatArea" class="chat-body scroll-smooth">
+            <div class="msg ai">Nomoshkar! 🙏 Main Safari Farm ka Smart AI hoon. Main murgiyon ke rate, machinery, ya Malda farm ke baare mein kuch bhi bata sakta hoon! (Hindi, English, বাংলা)</div>
         </div>
         <div class="chat-footer">
-            <input type="text" id="userInput" placeholder="Ask anything..." onkeypress="if(event.key==='Enter') sendMessage()">
-            <button onclick="sendMessage()" class="bg-gold-500 text-black px-4 py-2 rounded-xl font-bold"><i class="fas fa-paper-plane"></i></button>
+            <input type="text" id="userInput" placeholder="Ask anything..." onkeypress="if(event.key === 'Enter') sendMessage()">
+            <button onclick="sendMessage()" class="bg-gold-500 text-black px-4 py-2 rounded-xl font-bold"><i class="fas fa-paper-plane text-xl"></i></button>
         </div>
     </div>
 
-    <button onclick="toggleChat()" class="fixed bottom-6 left-6 w-16 h-16 bg-black dark:bg-gold-500 text-gold-500 dark:text-black rounded-full shadow-2xl z-[2000] flex items-center justify-center text-3xl border-4 border-white/10 transition hover:scale-110">
-        <i class="fas fa-robot animate-pulse"></i>
-    </button>
-    <a href="https://wa.me/917063482623" target="_blank" class="fixed bottom-6 right-6 w-16 h-16 bg-[#25D366] text-white rounded-full shadow-2xl z-[2000] flex items-center justify-center text-4xl hover:scale-110 transition border-4 border-white/10"><i class="fab fa-whatsapp"></i></a>
+    <div class="fixed bottom-6 left-6 z-50 flex flex-col gap-4">
+        <button onclick="toggleAI()" class="w-16 h-16 bg-black dark:bg-gold-500 text-gold-500 dark:text-black rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition border-4 border-white/10">
+            <i class="fas fa-robot animate-pulse"></i>
+        </button>
+    </div>
+    <a href="https://wa.me/917063482623" target="_blank" class="fixed bottom-6 right-6 w-16 h-16 bg-[#25D366] text-white rounded-full shadow-2xl z-50 text-3xl hover:scale-110 transition flex items-center justify-center border-4 border-white/10">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
+    </div>
     <script>
         function toggleTheme() { 
             const isDark = document.documentElement.classList.toggle('dark');
@@ -209,9 +263,10 @@
         }
         function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
         
-        function toggleChat() { 
+        function toggleAI() { 
             const box = document.getElementById('safariAiBox');
             box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+            if(box.style.display === 'flex') document.getElementById('userInput').focus();
         }
 
         async function sendMessage() {
@@ -219,17 +274,17 @@
             const text = input.value.trim();
             if (!text) return;
 
-            const chat = document.getElementById('chatBody');
-            chat.innerHTML += `<div class="msg user">${text}</div>`;
+            const chat = document.getElementById('chatArea');
+            chat.innerHTML += `<div class="msg user flex justify-end">${text}</div>`;
             input.value = '';
             chat.scrollTop = chat.scrollHeight;
 
             const loadId = "ai-" + Date.now();
-            chat.innerHTML += `<div class="msg ai" id="${loadId}"><i class="fas fa-circle-notch fa-spin"></i> Safari AI thinking...</div>`;
+            chat.innerHTML += `<div class="msg ai" id="${loadId}"><i class="fas fa-circle-notch fa-spin"></i> Typing...</div>`;
             chat.scrollTop = chat.scrollHeight;
 
             try {
-                // Fixed Backend Fetch
+                // Fixed Backend Fetch from Turn 11 base
                 const response = await fetch("https://broken-wood-dd3csafari-ai-bot.rifatsahin000.workers.dev", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -238,11 +293,12 @@
                 const data = await response.json();
                 document.getElementById(loadId).innerText = data.reply;
             } catch (error) {
-                document.getElementById(loadId).innerText = "Server busy. Please contact on WhatsApp.";
+                document.getElementById(loadId).innerText = "Server busy. Kripya direct WhatsApp par call karein.";
             }
             chat.scrollTop = chat.scrollHeight;
         }
 
+        // Scroll Reveal Animations
         function reveal() {
             document.querySelectorAll(".reveal").forEach(r => {
                 if (r.getBoundingClientRect().top < window.innerHeight - 50) r.classList.add("active");
