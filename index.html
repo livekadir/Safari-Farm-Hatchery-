@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Safari Farm & Hatchery | Two Brothers Style</title>
+    <title>Safari Farm & Hatchery | Premium Quality</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,7 +37,6 @@
 
     <style>
         * { -webkit-tap-highlight-color: transparent; outline: none; box-sizing: border-box; }
-        /* Scroll behavior smooth for menu clicks */
         html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
         
         #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; text-align: center; }
@@ -62,8 +61,7 @@
         }
 
         .farm-bg-overlay { background-image: url('farmold.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative; width: 100%; }
-        /* Dark gradient overlay so text is readable */
-        .farm-bg-overlay::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.95)); z-index: 1; }
+        .farm-bg-overlay::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.98)); z-index: 1; }
         .z-content { position: relative; z-index: 10; width: 100%; }
 
         .section-tight { padding-top: 5rem; padding-bottom: 5rem; }
@@ -73,6 +71,9 @@
         .video-box { position: relative; border-radius: 3rem; overflow: hidden; background: #000; }
         .video-box video { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
         .video-box:hover video { opacity: 1; scale: 1.05; }
+
+        /* Progress Bar (Naya Premium Feature) */
+        #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: #f59e0b; z-index: 9999; width: 0%; box-shadow: 0 0 10px #f59e0b; transition: width 0.1s; }
     </style>
 </head>
 <body class="bg-royal-dark text-gray-100 dark:bg-royal-dark dark:text-gray-100 light:bg-white light:text-black">
@@ -88,8 +89,11 @@
         </div>
     </div>
 
+    <!-- 🚀 NAYA FEATURE: SCROLL PROGRESS BAR 🚀 -->
+    <div id="scroll-progress"></div>
+
     <!-- WHATSAPP OFFER BAR -->
-    <a href="https://chat.whatsapp.com/FyJGSXc1kjJGosyY492Q4j" target="_blank" class="bg-red-600 hover:bg-red-700 text-white py-2.5 w-full fixed top-0 z-[1500] overflow-hidden flex items-center shadow-lg transition-colors cursor-pointer">
+    <a href="https://chat.whatsapp.com/FyJGSXc1kjJGosyY492Q4j" target="_blank" class="bg-red-600 hover:bg-red-700 text-white py-2.5 w-full fixed top-0 z-[1500] overflow-hidden flex items-center shadow-lg transition-colors cursor-pointer mt-1">
         <div class="animate-marquee whitespace-nowrap text-[12px] md:text-sm font-black tracking-widest uppercase italic flex items-center gap-4">
             <span>🎉 CLICK HERE TO JOIN OUR WHATSAPP GROUP!</span>
             <span class="text-gold-400">🔥 SILKIE CHICKS PAR SPECIAL VIP DISCOUNT!</span>
@@ -98,7 +102,7 @@
     </a>
 
     <!-- HEADER / NAVBAR -->
-    <nav class="fixed top-10 w-full z-[1000] glass-nav py-3 px-4 md:px-12 shadow-md">
+    <nav class="fixed top-10 w-full z-[1000] glass-nav py-3 px-4 md:px-12 shadow-md mt-1">
         <div class="w-full flex justify-between items-center max-w-[1920px] mx-auto">
             <button onclick="toggleMenu()" class="w-10 h-10 flex items-center justify-center text-gold-500 text-xl hover:bg-gold-500/10 rounded-full transition">
                 <i class="fas fa-bars-staggered"></i>
@@ -118,7 +122,7 @@
     </nav>
 
     <!-- MOBILE MENU (SMOOTH SCROLL LINKS) -->
-    <div id="mobileMenu" class="fixed inset-0 bg-[#050505]/95 backdrop-blur-2xl z-[9999] hidden flex-col items-center justify-center gap-6 text-2xl md:text-4xl font-black uppercase italic tracking-tighter transition-all">
+    <div id="mobileMenu" class="fixed inset-0 bg-[#050505]/98 backdrop-blur-3xl z-[9999] hidden flex-col items-center justify-center gap-6 text-2xl md:text-4xl font-black uppercase italic tracking-tighter transition-all">
         <button onclick="toggleMenu()" class="absolute top-6 right-6 md:top-10 md:right-10 text-gold-500 text-4xl hover:scale-110 transition"><i class="fas fa-times"></i></button>
         <a href="#home" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Home</a>
         <a href="#chicks" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Premium Chicks</a>
@@ -130,7 +134,7 @@
     </div>
 
     <!-- MAIN CONTENT START -->
-    <div class="farm-bg-overlay mt-10">
+    <div class="farm-bg-overlay mt-12">
     <div class="z-content">
 
         <!-- HERO SECTION -->
@@ -147,7 +151,7 @@
         </section>
 
         <!-- CHICKS SECTION (SEPARATE PART) -->
-        <section id="chicks" class="section-tight full-screen-section bg-black/30 border-y border-white/5 pt-28">
+        <section id="chicks" class="section-tight full-screen-section bg-black/40 border-y border-white/5 pt-28">
             <div class="w-full max-w-[1700px] mx-auto px-4">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-5xl md:text-[120px] font-black uppercase italic tracking-tighter leading-none"><span class="gold-gradient">Elite</span> Chicks</h2>
@@ -215,26 +219,27 @@
             </div>
         </section>
 
-        <!-- FACEBOOK LIVE FEED (SEPARATE PART) -->
-        <section id="updates" class="section-tight full-screen-section bg-black/40 border-t border-white/5 pt-28">
+        <!-- FACEBOOK LIVE FEED (FIXED HEIGHT FOR SCROLLING) -->
+        <section id="updates" class="section-tight full-screen-section bg-black/40 border-t border-white/5 pt-28 pb-20">
             <div class="w-full px-6 max-w-[1500px] mx-auto text-center">
                 <div class="reveal mb-12">
                     <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-4"><span class="text-[#1877F2]">Live</span> Farm Updates 📢</h2>
                     <p class="text-gray-400 font-medium text-sm md:text-base">Check our latest offers directly from our Facebook Page.</p>
                 </div>
                 
-                <div class="reveal flex justify-center w-full">
-                    <div class="bg-black p-4 md:p-6 rounded-[3rem] border-2 border-[#1877F2]/50 shadow-[0_10px_40px_rgba(24,119,242,0.2)] w-full max-w-[500px] mx-auto overflow-hidden flex justify-center">
+                <div class="reveal flex justify-center w-full my-8">
+                    <!-- FIX: Height reduced to 350px so user can easily scroll past it on mobile -->
+                    <div class="bg-white/5 p-4 rounded-[2rem] border border-white/10 shadow-[0_10px_40px_rgba(24,119,242,0.15)] w-full max-w-[350px] mx-auto flex flex-col justify-center">
                         <iframe 
-                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Froofsafarifarm%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" 
-                            width="340" height="500" style="border:none;overflow:hidden; border-radius: 1.5rem; background: white;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Froofsafarifarm%2F&tabs=timeline&width=320&height=350&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
+                            width="100%" height="350" style="border:none;overflow:hidden; border-radius: 1rem; background: white;" scrolling="yes" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                         </iframe>
                     </div>
                 </div>
                 
-                <div class="mt-10 reveal">
-                    <a href="https://www.facebook.com/roofsafarifarm/" target="_blank" class="inline-flex items-center gap-3 py-3 px-8 bg-[#1877F2] text-white font-black rounded-full uppercase text-[10px] tracking-widest hover:bg-blue-700 transition shadow-xl">
-                        <i class="fab fa-facebook-f text-lg"></i> Open Facebook Page
+                <div class="mt-8 reveal">
+                    <a href="https://www.facebook.com/roofsafarifarm/" target="_blank" class="inline-flex items-center gap-3 py-3 px-8 border border-[#1877F2] text-[#1877F2] font-black rounded-full uppercase text-[10px] tracking-widest hover:bg-[#1877F2] hover:text-white transition shadow-xl">
+                        <i class="fab fa-facebook-f text-lg"></i> Follow us on Facebook
                     </a>
                 </div>
             </div>
@@ -502,6 +507,18 @@
             reveal();
         }
 
+        /* 🚀 NAYA PROGRESS BAR SCRIPT 🚀 */
+        window.onscroll = function() {
+            // Scroll Progress Bar Update
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+            
+            // Trigger Reveal Animation
+            reveal();
+        };
+
         function toggleTheme() {
             const html = document.documentElement;
             const btn = document.getElementById('themeBtn');
@@ -529,7 +546,6 @@
                 if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
             });
         }
-        window.onscroll = reveal;
 
         async function handleBot() {
             const input = document.getElementById('userInput');
