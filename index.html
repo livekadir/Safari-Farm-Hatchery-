@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Safari Farm & Hatchery | Two Brothers Style</title>
 
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -28,6 +29,7 @@
         }
     </script>
     
+    <!-- Icons & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
@@ -35,21 +37,27 @@
         * { -webkit-tap-highlight-color: transparent; outline: none; box-sizing: border-box; }
         html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
         
+        /* Preloader */
         #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; text-align: center; }
         
+        /* Full Width Container Fix - No Side Black Space */
         .full-screen-section { width: 100vw; max-width: 100%; }
 
+        /* Unique Header */
         .glass-nav { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(251, 191, 36, 0.15); width: 100%; }
         .light .glass-nav { background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid rgba(0,0,0,0.05); }
 
         .gold-gradient { background: linear-gradient(135deg, #fbbf24, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
+        /* Scroll Animations */
         .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
+        /* Hide Scrollbars */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+        /* Modern AI UI */
         #aiWindow {
             position: fixed; bottom: 85px; right: 15px; width: 360px; max-width: calc(100vw - 30px);
             height: 550px; background: rgba(10, 10, 10, 0.98); border: 1px solid rgba(251, 191, 36, 0.2);
@@ -57,11 +65,12 @@
             box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.9); overflow: hidden;
         }
 
-        /* BACKGROUND UPDATED TO farmold.jpg */
+        /* BACKGROUND UPDATED */
         .farm-bg-overlay { background-image: url('farmold.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative; width: 100%; }
         .farm-bg-overlay::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,1)); z-index: 1; }
         .z-content { position: relative; z-index: 10; width: 100%; }
 
+        /* Compact Spacing Fix */
         .section-tight { padding-top: 4rem; padding-bottom: 4rem; }
         .luxury-card { transition: 0.4s; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255,255,255,0.02); }
         .luxury-card:hover { border-color: #fbbf24; transform: scale(1.02); }
@@ -69,6 +78,7 @@
 </head>
 <body class="bg-royal-dark text-gray-100 dark:bg-royal-dark dark:text-gray-100 light:bg-white light:text-black">
 
+    <!-- 1. PRELOADER -->
     <div id="loader" class="transition-opacity duration-700">
         <div>
             <h1 class="text-4xl md:text-7xl font-black gold-gradient italic tracking-tighter animate-pulse">SAFARI FARM</h1>
@@ -82,34 +92,42 @@
     <div class="farm-bg-overlay">
     <div class="z-content">
 
+    <!-- 2. UNIQUE PROFILE HEADER -->
     <nav class="fixed top-0 w-full z-[1000] glass-nav py-3 px-4 md:px-12">
         <div class="w-full flex justify-between items-center max-w-[1920px] mx-auto">
+            <!-- Sidebar Menu Toggle (Left) -->
             <button onclick="toggleMenu()" class="w-10 h-10 flex items-center justify-center text-gold-500 text-xl hover:bg-gold-500/10 rounded-full transition">
                 <i class="fas fa-bars-staggered"></i>
             </button>
+
+            <!-- Center Unique Layout: Branded Text & Profile -->
             <div class="flex flex-col items-center cursor-pointer group" onclick="window.scrollTo({top:0, behavior:'smooth'})">
                 <h1 class="text-lg md:text-2xl font-black uppercase tracking-[0.1em] gold-gradient leading-none">Safari Farm</h1>
                 <div class="relative mt-1">
-                    <img src="logo.png" alt="Two Brothers" class="w-9 h-9 md:w-12 md:h-12 rounded-full border border-gold-500 shadow-2xl bg-black object-cover">
+                    <img src="logo.png" alt="Two Brothers" class="w-9 h-9 md:w-12 md:h-12 rounded-full border border-gold-500 shadow-2xl bg-black object-cover group-hover:scale-110 transition duration-500">
                 </div>
             </div>
+
+            <!-- Theme Toggle (Right) -->
             <button onclick="toggleTheme()" id="themeBtn" class="w-10 h-10 flex items-center justify-center bg-gold-500/10 text-gold-500 rounded-full border border-gold-500/20">
                 <i class="fas fa-moon text-lg"></i>
             </button>
         </div>
     </nav>
 
-    <div id="mobileMenu" class="fixed inset-0 bg-black/98 z-[2000] hidden flex-col items-center justify-center gap-8 text-3xl font-black uppercase italic tracking-tighter">
-        <button onclick="toggleMenu()" class="absolute top-10 right-10 text-gold-500 text-5xl"><i class="fas fa-times"></i></button>
-        <a href="#home" onclick="toggleMenu()">Home</a>
-        <a href="#chicks" onclick="toggleMenu()">Premium Chicks</a>
-        <a href="#incubators" onclick="toggleMenu()">Machinery</a>
-        <a href="#gallery" onclick="toggleMenu()">Gallery</a>
-        <a href="#about" onclick="toggleMenu()">About Farm</a>
-        <a href="#terms" onclick="toggleMenu()">Policy</a>
-        <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <!-- MOBILE MENU (FIXED OVERLAP & SPACING) -->
+    <div id="mobileMenu" class="fixed inset-0 bg-[#050505]/95 backdrop-blur-2xl z-[9999] hidden flex-col items-center justify-center gap-6 text-2xl md:text-4xl font-black uppercase italic tracking-tighter transition-all">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 md:top-10 md:right-10 text-gold-500 text-4xl hover:scale-110 transition"><i class="fas fa-times"></i></button>
+        <a href="#home" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Home</a>
+        <a href="#chicks" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Premium Chicks</a>
+        <a href="#incubators" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Machinery</a>
+        <a href="#gallery" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Gallery</a>
+        <a href="#about" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">About Farm</a>
+        <a href="#terms" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Policy</a>
+        <a href="#contact" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Contact</a>
     </div>
 
+    <!-- 3. HERO (PURE SAFARI STYLE) -->
     <section id="home" class="min-h-screen flex items-center justify-center text-center pt-24 full-screen-section">
         <div class="reveal active">
             <span class="inline-block px-4 py-1.5 bg-gold-500/10 rounded-full text-[9px] font-black tracking-[0.4em] text-gold-400 mb-6 border border-gold-500/20 uppercase">Scientifically Proven Hatchery</span>
@@ -122,12 +140,14 @@
         </div>
     </section>
 
+    <!-- 4. CHICKS SECTION (FIRST) -->
     <section id="chicks" class="section-tight full-screen-section">
         <div class="w-full max-w-[1700px] mx-auto px-4">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-5xl md:text-[120px] font-black uppercase italic tracking-tighter leading-none"><span class="gold-gradient">Elite</span> Chicks</h2>
                 <p class="text-gray-500 font-bold tracking-[0.5em] text-[10px] mt-4 uppercase">100% Vaccinated Stock</p>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <script>
                     const birds = [
@@ -148,7 +168,7 @@
                                 </div>
                                 <h3 class="text-2xl font-black mb-1 italic group-hover:gold-gradient transition uppercase">${item.n}</h3>
                                 <p class="text-gold-500 font-black text-xl mb-6 tracking-tighter">${item.p}</p>
-                                <a href="https://wa.me/917063482623?text=Order:${item.n}" class="block py-4 bg-black text-white dark:bg-white/5 text-center rounded-3xl font-black text-[10px] tracking-widest uppercase border border-white/10 hover:bg-gold-500 hover:text-black transition">Buy Now</a>
+                                <a href="https://wa.me/917063482623?text=Order:${item.n}" class="block py-4 bg-black text-white dark:bg-white/5 dark:text-white text-center rounded-3xl font-black text-[10px] tracking-widest uppercase border border-white/10 hover:bg-gold-500 hover:text-black transition">Buy Now</a>
                             </div>
                         `);
                     });
@@ -157,12 +177,14 @@
         </div>
     </section>
 
+    <!-- 5. MACHINERY SLIDER -->
     <section id="incubators" class="section-tight bg-white/5 backdrop-blur-sm full-screen-section">
         <div class="w-full">
             <div class="text-center mb-16 reveal px-6">
                 <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter">Machinery</h2>
                 <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] mt-4 uppercase">Slide Models & Parts</p>
             </div>
+
             <div class="flex overflow-x-auto gap-6 px-6 md:px-16 hide-scrollbar pb-10">
                 <div class="min-w-[320px] md:min-w-[450px] bg-black/60 p-8 rounded-[4rem] border border-white/10 flex-shrink-0 reveal shadow-3xl">
                     <img src="incubator1.jpg" class="w-full h-56 object-cover rounded-[3rem] mb-8 border border-white/5 bg-gray-900 shadow-lg">
@@ -170,17 +192,20 @@
                     <p class="text-3xl font-black text-white mb-8 tracking-tighter">₹1600</p>
                     <a href="https://wa.me/917063482623?text=Inquiry:XHW3001" class="block w-full py-4 border-2 border-gold-500/40 text-gold-500 text-center rounded-3xl font-black uppercase text-[10px] tracking-widest hover:bg-gold-500 hover:text-black transition">Enquire Now</a>
                 </div>
+
                 <div class="min-w-[320px] md:min-w-[450px] bg-gold-500 p-8 rounded-[4rem] flex-shrink-0 reveal shadow-3xl">
                     <img src="incubator2.jpg" class="w-full h-56 object-cover rounded-[3rem] mb-8 border-4 border-black/10 bg-black">
                     <h3 class="text-2xl font-black text-black italic uppercase tracking-tighter leading-none mb-4">STC-3028 Full Auto</h3>
                     <p class="text-4xl font-black text-black mb-8 tracking-tighter">₹5000</p>
                     <a href="https://wa.me/917063482623?text=Inquiry:STC3028" class="block w-full py-5 bg-black text-gold-500 text-center rounded-[2.5rem] font-black uppercase text-[10px] tracking-widest hover:scale-105 transition shadow-2xl">Buy Full Kit</a>
                 </div>
+
                 <div class="min-w-[280px] bg-white/5 p-8 rounded-[3.5rem] border border-white/10 flex-shrink-0 flex flex-col items-center">
                     <img src="parts1.jpg" class="w-full h-40 object-cover rounded-3xl mb-6 opacity-80 border border-white/5">
                     <h3 class="text-lg font-black mb-8 uppercase tracking-widest">Mist Maker Part</h3>
                     <a href="https://wa.me/917063482623" class="mt-auto py-3 px-8 bg-white/5 rounded-2xl font-black text-[9px] uppercase text-gold-500 border border-gold-500/20">Buy Part</a>
                 </div>
+
                 <div class="min-w-[280px] bg-white/5 p-8 rounded-[3.5rem] border border-white/10 flex-shrink-0 flex flex-col items-center">
                     <img src="parts2.jpg" class="w-full h-40 object-cover rounded-3xl mb-6 opacity-80 border border-white/5">
                     <h3 class="text-lg font-black mb-8 uppercase tracking-widest">High DC Fan</h3>
@@ -190,6 +215,7 @@
         </div>
     </section>
 
+    <!-- 6. GALLERY -->
     <section id="gallery" class="section-tight full-screen-section overflow-hidden">
         <div class="w-full mb-16 reveal px-6">
             <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter leading-none text-center">Farm Life</h2>
@@ -203,6 +229,7 @@
         </div>
     </section>
 
+    <!-- 7. ABOUT -->
     <section id="about" class="section-tight px-6 full-screen-section">
         <div class="w-full grid md:grid-cols-2 gap-16 items-center">
             <div class="reveal">
@@ -217,7 +244,7 @@
                 </div>
             </div>
             <div class="reveal text-center relative">
-                <div class="absolute -inset-16 bg-gold-500/5 blur-[120px] rounded-full scale-150"></div>
+                <div class="absolute -inset-16 bg-gold-500/5 blur-[120px] rounded-full"></div>
                 <img src="logo.png" class="relative w-64 md:w-[450px] h-64 md:h-[450px] rounded-full border-4 border-gold-500 mx-auto mb-10 object-cover shadow-3xl bg-black p-1.5">
                 <h3 class="text-4xl md:text-6xl font-black uppercase tracking-tighter italic">Kadir & Rifat</h3>
                 <p class="text-gold-500 font-black uppercase text-[10px] md:text-xs tracking-[1em] mt-2">Founders & Visionaries</p>
@@ -225,6 +252,7 @@
         </div>
     </section>
 
+    <!-- 8. TERMS & POLICY -->
     <section id="terms" class="section-tight border-y border-white/5 bg-black/40 full-screen-section">
         <div class="w-full px-6 max-w-[1500px] mx-auto">
             <h2 class="text-5xl md:text-9xl font-black gold-gradient uppercase italic tracking-tighter mb-16 text-center leading-none">Policies</h2>
@@ -234,58 +262,62 @@
                     <ul class="space-y-4 text-gray-400 text-sm md:text-base font-medium">
                         <li class="flex gap-3"><i class="fas fa-check text-gold-500 mt-1"></i> No returns on live animals after delivery.</li>
                         <li class="flex gap-3"><i class="fas fa-check text-gold-500 mt-1"></i> Count and health check mandatory at collection.</li>
+                        <li class="flex gap-3"><i class="fas fa-check text-gold-500 mt-1"></i> Advance booking required for bulk stock.</li>
                     </ul>
                 </div>
                 <div class="p-10 rounded-[4rem] border border-white/5 bg-white/5 reveal">
                     <h3 class="text-2xl font-black uppercase italic mb-6"><i class="fas fa-shield-heart text-gold-500 mr-3"></i> Machinery Policy</h3>
                     <ul class="space-y-4 text-gray-400 text-sm md:text-base font-medium">
-                        <li class="flex gap-3"><i class="fas fa-times-circle text-gold-500 mt-1"></i> <b>No warranty</b> on machinery or incubator parts.</li>
-                        <li class="flex gap-3"><i class="fas fa-times-circle text-gold-500 mt-1"></i> <b>No replacement</b> policy applies on machines.</li>
-                        <li class="flex gap-3"><i class="fas fa-check-circle text-gold-500 mt-1"></i> Replacement only available for <b>Controllers</b>.</li>
+                        <li class="flex gap-3"><i class="fas fa-check text-gold-500 mt-1"></i> <b>No warranty</b> on machinery or parts.</li>
+                        <li class="flex gap-3"><i class="fas fa-check text-gold-500 mt-1"></i> <b>No replacement</b> policy applies.</li>
+                        <li class="flex gap-3"><i class="fas fa-check text-gold-500 mt-1"></i> Replacement only available for <b>Controllers</b>.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 9. DELIVERY -->
     <section class="section-tight full-screen-section text-center px-6">
         <h2 class="text-6xl md:text-[120px] font-black mb-16 uppercase italic tracking-tighter leading-none">Delivery 🚚</h2>
         <div class="grid md:grid-cols-3 gap-8">
             <div class="p-10 rounded-[4rem] border-2 border-white/5 flex flex-col items-center group luxury-card shadow-xl">
                 <i class="fas fa-train text-5xl mb-6 text-gold-500"></i>
-                <p class="text-[12px] font-black uppercase tracking-[0.3em] italic uppercase">Safe Train Delivery</p>
+                <p class="text-[12px] font-black uppercase tracking-[0.3em] italic">Safe Train &<br>Bus Delivery</p>
             </div>
             <div class="p-10 rounded-[4rem] border-2 border-white/5 flex flex-col items-center group luxury-card shadow-2xl">
                 <i class="fas fa-hand-holding-heart text-5xl mb-6 text-gold-500"></i>
-                <p class="text-[12px] font-black uppercase tracking-[0.3em] italic uppercase">Self Pick-up Stand</p>
+                <p class="text-[12px] font-black uppercase tracking-[0.3em] italic">Self Pick-up at<br>Station / Stand</p>
             </div>
             <div class="p-10 rounded-[4rem] border-2 border-white/5 flex flex-col items-center group luxury-card shadow-xl">
                 <i class="fas fa-wallet text-5xl mb-6 text-gold-500"></i>
-                <p class="text-[12px] font-black uppercase tracking-[0.3em] italic uppercase">Extra Pay Charges</p>
+                <p class="text-[12px] font-black uppercase tracking-[0.3em] italic">Extra Charges<br>(Paid by Client)</p>
             </div>
         </div>
     </section>
 
+    <!-- 10. CONTACT (DIRECT ACTION BUTTONS) -->
     <section id="contact" class="section-tight text-center full-screen-section">
         <div class="w-full">
             <h2 class="text-7xl md:text-[140px] font-black gold-gradient uppercase mb-20 italic tracking-tighter leading-none px-6">Contact</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1600px] mx-auto mb-20 px-6">
                 <a href="https://maps.app.goo.gl/9Lo99GGgt1TVvm5c8?g_st=ac" target="_blank" class="bg-white/5 p-12 rounded-[5rem] border border-white/10 hover:border-gold-500 transition group reveal">
-                    <i class="fas fa-location-dot text-6xl mb-8 text-gold-500"></i>
+                    <i class="fas fa-location-dot text-6xl mb-8 text-gold-500 group-hover:rotate-12 transition"></i>
                     <h3 class="text-2xl font-black uppercase italic">Maps</h3>
-                    <p class="text-gray-500 text-[10px] mt-4 font-black uppercase tracking-widest">Open Google Location</p>
+                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Open Google Location</p>
                 </a>
                 <a href="tel:+917063482623" class="bg-white/5 p-12 rounded-[5rem] border border-white/10 hover:border-gold-500 transition group reveal">
                     <i class="fas fa-phone-flip text-6xl mb-8 text-gold-500 group-hover:scale-110 transition"></i>
                     <h3 class="text-2xl font-black uppercase italic">Call</h3>
-                    <p class="text-gray-500 text-[10px] mt-4 font-black uppercase tracking-widest">Call Malik Direct</p>
+                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Direct Contact Malik</p>
                 </a>
                 <a href="mailto:rifatsahin000@gmail.com" class="bg-white/5 p-12 rounded-[5rem] border border-white/10 hover:border-gold-500 transition group reveal">
                     <i class="fas fa-at text-6xl mb-8 text-gold-500 group-hover:-translate-y-2 transition"></i>
                     <h3 class="text-2xl font-black uppercase italic">Gmail</h3>
-                    <p class="text-gray-500 text-[10px] mt-4 font-black uppercase tracking-widest truncate px-4">rifatsahin000</p>
+                    <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase truncate px-4">rifatsahin000</p>
                 </a>
             </div>
+            
             <div class="reveal pb-6">
                 <img src="logo.png" class="w-24 h-24 mx-auto mb-6 rounded-full border border-gold-500 shadow-2xl bg-black">
                 <p class="text-[10px] text-gray-600 font-black uppercase tracking-[1em]">© 2026 SAFARI FARM | TWO BROTHERS STYLE</p>
@@ -293,6 +325,7 @@
         </div>
     </section>
 
+    <!-- 11. ADVANCED AI MOD -->
     <div id="aiWindow">
         <div class="p-6 bg-black flex justify-between items-center border-b border-white/5 shadow-2xl">
             <div class="flex items-center gap-4">
@@ -310,7 +343,7 @@
         <div id="chatBox" class="flex-1 overflow-y-auto p-6 space-y-8 bg-[#0a0a0a] text-sm scroll-smooth">
             <div class="flex gap-4 items-start">
                 <div class="w-8 h-8 rounded-lg bg-gold-500/10 flex-shrink-0 flex items-center justify-center text-gold-500 border border-gold-500/20 font-black text-[9px]">S.F</div>
-                <div class="bg-white/5 p-5 rounded-[2rem] rounded-tl-none border border-white/5 leading-relaxed text-gray-300">Nomoshkar! 🙏 Main Safari Farm ka AI Assistant hoon. Rates ya Policy ke baare mein poochein!</div>
+                <div class="bg-white/5 p-5 rounded-[2rem] rounded-tl-none border border-white/5 leading-relaxed text-gray-300">Nomoshkar! 🙏 Main Safari Farm ka Assistant hoon. Machinary, Chicks ya Rates ke baare mein poochein!</div>
             </div>
         </div>
         <div class="p-6 bg-black/95 backdrop-blur-xl border-t border-white/5 flex gap-4">
@@ -319,6 +352,7 @@
         </div>
     </div>
 
+    <!-- FLOATING ACTIONS -->
     <button onclick="toggleAI()" class="fixed bottom-8 left-8 w-16 h-16 bg-black border-2 border-gold-500 text-gold-500 rounded-full z-[4000] flex items-center justify-center text-3xl shadow-3xl hover:scale-110 transition-all">
         <i class="fas fa-brain animate-pulse"></i>
     </button>
@@ -368,6 +402,7 @@
         }
         window.onscroll = reveal;
 
+        // Cloudflare Llama-3 Backend
         async function handleBot() {
             const input = document.getElementById('userInput');
             const text = input.value.trim();
