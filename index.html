@@ -513,6 +513,93 @@
             }, 1000);
         }
     </script>
+<style>
+  .chat-btn {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #2E8B57; color: white; border: none;
+    border-radius: 50%; width: 60px; height: 60px;
+    font-size: 24px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+  .chat-window {
+    position: fixed; bottom: 90px; right: 20px;
+    width: 300px; height: 400px; background: white;
+    border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none; flex-direction: column; overflow: hidden;
+    z-index: 1000; border: 1px solid #ddd;
+  }
+  .chat-header {
+    background: #2E8B57; color: white; padding: 15px;
+    font-weight: bold; text-align: center;
+  }
+  .chat-body {
+    flex: 1; padding: 10px; overflow-y: auto; background: #f9f9f9;
+  }
+  .chat-input-area {
+    display: flex; border-top: 1px solid #ddd;
+  }
+  .chat-input-area input {
+    flex: 1; padding: 10px; border: none; outline: none;
+  }
+  .chat-input-area button {
+    padding: 10px 15px; background: #2E8B57; color: white;
+    border: none; cursor: pointer;
+  }
+  .msg { padding: 8px 12px; margin-bottom: 10px; border-radius: 10px; max-width: 80%; font-size: 14px;}
+  .msg.user { background: #E0F7FA; align-self: flex-end; margin-left: auto; }
+  .msg.ai { background: #E8F5E9; align-self: flex-start; margin-right: auto; }
+</style>
+
+<button class="chat-btn" onclick="toggleChat()">💬</button>
+
+<div class="chat-window" id="safariChat">
+  <div class="chat-header">Safari Farm AI 🐥</div>
+  <div class="chat-body" id="chatBody">
+    <div class="msg ai">Hello! Welcome to Safari - Farm & Hatchery. Main aapki kya madad kar sakta hoon? (English, हिन्दी, বাংলা)</div>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleEnter(event)">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+  function toggleChat() {
+    const chat = document.getElementById('safariChat');
+    chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function handleEnter(e) {
+    if (e.key === 'Enter') sendMessage();
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('userInput');
+    const text = input.value.trim().toLowerCase();
+    if (!text) return;
+
+    const chatBody = document.getElementById('chatBody');
+    chatBody.innerHTML += `<div class="msg user">${input.value}</div>`;
+    input.value = '';
+
+    setTimeout(() => {
+      let reply = getSafariAiResponse(text);
+      chatBody.innerHTML += `<div class="msg ai">${reply}</div>`;
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 500);
+  }
+
+  // Yahan aap AI ke jawab set kar sakte hain (Rule-based)
+  function getSafariAiResponse(text) {
+    if (text.includes('quail') || text.includes('bater')) return "Humare paas premium quality ke quail (bater) eggs aur chicks available hain. Aapko kitni quantity chahiye?";
+    if (text.includes('incubator') || text.includes('machine')) return "Hum thermocol manual aur automatic incubators banate hain jiska success rate bahut high hai.";
+    if (text.includes('bengali') || text.includes('bangla') || text.includes('kamon acho')) return "নমস্কার! সাফারি ফার্ম ও হ্যাচারিতে আপনাকে স্বাগতম। আমি আপনাকে কীভাবে সাহায্য করতে পারি?";
+    if (text.includes('hindi') || text.includes('kaise ho')) return "नमस्ते! सफारी फार्म में आपका स्वागत है। मैं आपकी क्या मदद कर सकता हूँ?";
+    if (text.includes('price') || text.includes('dam') || text.includes('rate')) return "Price product ke hisaab se alag hai. Quail eggs ya incubator ka rate janna hai?";
+    return "Main abhi seekh raha hoon! Detailed jankari ke liye kripya direct WhatsApp par message karein.";
+  }
+</script>
+
 </body>
 </html>
 
