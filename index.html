@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
@@ -54,7 +55,6 @@
         .full-screen-section { width: 100%; max-width: 100%; overflow: hidden; }
 
         .glass-nav { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(251, 191, 36, 0.15); width: 100%; }
-
         .gold-gradient { background: linear-gradient(135deg, #fbbf24, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
         .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
@@ -79,22 +79,22 @@
         .luxury-card { transition: 0.4s; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255,255,255,0.02); cursor: pointer;}
         .luxury-card:hover { border-color: #fbbf24; transform: scale(1.02); }
 
-        /* UNIFORM VIDEO BOX - Made much smaller */
+        /* UNIFORM VIDEO BOX */
         .video-box { position: relative; border-radius: 1.5rem; overflow: hidden; background: #050505; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;}
         .video-box video { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 1;}
         .video-box:hover { border-color: #fbbf24; box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15); }
 
-        /* PERFECT SQUARE PHOTOS - Made much smaller */
-        .photo-box { position: relative; border-radius: 1.5rem; overflow: hidden; background: #050505; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;}
+        /* PERFECT SQUARE PHOTOS */
+        .photo-box { position: relative; border-radius: 1.5rem; overflow: hidden; background: #050505; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s; cursor: zoom-in;}
         .photo-box img { width: 100%; height: 100%; object-fit: cover; transition: 1s; }
         .photo-box:hover img { transform: scale(1.1); }
 
         #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: #f59e0b; z-index: 9999; width: 0%; box-shadow: 0 0 10px #f59e0b; transition: width 0.1s; }
         
-        /* Modal Animation */
-        #breedModal { backdrop-filter: blur(15px); }
-        .modal-content { transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: scale(0.95); opacity: 0; max-height: 90vh; }
-        .modal-active .modal-content { transform: scale(1); opacity: 1; }
+        /* Modal & Lightbox Animation */
+        #breedModal, #galleryLightbox { backdrop-filter: blur(15px); }
+        .modal-content, .lightbox-content { transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: scale(0.95); opacity: 0; }
+        .modal-active .modal-content, .lightbox-active .lightbox-content { transform: scale(1); opacity: 1; }
     </style>
 </head>
 <body class="bg-royal-dark text-gray-100 font-sans">
@@ -107,6 +107,17 @@
                 <p class="text-gold-500 text-[12px] md:text-[16px] font-black tracking-[0.3em] uppercase">সাফারি ফার্মে স্বাগতম</p>
                 <p class="text-white/40 text-[9px] font-bold tracking-[0.2em] mt-2">XPRESS LOADING...</p>
             </div>
+        </div>
+    </div>
+
+    <!-- 🚀 NAYA FEATURE 1: LIVE FOMO SALES TOAST 🚀 -->
+    <div id="fomoToast" class="fixed bottom-28 md:bottom-10 md:left-10 left-6 bg-black/90 backdrop-blur-md border border-gold-500/40 p-3.5 rounded-2xl shadow-[0_10px_30px_rgba(245,158,11,0.2)] flex items-center gap-4 z-[4000] transition-all duration-500 transform translate-y-20 opacity-0 pointer-events-none w-[260px] md:w-[300px]">
+        <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500/50 shrink-0">
+            <i class="fas fa-check text-green-500"></i>
+        </div>
+        <div>
+            <p id="fomoText" class="text-white text-[11px] md:text-xs font-medium leading-tight">Loading...</p>
+            <p class="text-gray-400 text-[8px] md:text-[9px] font-black uppercase tracking-widest mt-1">Just now • <span id="fomoLoc" class="text-gold-400">Farm</span></p>
         </div>
     </div>
 
@@ -153,7 +164,7 @@
         <a href="#chicks" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Elite Chicks (মুরগি)</a>
         <a href="#incubators" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Machinery (মেশিন)</a>
         <a href="#updates" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Live Updates</a>
-        <a href="#videos" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Farm Videos</a>
+        <a href="#videos" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">Farm Videos & Gallery</a>
         <a href="#about" onclick="toggleMenu()" class="hover:text-gold-500 transition-colors">About Us</a>
     </div>
 
@@ -206,6 +217,16 @@
                     <i class="fab fa-whatsapp text-lg mr-2"></i> Confirm Booking
                 </a>
             </div>
+        </div>
+    </div>
+
+    <!-- 🚀 NAYA FEATURE 2: HD GALLERY LIGHTBOX 🚀 -->
+    <div id="galleryLightbox" class="fixed inset-0 bg-black/95 z-[9000] hidden flex-col items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 z-50 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full text-white border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:text-black transition text-xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content relative max-w-full max-h-full">
+            <img id="lightboxImg" src="" class="max-w-[95vw] max-h-[85vh] rounded-2xl border-2 border-gold-500/50 shadow-[0_0_50px_rgba(251,191,36,0.2)] object-contain">
         </div>
     </div>
 
@@ -336,14 +357,13 @@
             </div>
         </section>
 
-        <!-- 🚀 MACHINERY SECTION (MADE VERY COMPACT) 🚀 -->
+        <!-- MACHINERY SECTION -->
         <section id="incubators" class="section-tight bg-white/5 backdrop-blur-sm full-screen-section pt-16 border-b border-white/5">
             <div class="w-full">
                 <div class="text-center mb-10 reveal px-6">
                     <h2 class="text-4xl md:text-6xl font-black gold-gradient uppercase italic tracking-tighter">Machinery</h2>
                     <p class="text-gray-500 font-bold tracking-[0.4em] text-[9px] mt-2 uppercase">ইনকিউবেটর ও পার্টস</p>
                 </div>
-                <!-- Compact Cards (w-220px to w-240px max) -->
                 <div class="flex overflow-x-auto gap-4 px-4 md:px-16 hide-scrollbar pb-8">
                     <script>
                         const machines = [
@@ -353,7 +373,6 @@
                             { n: 'High DC Fan', p: 'Buy Part', i: 'parts2.jpg' }
                         ];
                         machines.forEach(item => {
-                            // Shrink-0 and width set to 220px makes it Facebook widget size!
                             document.write(`
                                 <div class="w-[200px] shrink-0 bg-black/60 p-4 rounded-[1.5rem] border border-white/10 reveal shadow-xl flex flex-col items-center text-center">
                                     <div class="w-full h-32 rounded-xl mb-4 overflow-hidden relative">
@@ -379,7 +398,6 @@
                 </div>
                 
                 <div class="reveal flex justify-center w-full">
-                    <!-- Facebook Widget Size Reference (~260px) -->
                     <div class="bg-white/5 p-2 rounded-[1.5rem] border border-[#1877F2]/30 shadow-[0_10px_30px_rgba(24,119,242,0.1)] w-full max-w-[260px] mx-auto overflow-hidden bg-[#fff]">
                         <iframe 
                             src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Froofsafarifarm%2F&tabs=timeline&width=240&height=280&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
@@ -396,7 +414,7 @@
             </div>
         </section>
 
-        <!-- 🚀 SMART AUTO-PLAY VIDEOS (MADE VERY COMPACT) 🚀 -->
+        <!-- 🎥 SMART AUTO-PLAY VIDEOS -->
         <section id="videos" class="section-tight full-screen-section bg-white/5 backdrop-blur-sm border-t border-white/5 pt-16">
             <div class="w-full px-4 mb-16">
                 <div class="text-center mb-10 reveal">
@@ -404,7 +422,6 @@
                     <p class="text-gray-500 font-bold tracking-[0.4em] text-[9px] mt-2 uppercase">ভিডিও গ্যালারি</p>
                 </div>
                 
-                <!-- Compact Videos (width 160px) -->
                 <div class="flex overflow-x-auto gap-3 px-4 md:px-16 hide-scrollbar pb-8">
                     <div class="w-[160px] h-[280px] shrink-0 video-box reveal shadow-xl border border-white/10 rounded-2xl overflow-hidden">
                         <video src="video1.mp4" playsinline muted loop poster="farm1.jpg" class="smart-video w-full h-full object-cover"></video>
@@ -424,15 +441,16 @@
                 </div>
             </div>
 
-            <!-- 🚀 HD SMALL SQUARE PHOTOS (MADE VERY COMPACT) 🚀 -->
+            <!-- 📸 HD SQUARE PHOTOS WITH LIGHTBOX -->
             <div class="w-full mb-10 reveal px-4">
                 <h2 class="text-4xl md:text-6xl font-black gold-gradient uppercase italic tracking-tighter leading-none text-center">Farm Photos</h2>
+                <p class="text-gold-500 text-[9px] text-center mt-3 animate-pulse uppercase tracking-widest">👉 Tap to Zoom 👈</p>
             </div>
             <div class="flex overflow-x-auto gap-3 px-4 md:px-16 hide-scrollbar pb-10" id="gallery">
                 <script>
                     for(let i=1; i<=20; i++) {
-                        // Compact Photo Squares (120px)
-                        document.write(`<div class="w-[120px] h-[120px] shrink-0 rounded-2xl bg-black overflow-hidden border border-white/10 photo-box shadow-lg"><img src="farm${i}.jpg" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover transition duration-1000"></div>`);
+                        // Added openLightbox() function to zoom image on click
+                        document.write(`<div onclick="openLightbox('farm${i}.jpg')" class="w-[120px] h-[120px] shrink-0 rounded-2xl bg-black overflow-hidden border border-white/10 photo-box shadow-lg"><img src="farm${i}.jpg" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover transition duration-1000"></div>`);
                     }
                 </script>
             </div>
@@ -647,7 +665,23 @@
             { n: 'Sultan', p: '₹80', i: 'sultan.jpg', tag: 'রাজকীয় সৌন্দর্য (Royal Beauty)', origin: 'Turkey', min: '50 Chicks', feed: 'Premium chick starter', temp: '33°C - 35°C', med: 'Sensitive to cold.', care: 'মাথার ঝুঁটি পরিষ্কার রাখতে হবে। শৌখিন খামারিদের জন্য।'}
         ];
 
-        // 🚀 SMART VIDEO AUTO-PLAY SCRIPT 🚀
+        // 🚀 LIVE FOMO SALES SCRIPT 🚀
+        const fomoNames = ['Raju', 'Kader', 'Amit', 'Tarikul', 'Sourav', 'Hasan', 'Mintu', 'Sohail'];
+        const fomoLocs = ['Murshidabad', 'Malda', 'Burdwan', 'Nadia', 'Hooghly', 'Birbhum', 'Assam', 'Kolkata'];
+        const fomoBirds = ['100 Kadaknath', '500 Sonali', '50 Turkey', '200 Silkie', '1000 Quail', 'Incubator', '50 Brahma'];
+
+        function showFomo() {
+            const toast = document.getElementById('fomoToast');
+            document.getElementById('fomoText').innerHTML = `<span class="text-gold-400">${fomoNames[Math.floor(Math.random()*fomoNames.length)]}</span> ne <span class="text-green-400">${fomoBirds[Math.floor(Math.random()*fomoBirds.length)]}</span> book kiye!`;
+            document.getElementById('fomoLoc').innerText = fomoLocs[Math.floor(Math.random()*fomoLocs.length)];
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 4000); // 4 seconds pop-up visible
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const loader = document.getElementById('loader');
             setTimeout(() => {
@@ -655,21 +689,22 @@
                 setTimeout(() => loader.style.display = 'none', 300); 
             }, 400);
 
+            // Start FOMO notification after 5 seconds, repeat random between 12s-18s
+            setTimeout(() => {
+                showFomo();
+                setInterval(showFomo, Math.floor(Math.random() * (18000 - 12000 + 1) + 12000)); 
+            }, 5000);
+
+            // Auto Play/Pause Videos logic
             let options = { root: null, rootMargin: '0px', threshold: 0.5 };
             let observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if(entry.isIntersecting){
-                        entry.target.play();
-                    } else {
-                        entry.target.pause();
-                    }
+                    if(entry.isIntersecting){ entry.target.play(); } 
+                    else { entry.target.pause(); }
                 });
             }, options);
 
-            document.querySelectorAll('.smart-video').forEach(video => {
-                observer.observe(video);
-            });
-
+            document.querySelectorAll('.smart-video').forEach(video => { observer.observe(video); });
             reveal();
         });
 
@@ -691,20 +726,19 @@
             reveal();
         };
 
+        // Modal Functions
         function openBreedModal(index) {
             const bird = modalData[index];
             document.getElementById('modalImg').src = bird.i;
             document.getElementById('modalTag').innerText = bird.tag;
             document.getElementById('modalName').innerText = bird.n;
             document.getElementById('modalPrice').innerText = bird.p;
-            
             document.getElementById('modalOrigin').innerText = bird.origin;
             document.getElementById('modalMin').innerText = bird.min;
             document.getElementById('modalMed').innerText = bird.med;
             document.getElementById('modalFeed').innerText = bird.feed;
             document.getElementById('modalTemp').innerText = bird.temp;
             document.getElementById('modalCare').innerText = bird.care;
-            
             document.getElementById('modalBuyBtn').href = "https://wa.me/917063482623?text=Order:" + bird.n;
             
             const modal = document.getElementById('breedModal');
@@ -716,10 +750,22 @@
         function closeBreedModal() {
             const modal = document.getElementById('breedModal');
             modal.classList.remove('modal-active');
-            setTimeout(() => { 
-                modal.classList.add('hidden'); 
-                document.body.style.overflow = 'auto'; 
-            }, 300);
+            setTimeout(() => { modal.classList.add('hidden'); document.body.style.overflow = 'auto'; }, 300);
+        }
+
+        // 🚀 NEW: LIGHTBOX FUNCTIONS 🚀
+        function openLightbox(src) {
+            const lb = document.getElementById('galleryLightbox');
+            document.getElementById('lightboxImg').src = src;
+            lb.classList.remove('hidden');
+            setTimeout(() => { lb.classList.add('lightbox-active'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('galleryLightbox');
+            lb.classList.remove('lightbox-active');
+            setTimeout(() => { lb.classList.add('hidden'); document.body.style.overflow = 'auto'; }, 300);
         }
 
         function toggleMenu() {
@@ -770,3 +816,6 @@
     </script>
 </body>
 </html>
+
+
+```
