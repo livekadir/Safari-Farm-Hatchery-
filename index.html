@@ -54,6 +54,7 @@
         .full-screen-section { width: 100%; max-width: 100%; overflow: hidden; }
 
         .glass-nav { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(251, 191, 36, 0.15); width: 100%; }
+
         .gold-gradient { background: linear-gradient(135deg, #fbbf24, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
         .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
@@ -71,19 +72,19 @@
         }
 
         .farm-bg-overlay { background-image: url('farmold.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative; width: 100%; }
-        .farm-bg-overlay::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.98)); z-index: 1; }
+        .farm-bg-overlay::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.98)); z-index: 1; }
         .z-content { position: relative; z-index: 10; width: 100%; overflow: hidden; }
 
-        .section-tight { padding-top: 5rem; padding-bottom: 5rem; }
+        .section-tight { padding-top: 4rem; padding-bottom: 4rem; }
         .luxury-card { transition: 0.4s; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255,255,255,0.02); cursor: pointer;}
         .luxury-card:hover { border-color: #fbbf24; transform: scale(1.02); }
 
-        /* UNIFORM VIDEO BOX - Smaller, Perfect Aspect Ratio */
+        /* UNIFORM VIDEO BOX - Made much smaller */
         .video-box { position: relative; border-radius: 1.5rem; overflow: hidden; background: #050505; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;}
         .video-box video { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 1;}
         .video-box:hover { border-color: #fbbf24; box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15); }
 
-        /* PERFECT SQUARE PHOTOS */
+        /* PERFECT SQUARE PHOTOS - Made much smaller */
         .photo-box { position: relative; border-radius: 1.5rem; overflow: hidden; background: #050505; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;}
         .photo-box img { width: 100%; height: 100%; object-fit: cover; transition: 1s; }
         .photo-box:hover img { transform: scale(1.1); }
@@ -137,6 +138,7 @@
                 </div>
             </div>
 
+            <!-- Crown Icon -->
             <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="w-10 h-10 flex items-center justify-center bg-gold-500/10 text-gold-500 rounded-full border border-gold-500/20">
                 <i class="fas fa-crown text-lg"></i>
             </button>
@@ -157,50 +159,50 @@
 
     <!-- 🚀 SUPER VIP BREED DETAILS MODAL 🚀 -->
     <div id="breedModal" class="fixed inset-0 bg-black/80 z-[8000] hidden flex items-center justify-center p-4">
-        <div class="modal-content bg-[#0a0a0a] border border-gold-500/30 w-full max-w-[480px] rounded-[2.5rem] relative shadow-2xl flex flex-col h-auto max-h-[90vh]">
+        <div class="modal-content bg-[#0a0a0a] border border-gold-500/30 w-full max-w-[400px] rounded-[2.5rem] relative shadow-2xl flex flex-col h-auto max-h-[90vh]">
             <button onclick="closeBreedModal()" class="absolute top-4 right-4 z-50 w-10 h-10 bg-black/70 backdrop-blur-md rounded-full text-white border border-white/20 flex items-center justify-center hover:bg-red-600 transition">
                 <i class="fas fa-times"></i>
             </button>
             
-            <div class="w-full h-52 shrink-0 bg-black relative rounded-t-[2.5rem] overflow-hidden">
+            <div class="w-full h-48 shrink-0 bg-black relative rounded-t-[2.5rem] overflow-hidden">
                 <img id="modalImg" src="" class="w-full h-full object-cover">
                 <div class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black via-black/80 to-transparent">
                     <p id="modalTag" class="text-gold-400 text-[10px] font-black tracking-widest mb-1"></p>
                     <div class="flex justify-between items-end">
-                        <h2 id="modalName" class="text-3xl font-black italic uppercase text-white drop-shadow-lg leading-none">Breed</h2>
-                        <p id="modalPrice" class="text-gold-500 text-xl font-black bg-black/50 px-3 py-1 rounded-lg border border-gold-500/30">₹00</p>
+                        <h2 id="modalName" class="text-2xl font-black italic uppercase text-white drop-shadow-lg leading-none">Breed</h2>
+                        <p id="modalPrice" class="text-gold-500 text-lg font-black bg-black/50 px-3 py-1 rounded-lg border border-gold-500/30">₹00</p>
                     </div>
                 </div>
             </div>
 
             <div class="p-5 space-y-3 overflow-y-auto hide-scrollbar flex-1 pb-6">
                 <!-- Info Boxes -->
-                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
-                    <i class="fas fa-globe text-gold-500 text-xl mt-1"></i>
+                <div class="bg-white/5 p-3 rounded-xl border border-white/10 flex items-start gap-3">
+                    <i class="fas fa-globe text-gold-500 text-lg mt-1"></i>
                     <div><h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Origin / Breed (উৎপত্তি)</h4><p id="modalOrigin" class="text-xs font-bold text-white mt-0.5">Loading...</p></div>
                 </div>
-                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
-                    <i class="fas fa-box-open text-gold-500 text-xl mt-1"></i>
+                <div class="bg-white/5 p-3 rounded-xl border border-white/10 flex items-start gap-3">
+                    <i class="fas fa-box-open text-gold-500 text-lg mt-1"></i>
                     <div><h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Min Order (কমপক্ষে কত পিস)</h4><p id="modalMin" class="text-xs font-bold text-white mt-0.5">Loading...</p></div>
                 </div>
-                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
-                    <i class="fas fa-syringe text-gold-500 text-xl mt-1"></i>
+                <div class="bg-white/5 p-3 rounded-xl border border-white/10 flex items-start gap-3">
+                    <i class="fas fa-syringe text-gold-500 text-lg mt-1"></i>
                     <div><h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Medicine (ওষুধ ও ভ্যাকসিন)</h4><p id="modalMed" class="text-xs font-bold text-white mt-0.5">Loading...</p></div>
                 </div>
-                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
-                    <i class="fas fa-bowl-rice text-gold-500 text-xl mt-1"></i>
+                <div class="bg-white/5 p-3 rounded-xl border border-white/10 flex items-start gap-3">
+                    <i class="fas fa-bowl-rice text-gold-500 text-lg mt-1"></i>
                     <div><h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Feed Type (কী খাবে)</h4><p id="modalFeed" class="text-xs font-bold text-white mt-0.5">Loading...</p></div>
                 </div>
-                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
-                    <i class="fas fa-temperature-half text-gold-500 text-xl mt-1"></i>
+                <div class="bg-white/5 p-3 rounded-xl border border-white/10 flex items-start gap-3">
+                    <i class="fas fa-temperature-half text-gold-500 text-lg mt-1"></i>
                     <div><h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Temperature (তাপমাত্রা)</h4><p id="modalTemp" class="text-xs font-bold text-white mt-0.5">Loading...</p></div>
                 </div>
-                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 flex items-start gap-4">
-                    <i class="fas fa-hand-holding-heart text-gold-500 text-xl mt-1"></i>
+                <div class="bg-white/5 p-3 rounded-xl border border-white/10 flex items-start gap-3">
+                    <i class="fas fa-hand-holding-heart text-gold-500 text-lg mt-1"></i>
                     <div><h4 class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Care (রক্ষণাবেক্ষণ)</h4><p id="modalCare" class="text-xs font-bold text-white mt-0.5 leading-relaxed">Loading...</p></div>
                 </div>
 
-                <a id="modalBuyBtn" href="#" target="_blank" class="block w-full py-4 mt-4 bg-gold-500 text-black text-center rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition shadow-[0_5px_20px_rgba(245,158,11,0.4)]">
+                <a id="modalBuyBtn" href="#" target="_blank" class="block w-full py-3 mt-4 bg-gold-500 text-black text-center rounded-xl font-black uppercase tracking-widest hover:scale-105 transition shadow-[0_5px_20px_rgba(245,158,11,0.4)]">
                     <i class="fab fa-whatsapp text-lg mr-2"></i> Confirm Booking
                 </a>
             </div>
@@ -216,15 +218,15 @@
         <section id="home" class="min-h-[85vh] flex items-center justify-center text-center pt-32 full-screen-section pb-4">
             <div class="reveal active px-4 w-full">
                 <span class="inline-block px-4 py-1.5 bg-gold-500/10 rounded-full text-[10px] font-black tracking-[0.3em] text-gold-400 mb-6 border border-gold-500/20 uppercase">সাফারি ফার্মে আপনাকে স্বাগত</span>
-                <h2 class="text-6xl md:text-[150px] font-black mb-8 leading-[0.8] tracking-tighter uppercase italic drop-shadow-2xl">PURE<br><span class="gold-gradient">SAFARI.</span></h2>
-                <p class="max-w-2xl mx-auto text-gray-400 font-medium mb-8 text-lg md:text-2xl leading-relaxed">India's most trusted premium chicks startup. Two Brothers Style Excellence.</p>
+                <h2 class="text-6xl md:text-[100px] font-black mb-6 leading-[0.8] tracking-tighter uppercase italic drop-shadow-2xl">PURE<br><span class="gold-gradient">SAFARI.</span></h2>
+                <p class="max-w-2xl mx-auto text-gray-400 font-medium mb-8 text-sm md:text-xl leading-relaxed">India's most trusted premium chicks startup. Two Brothers Style Excellence.</p>
                 
-                <div class="flex flex-wrap justify-center gap-5 mb-8">
-                    <a href="https://wa.me/917063482623" class="px-10 py-4 bg-gold-500 text-black font-black rounded-full uppercase text-[10px] tracking-widest hover:scale-110 transition shadow-2xl">VIP Booking</a>
-                    <a href="#rates" class="px-10 py-4 border border-white/20 font-black rounded-full uppercase text-[10px] tracking-widest hover:bg-white hover:text-black transition">Check Today's Rate</a>
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <a href="https://wa.me/917063482623" class="px-8 py-3 bg-gold-500 text-black font-black rounded-full uppercase text-[10px] tracking-widest hover:scale-110 transition shadow-2xl">VIP Booking</a>
+                    <a href="#rates" class="px-8 py-3 border border-white/20 font-black rounded-full uppercase text-[10px] tracking-widest hover:bg-white hover:text-black transition">Check Rate</a>
                 </div>
 
-                <!-- 🚀 NAYA FEATURE: LIVE DISPATCH TICKER (TRUST BOOSTER) 🚀 -->
+                <!-- LIVE DISPATCH TICKER -->
                 <div class="w-full max-w-[1200px] mx-auto bg-black/40 border border-white/10 rounded-full overflow-hidden flex items-center py-2 px-4 shadow-xl">
                     <div class="bg-gold-500 text-black px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest shrink-0 z-10 shadow-lg">LIVE</div>
                     <div class="w-full overflow-hidden ml-4 relative">
@@ -246,43 +248,38 @@
             <div class="flex items-center gap-2"><i class="fas fa-truck-fast text-lg"></i> All India Delivery</div>
         </div>
 
-        <!-- 🚀 NAYA FEATURE: TODAY'S MARKET RATE CHART 🚀 -->
-        <section id="rates" class="section-tight full-screen-section bg-black/20 pt-20 border-b border-white/5">
+        <!-- TODAY'S MARKET RATE CHART -->
+        <section id="rates" class="section-tight full-screen-section bg-black/20 pt-16 border-b border-white/5">
             <div class="w-full max-w-[1000px] mx-auto px-6">
-                <div class="text-center mb-10 reveal">
-                    <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white">Today's <span class="gold-gradient">Market Rate</span></h2>
-                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] mt-2 uppercase">আজকের বাজার দর (Updated Weekly)</p>
+                <div class="text-center mb-8 reveal">
+                    <h2 class="text-3xl md:text-5xl font-black uppercase italic tracking-tighter text-white">Today's <span class="gold-gradient">Rate</span></h2>
+                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[9px] mt-2 uppercase">আজকের বাজার দর</p>
                 </div>
                 
-                <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] overflow-hidden reveal shadow-2xl">
-                    <table class="w-full text-left text-sm md:text-base">
-                        <thead class="bg-black/60 text-gold-500 uppercase font-black text-[10px] tracking-widest">
+                <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[1.5rem] overflow-hidden reveal shadow-2xl">
+                    <table class="w-full text-left text-xs md:text-sm">
+                        <thead class="bg-black/60 text-gold-500 uppercase font-black text-[9px] tracking-widest">
                             <tr>
-                                <th class="px-6 py-4">Breed Name</th>
-                                <th class="px-6 py-4 text-right">Current Rate</th>
-                                <th class="px-6 py-4 text-center hidden md:table-cell">Status</th>
+                                <th class="px-4 py-3">Breed Name</th>
+                                <th class="px-4 py-3 text-right">Current Rate</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-300 font-medium divide-y divide-white/5">
                             <tr class="hover:bg-white/5 transition">
-                                <td class="px-6 py-4 font-bold text-white">Kadaknath</td>
-                                <td class="px-6 py-4 text-right text-gold-400 font-black">₹50 - ₹60</td>
-                                <td class="px-6 py-4 text-center hidden md:table-cell"><span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full text-[9px] uppercase tracking-widest">Available</span></td>
+                                <td class="px-4 py-3 font-bold text-white">Kadaknath</td>
+                                <td class="px-4 py-3 text-right text-gold-400 font-black">₹50 - ₹60</td>
                             </tr>
                             <tr class="hover:bg-white/5 transition">
-                                <td class="px-6 py-4 font-bold text-white flex items-center gap-2">Silkie <span class="text-[8px] bg-red-600 text-white px-2 py-0.5 rounded-full uppercase animate-pulse">Offer</span></td>
-                                <td class="px-6 py-4 text-right text-gold-400 font-black">₹80</td>
-                                <td class="px-6 py-4 text-center hidden md:table-cell"><span class="bg-yellow-500/20 text-yellow-500 px-3 py-1 rounded-full text-[9px] uppercase tracking-widest">Fast Selling</span></td>
+                                <td class="px-4 py-3 font-bold text-white flex items-center gap-2">Silkie <span class="text-[7px] bg-red-600 text-white px-2 py-0.5 rounded-full uppercase animate-pulse">Offer</span></td>
+                                <td class="px-4 py-3 text-right text-gold-400 font-black">₹80</td>
                             </tr>
                             <tr class="hover:bg-white/5 transition">
-                                <td class="px-6 py-4 font-bold text-white">Sonali</td>
-                                <td class="px-6 py-4 text-right text-gold-400 font-black">₹25 - ₹32</td>
-                                <td class="px-6 py-4 text-center hidden md:table-cell"><span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full text-[9px] uppercase tracking-widest">Available</span></td>
+                                <td class="px-4 py-3 font-bold text-white">Sonali</td>
+                                <td class="px-4 py-3 text-right text-gold-400 font-black">₹25 - ₹32</td>
                             </tr>
                             <tr class="hover:bg-white/5 transition">
-                                <td class="px-6 py-4 font-bold text-white">Turkey</td>
-                                <td class="px-6 py-4 text-right text-gold-400 font-black">₹160</td>
-                                <td class="px-6 py-4 text-center hidden md:table-cell"><span class="bg-blue-500/20 text-blue-500 px-3 py-1 rounded-full text-[9px] uppercase tracking-widest">Pre-Booking</span></td>
+                                <td class="px-4 py-3 font-bold text-white">Turkey</td>
+                                <td class="px-4 py-3 text-right text-gold-400 font-black">₹160</td>
                             </tr>
                         </tbody>
                     </table>
@@ -291,15 +288,15 @@
         </section>
 
         <!-- CHICKS SECTION -->
-        <section id="chicks" class="section-tight full-screen-section bg-black/40 border-b border-white/5 pt-20">
+        <section id="chicks" class="section-tight full-screen-section bg-black/40 border-b border-white/5 pt-16">
             <div class="w-full max-w-[1700px] mx-auto px-4">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-5xl md:text-[120px] font-black uppercase italic tracking-tighter leading-none"><span class="gold-gradient">Elite</span> Chicks</h2>
-                    <p class="text-gray-500 font-bold tracking-[0.5em] text-[10px] mt-4 uppercase">সেরা মানের মুরগি (100% Vaccinated)</p>
-                    <p class="text-gold-500 text-xs mt-3 animate-pulse bg-gold-500/10 inline-block px-4 py-1 rounded-full border border-gold-500/30">👉 Click photo for details!</p>
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none"><span class="gold-gradient">Elite</span> Chicks</h2>
+                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[9px] mt-3 uppercase">সেরা মানের মুরগি</p>
+                    <p class="text-gold-500 text-[10px] mt-2 animate-pulse bg-gold-500/10 inline-block px-3 py-1 rounded-full border border-gold-500/30">👉 Click photo for details!</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <script>
                         const birds = [
                             { n: 'Kadaknath', p: '₹50-60', i: 'kadaknath.jpg', tag: 'কালো মাংসের রাজা (Black Meat)', origin: 'Madhya Pradesh, India', min: '100 Chicks', feed: 'Pre-starter crumb feed', temp: '32°C - 35°C', med: 'F1 & LaSota Vaccine Done.', care: 'খুব ভালো রোগ প্রতিরোধ ক্ষমতা। (High Immunity)'},
@@ -313,23 +310,22 @@
                         ];
                         
                         birds.forEach((item, index) => {
-                            let offerBadge = item.offer ? '<span class="absolute top-4 right-4 bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest animate-pulse z-20 shadow-lg border border-red-400">Offer Active</span>' : '';
+                            let offerBadge = item.offer ? '<span class="absolute top-3 right-3 bg-red-600 text-white text-[8px] font-black px-2 py-1 rounded-full uppercase tracking-widest animate-pulse z-20 shadow-lg border border-red-400">Offer Active</span>' : '';
                             
-                            // PERFECT SQUARE IMAGE FOR GALLERY UNIFORMITY (`aspect-square`)
                             document.write(`
-                                <div onclick="openBreedModal(${index})" class="bg-white/5 backdrop-blur-3xl p-5 rounded-[2.5rem] border border-white/10 reveal group luxury-card shadow-xl relative overflow-hidden flex flex-col items-center text-center">
+                                <div onclick="openBreedModal(${index})" class="bg-white/5 backdrop-blur-3xl p-4 rounded-[2rem] border border-white/10 reveal group luxury-card shadow-xl relative overflow-hidden flex flex-col items-center text-center">
                                     ${offerBadge}
-                                    <div class="w-full aspect-square rounded-[2rem] overflow-hidden mb-5 bg-black relative">
+                                    <div class="w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-4 bg-black relative">
                                         <img src="${item.i}" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110">
                                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30">
-                                            <span class="bg-gold-500 text-black px-5 py-2 rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl">সব ডিটেইলস দেখুন</span>
+                                            <span class="bg-gold-500 text-black px-4 py-1.5 rounded-full font-black text-[9px] uppercase tracking-widest shadow-xl">সব ডিটেইলস দেখুন</span>
                                         </div>
                                     </div>
-                                    <p class="text-gold-400 text-[9px] font-bold tracking-widest uppercase mb-1 truncate w-full">${item.tag}</p>
-                                    <h3 class="text-2xl font-black mb-1 italic group-hover:gold-gradient transition uppercase">${item.n}</h3>
-                                    <p class="text-white font-black text-xl mb-4 tracking-tighter">${item.p}</p>
-                                    <button class="block w-full py-4 bg-white/5 border border-white/10 text-white text-center rounded-2xl font-black text-[10px] tracking-widest uppercase group-hover:bg-gold-500 group-hover:text-black transition">
+                                    <p class="text-gold-400 text-[8px] font-bold tracking-widest uppercase mb-1 truncate w-full">${item.tag}</p>
+                                    <h3 class="text-xl font-black mb-1 italic group-hover:gold-gradient transition uppercase">${item.n}</h3>
+                                    <p class="text-white font-black text-lg mb-3 tracking-tighter">${item.p}</p>
+                                    <button class="block w-full py-3 bg-white/5 border border-white/10 text-white text-center rounded-xl font-black text-[9px] tracking-widest uppercase group-hover:bg-gold-500 group-hover:text-black transition">
                                         Details & Book <i class="fas fa-arrow-right ml-1"></i>
                                     </button>
                                 </div>
@@ -340,31 +336,32 @@
             </div>
         </section>
 
-        <!-- MACHINERY SECTION -->
-        <section id="incubators" class="section-tight bg-white/5 backdrop-blur-sm full-screen-section pt-28 border-b border-white/5">
+        <!-- 🚀 MACHINERY SECTION (MADE VERY COMPACT) 🚀 -->
+        <section id="incubators" class="section-tight bg-white/5 backdrop-blur-sm full-screen-section pt-16 border-b border-white/5">
             <div class="w-full">
-                <div class="text-center mb-16 reveal px-6">
-                    <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter">Machinery</h2>
-                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] mt-4 uppercase">ইনকিউবেটর ও পার্টস</p>
+                <div class="text-center mb-10 reveal px-6">
+                    <h2 class="text-4xl md:text-6xl font-black gold-gradient uppercase italic tracking-tighter">Machinery</h2>
+                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[9px] mt-2 uppercase">ইনকিউবেটর ও পার্টস</p>
                 </div>
-                <div class="flex overflow-x-auto gap-6 px-6 md:px-16 hide-scrollbar pb-10">
+                <!-- Compact Cards (w-220px to w-240px max) -->
+                <div class="flex overflow-x-auto gap-4 px-4 md:px-16 hide-scrollbar pb-8">
                     <script>
                         const machines = [
                             { n: 'XHW-3001 Model', p: '₹1600', i: 'incubator1.jpg' },
-                            { n: 'STC-3028 Full Auto', p: '₹5000', i: 'incubator2.jpg' },
+                            { n: 'STC-3028 Auto', p: '₹5000', i: 'incubator2.jpg' },
                             { n: 'Mist Maker Part', p: 'Buy Part', i: 'parts1.jpg' },
                             { n: 'High DC Fan', p: 'Buy Part', i: 'parts2.jpg' }
                         ];
                         machines.forEach(item => {
-                            // Uniform Square for Machinery too
+                            // Shrink-0 and width set to 220px makes it Facebook widget size!
                             document.write(`
-                                <div class="min-w-[260px] md:min-w-[320px] bg-black/60 p-6 rounded-[2.5rem] border border-white/10 flex-shrink-0 reveal shadow-3xl flex flex-col items-center text-center">
-                                    <div class="w-full aspect-square rounded-[2rem] mb-6 overflow-hidden relative">
+                                <div class="w-[200px] shrink-0 bg-black/60 p-4 rounded-[1.5rem] border border-white/10 reveal shadow-xl flex flex-col items-center text-center">
+                                    <div class="w-full h-32 rounded-xl mb-4 overflow-hidden relative">
                                         <img src="${item.i}" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover">
                                     </div>
-                                    <h3 class="text-xl font-black mb-2 gold-gradient italic uppercase tracking-tighter">${item.n}</h3>
-                                    <p class="text-2xl font-black text-white mb-6 tracking-tighter">${item.p}</p>
-                                    <a href="https://wa.me/917063482623?text=Inquiry:${item.n}" class="block w-full py-4 border border-gold-500/40 text-gold-500 text-center rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-gold-500 hover:text-black transition">Enquire Now</a>
+                                    <h3 class="text-base font-black mb-1 gold-gradient italic uppercase tracking-tighter truncate w-full">${item.n}</h3>
+                                    <p class="text-lg font-black text-white mb-4 tracking-tighter">${item.p}</p>
+                                    <a href="https://wa.me/917063482623?text=Inquiry:${item.n}" class="block w-full py-2.5 border border-gold-500/40 text-gold-500 text-center rounded-lg font-black uppercase text-[9px] tracking-widest hover:bg-gold-500 hover:text-black transition">Enquire</a>
                                 </div>
                             `);
                         });
@@ -373,185 +370,226 @@
             </div>
         </section>
 
-        <!-- 🎥 SMART AUTO-PLAY VIDEOS (PERFECT PORTRAIT SIZE FOR MOBILES) 🎥 -->
-        <section id="videos" class="section-tight full-screen-section bg-white/5 backdrop-blur-sm border-t border-white/5 pt-20">
-            <div class="w-full px-6 mb-20">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter">Safari Shorts</h2>
-                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] mt-4 uppercase">ভিডিও গ্যালারি</p>
-                </div>
-                
-                <div class="flex overflow-x-auto gap-5 px-4 md:px-16 hide-scrollbar pb-10">
-                    <!-- FIX: Size reduced perfectly. Using aspect-[4/5] so it's always perfectly proportioned and not too tall -->
-                    <div class="min-w-[200px] md:min-w-[260px] aspect-[4/5] video-box flex-shrink-0 reveal shadow-2xl relative border border-white/10 rounded-[2rem] overflow-hidden">
-                        <video src="video1.mp4" playsinline muted loop poster="farm1.jpg" class="smart-video w-full h-full object-cover"></video>
-                    </div>
-                    <div class="min-w-[200px] md:min-w-[260px] aspect-[4/5] video-box flex-shrink-0 reveal shadow-2xl relative border border-white/10 rounded-[2rem] overflow-hidden">
-                        <video src="video2.mp4" playsinline muted loop poster="farm2.jpg" class="smart-video w-full h-full object-cover"></video>
-                    </div>
-                    <div class="min-w-[200px] md:min-w-[260px] aspect-[4/5] video-box flex-shrink-0 reveal shadow-2xl relative border border-white/10 rounded-[2rem] overflow-hidden">
-                        <video src="video3.mp4" playsinline muted loop poster="farm3.jpg" class="smart-video w-full h-full object-cover"></video>
-                    </div>
-                    <div class="min-w-[200px] md:min-w-[260px] aspect-[4/5] video-box flex-shrink-0 reveal shadow-2xl relative border border-white/10 rounded-[2rem] overflow-hidden">
-                        <video src="video4.mp4" playsinline muted loop poster="farm4.jpg" class="smart-video w-full h-full object-cover"></video>
-                    </div>
-                    <div class="min-w-[200px] md:min-w-[260px] aspect-[4/5] video-box flex-shrink-0 reveal shadow-2xl relative border border-white/10 rounded-[2rem] overflow-hidden">
-                        <video src="video5.mp4" playsinline muted loop poster="farm5.jpg" class="smart-video w-full h-full object-cover"></video>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 📸 HD PERFECT SQUARE PHOTOS 📸 -->
-            <div class="w-full mb-16 reveal px-6">
-                <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter leading-none text-center">Farm Gallery</h2>
-            </div>
-            <div class="flex overflow-x-auto gap-4 px-6 md:px-16 hide-scrollbar pb-10" id="gallery">
-                <script>
-                    for(let i=1; i<=20; i++) {
-                        // FIX: Reduced size and made PERFECTLY SQUARE using aspect-square
-                        document.write(`<div class="min-w-[160px] md:min-w-[220px] aspect-square rounded-[1.5rem] bg-black overflow-hidden flex-shrink-0 border border-white/10 photo-box shadow-3xl"><img src="farm${i}.jpg" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover"></div>`);
-                    }
-                </script>
-            </div>
-        </section>
-
         <!-- FACEBOOK LIVE FEED -->
-        <section id="updates" class="section-tight full-screen-section bg-black/40 border-y border-white/5 pt-20 pb-20">
-            <div class="w-full px-6 max-w-[1500px] mx-auto text-center">
-                <div class="reveal mb-8">
-                    <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-2"><span class="text-[#1877F2]">Live</span> Updates 📢</h2>
-                    <p class="text-gray-400 font-medium text-xs md:text-sm uppercase tracking-widest">খামারের দৈনন্দিন খবর</p>
+        <section id="updates" class="section-tight full-screen-section bg-black/40 border-t border-white/5 pt-16 pb-16">
+            <div class="w-full px-4 max-w-[1500px] mx-auto text-center">
+                <div class="reveal mb-6">
+                    <h2 class="text-3xl md:text-5xl font-black uppercase italic mb-2"><span class="text-[#1877F2]">Live</span> Updates 📢</h2>
+                    <p class="text-gray-400 font-medium text-[10px] md:text-xs uppercase tracking-widest">খামারের দৈনন্দিন খবর</p>
                 </div>
                 
                 <div class="reveal flex justify-center w-full">
-                    <div class="bg-white/5 p-3 rounded-[2rem] border border-[#1877F2]/30 shadow-[0_10px_30px_rgba(24,119,242,0.1)] w-full max-w-[280px] mx-auto overflow-hidden bg-[#fff]">
+                    <!-- Facebook Widget Size Reference (~260px) -->
+                    <div class="bg-white/5 p-2 rounded-[1.5rem] border border-[#1877F2]/30 shadow-[0_10px_30px_rgba(24,119,242,0.1)] w-full max-w-[260px] mx-auto overflow-hidden bg-[#fff]">
                         <iframe 
-                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Froofsafarifarm%2F&tabs=timeline&width=260&height=280&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
+                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Froofsafarifarm%2F&tabs=timeline&width=240&height=280&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
                             width="100%" height="280" style="border:none;overflow:hidden; border-radius: 1rem;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                         </iframe>
                     </div>
                 </div>
                 
-                <div class="mt-8 reveal">
-                    <a href="https://www.facebook.com/roofsafarifarm/" target="_blank" class="inline-flex items-center gap-3 py-3 px-8 border border-[#1877F2] text-[#1877F2] font-black rounded-full uppercase text-[10px] tracking-widest hover:bg-[#1877F2] hover:text-white transition shadow-xl">
-                        <i class="fab fa-facebook-f text-lg"></i> Open Facebook
+                <div class="mt-6 reveal">
+                    <a href="https://www.facebook.com/roofsafarifarm/" target="_blank" class="inline-flex items-center gap-2 py-2.5 px-6 border border-[#1877F2] text-[#1877F2] font-black rounded-full uppercase text-[9px] tracking-widest hover:bg-[#1877F2] hover:text-white transition shadow-xl">
+                        <i class="fab fa-facebook-f text-base"></i> Open Facebook
                     </a>
                 </div>
             </div>
         </section>
 
+        <!-- 🚀 SMART AUTO-PLAY VIDEOS (MADE VERY COMPACT) 🚀 -->
+        <section id="videos" class="section-tight full-screen-section bg-white/5 backdrop-blur-sm border-t border-white/5 pt-16">
+            <div class="w-full px-4 mb-16">
+                <div class="text-center mb-10 reveal">
+                    <h2 class="text-4xl md:text-6xl font-black gold-gradient uppercase italic tracking-tighter">Safari Shorts</h2>
+                    <p class="text-gray-500 font-bold tracking-[0.4em] text-[9px] mt-2 uppercase">ভিডিও গ্যালারি</p>
+                </div>
+                
+                <!-- Compact Videos (width 160px) -->
+                <div class="flex overflow-x-auto gap-3 px-4 md:px-16 hide-scrollbar pb-8">
+                    <div class="w-[160px] h-[280px] shrink-0 video-box reveal shadow-xl border border-white/10 rounded-2xl overflow-hidden">
+                        <video src="video1.mp4" playsinline muted loop poster="farm1.jpg" class="smart-video w-full h-full object-cover"></video>
+                    </div>
+                    <div class="w-[160px] h-[280px] shrink-0 video-box reveal shadow-xl border border-white/10 rounded-2xl overflow-hidden">
+                        <video src="video2.mp4" playsinline muted loop poster="farm2.jpg" class="smart-video w-full h-full object-cover"></video>
+                    </div>
+                    <div class="w-[160px] h-[280px] shrink-0 video-box reveal shadow-xl border border-white/10 rounded-2xl overflow-hidden">
+                        <video src="video3.mp4" playsinline muted loop poster="farm3.jpg" class="smart-video w-full h-full object-cover"></video>
+                    </div>
+                    <div class="w-[160px] h-[280px] shrink-0 video-box reveal shadow-xl border border-white/10 rounded-2xl overflow-hidden">
+                        <video src="video4.mp4" playsinline muted loop poster="farm4.jpg" class="smart-video w-full h-full object-cover"></video>
+                    </div>
+                    <div class="w-[160px] h-[280px] shrink-0 video-box reveal shadow-xl border border-white/10 rounded-2xl overflow-hidden">
+                        <video src="video5.mp4" playsinline muted loop poster="farm5.jpg" class="smart-video w-full h-full object-cover"></video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🚀 HD SMALL SQUARE PHOTOS (MADE VERY COMPACT) 🚀 -->
+            <div class="w-full mb-10 reveal px-4">
+                <h2 class="text-4xl md:text-6xl font-black gold-gradient uppercase italic tracking-tighter leading-none text-center">Farm Photos</h2>
+            </div>
+            <div class="flex overflow-x-auto gap-3 px-4 md:px-16 hide-scrollbar pb-10" id="gallery">
+                <script>
+                    for(let i=1; i<=20; i++) {
+                        // Compact Photo Squares (120px)
+                        document.write(`<div class="w-[120px] h-[120px] shrink-0 rounded-2xl bg-black overflow-hidden border border-white/10 photo-box shadow-lg"><img src="farm${i}.jpg" onerror="this.src='logo.png'" loading="lazy" class="w-full h-full object-cover transition duration-1000"></div>`);
+                    }
+                </script>
+            </div>
+        </section>
+
         <!-- REVIEWS & ABOUT -->
-        <section id="about" class="section-tight full-screen-section bg-black/40 border-b border-white/5 pt-28">
-            <div class="w-full px-6 max-w-[1600px] mx-auto mb-28">
-                <h2 class="text-5xl md:text-[120px] font-black gold-gradient uppercase italic tracking-tighter leading-none text-center mb-16 reveal">Happy Farmers</h2>
-                <div class="grid md:grid-cols-3 gap-8" id="reviews">
-                    <div class="bg-white/5 p-10 rounded-[3rem] border border-white/10 reveal shadow-xl">
-                        <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="text-gray-300 italic mb-6">"Bohot badhiya chicks mile Safari Farm se. Mortality rate ekdum zero tha aur delivery time par aayi."</p>
+        <section id="about" class="section-tight full-screen-section bg-black/40 border-t border-white/5 pt-20">
+            <div class="w-full px-6 max-w-[1600px] mx-auto mb-20">
+                <h2 class="text-4xl md:text-6xl font-black gold-gradient uppercase italic tracking-tighter leading-none text-center mb-12 reveal">Happy Farmers</h2>
+                <div class="grid md:grid-cols-3 gap-6" id="reviews">
+                    <div class="bg-white/5 p-6 rounded-[2rem] border border-white/10 reveal shadow-xl">
+                        <div class="flex text-gold-500 mb-3 text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-300 italic mb-4 text-sm">"Bohot badhiya chicks mile Safari Farm se. Mortality rate ekdum zero tha aur delivery time par aayi."</p>
                         <div class="flex items-center gap-3">
-                            <img src="logo.png" loading="lazy" class="w-8 h-8 rounded-full border border-gold-500">
-                            <h4 class="font-black uppercase tracking-widest text-[10px] text-gold-500">Rajesh, Assam</h4>
+                            <img src="logo.png" loading="lazy" class="w-6 h-6 rounded-full border border-gold-500">
+                            <h4 class="font-black uppercase tracking-widest text-[9px] text-gold-500">Rajesh, Assam</h4>
                         </div>
                     </div>
-                    <div class="bg-white/5 p-10 rounded-[3rem] border border-white/10 reveal shadow-xl">
-                        <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="text-gray-300 italic mb-6">"Incubator parts original the. Malik ne call par sab samjhaya ki temperature kaise set karna hai."</p>
+                    <div class="bg-white/5 p-6 rounded-[2rem] border border-white/10 reveal shadow-xl">
+                        <div class="flex text-gold-500 mb-3 text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-300 italic mb-4 text-sm">"Incubator parts original the. Malik ne call par sab samjhaya ki temperature kaise set karna hai."</p>
                         <div class="flex items-center gap-3">
-                            <img src="logo.png" loading="lazy" class="w-8 h-8 rounded-full border border-gold-500">
-                            <h4 class="font-black uppercase tracking-widest text-[10px] text-gold-500">Amit Kumar, Bihar</h4>
+                            <img src="logo.png" loading="lazy" class="w-6 h-6 rounded-full border border-gold-500">
+                            <h4 class="font-black uppercase tracking-widest text-[9px] text-gold-500">Amit Kumar, Bihar</h4>
                         </div>
                     </div>
-                    <div class="bg-white/5 p-10 rounded-[3rem] border border-white/10 reveal shadow-xl">
-                        <div class="flex text-gold-500 mb-4 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="text-gray-300 italic mb-6">"Silkie aur Kadaknath dono order kiye the. Murgiyan ekdum healthy aur active hain. Best hatchery!"</p>
+                    <div class="bg-white/5 p-6 rounded-[2rem] border border-white/10 reveal shadow-xl">
+                        <div class="flex text-gold-500 mb-3 text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-300 italic mb-4 text-sm">"Silkie aur Kadaknath dono order kiye the. Murgiyan ekdum healthy aur active hain. Best hatchery!"</p>
                         <div class="flex items-center gap-3">
-                            <img src="logo.png" loading="lazy" class="w-8 h-8 rounded-full border border-gold-500">
-                            <h4 class="font-black uppercase tracking-widest text-[10px] text-gold-500">Sourav, West Bengal</h4>
+                            <img src="logo.png" loading="lazy" class="w-6 h-6 rounded-full border border-gold-500">
+                            <h4 class="font-black uppercase tracking-widest text-[9px] text-gold-500">Sourav, West Bengal</h4>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- STORY -->
-            <div class="w-full grid md:grid-cols-2 gap-16 items-center px-6 max-w-[1600px] mx-auto mb-20">
+            <div class="w-full grid md:grid-cols-2 gap-10 items-center px-6 max-w-[1600px] mx-auto mb-16">
                 <div class="reveal">
-                    <h2 class="text-6xl md:text-[120px] font-black gold-gradient uppercase tracking-tighter italic mb-8 leading-none">Our Story</h2>
-                    <p class="text-gray-400 text-lg md:text-2xl leading-relaxed mb-10 font-medium italic">Two Brothers bringing science to the farm. Safari Farm is built on purity and professional medical standards.</p>
-                    <div class="flex items-center gap-6 p-8 bg-white/5 rounded-[3rem] border border-white/10 shadow-2xl">
-                        <img src="farm3.jpg" onerror="this.src='logo.png'" loading="lazy" class="w-20 h-20 rounded-[2rem] object-cover border-2 border-gold-500 animate-float">
+                    <h2 class="text-5xl md:text-8xl font-black gold-gradient uppercase tracking-tighter italic mb-6 leading-none">Our Story</h2>
+                    <p class="text-gray-400 text-sm md:text-xl leading-relaxed mb-8 font-medium italic">Two Brothers bringing science to the farm. Safari Farm is built on purity and professional medical standards.</p>
+                    <div class="flex items-center gap-4 p-5 bg-white/5 rounded-[2rem] border border-white/10 shadow-2xl">
+                        <img src="farm3.jpg" onerror="this.src='logo.png'" loading="lazy" class="w-14 h-14 rounded-xl object-cover border border-gold-500 animate-float">
                         <div>
-                            <h4 class="font-black text-white text-xl uppercase tracking-tighter">Safari Quality</h4>
-                            <p class="text-[10px] text-gold-500 font-bold uppercase tracking-[0.4em] mt-2">100% Medical Care</p>
+                            <h4 class="font-black text-white text-base uppercase tracking-tighter">Safari Quality</h4>
+                            <p class="text-[8px] text-gold-500 font-bold uppercase tracking-[0.4em] mt-1">100% Medical Care</p>
                         </div>
                     </div>
                 </div>
                 <div class="reveal text-center relative">
-                    <div class="absolute -inset-16 bg-gold-500/5 blur-[120px] rounded-full"></div>
-                    <img src="logo.png" loading="lazy" class="relative w-64 md:w-[450px] h-64 md:h-[450px] rounded-full border-4 border-gold-500 mx-auto mb-10 object-cover shadow-3xl bg-black p-1.5">
-                    <h3 class="text-4xl md:text-6xl font-black uppercase tracking-tighter italic">Kadir & Rifat</h3>
-                    <p class="text-gold-500 font-black uppercase text-[10px] md:text-xs tracking-[1em] mt-2">Founders & Visionaries</p>
+                    <div class="absolute -inset-10 bg-gold-500/5 blur-[80px] rounded-full"></div>
+                    <img src="logo.png" loading="lazy" class="relative w-48 md:w-[350px] h-48 md:h-[350px] rounded-full border-4 border-gold-500 mx-auto mb-6 object-cover shadow-3xl bg-black p-1.5">
+                    <h3 class="text-3xl md:text-5xl font-black uppercase tracking-tighter italic">Kadir & Rifat</h3>
+                    <p class="text-gold-500 font-black uppercase text-[9px] md:text-xs tracking-[1em] mt-2">Founders</p>
                 </div>
             </div>
         </section>
 
         <!-- FAQs & TIPS -->
-        <section class="section-tight full-screen-section bg-white/5 backdrop-blur-sm pt-20 border-b border-white/5">
-            <div class="w-full px-6 max-w-[1500px] mx-auto grid md:grid-cols-2 gap-16">
+        <section class="section-tight full-screen-section bg-white/5 backdrop-blur-sm pt-16 border-b border-white/5">
+            <div class="w-full px-6 max-w-[1500px] mx-auto grid md:grid-cols-2 gap-10">
                 <div class="reveal">
-                    <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-10"><span class="gold-gradient">Farm FAQs</span> 💡</h2>
-                    <div class="space-y-6">
-                        <div class="bg-black/60 p-6 rounded-3xl border border-white/10">
-                            <h4 class="font-black uppercase text-gold-500 mb-2">🚚 Delivery Kaise Hoti Hai? (ডেলিভারি)</h4>
-                            <p class="text-sm text-gray-400 font-medium">Hum Pan-India Train aur Bus ke through safe delivery karte hain. Aapko nazdeeki station se collect karna hota hai.</p>
+                    <h2 class="text-3xl md:text-5xl font-black uppercase italic mb-6"><span class="gold-gradient">Farm FAQs</span> 💡</h2>
+                    <div class="space-y-4">
+                        <div class="bg-black/60 p-5 rounded-2xl border border-white/10">
+                            <h4 class="font-black uppercase text-[10px] text-gold-500 mb-1">🚚 Delivery Kaise Hoti Hai? (ডেলিভারি)</h4>
+                            <p class="text-xs text-gray-400 font-medium">Hum Pan-India Train aur Bus ke through safe delivery karte hain. Aapko nazdeeki station se collect karna hota hai.</p>
                         </div>
-                        <div class="bg-black/60 p-6 rounded-3xl border border-white/10">
-                            <h4 class="font-black uppercase text-gold-500 mb-2">💰 Payment System (পেমেন্ট)</h4>
-                            <p class="text-sm text-gray-400 font-medium">Order confirm karne ke liye advance payment zaroori hai. Extra transport charges client ko khud dene hote hain.</p>
+                        <div class="bg-black/60 p-5 rounded-2xl border border-white/10">
+                            <h4 class="font-black uppercase text-[10px] text-gold-500 mb-1">💰 Payment System (পেমেন্ট)</h4>
+                            <p class="text-xs text-gray-400 font-medium">Order confirm karne ke liye advance payment zaroori hai. Extra transport charges client ko khud dene hote hain.</p>
                         </div>
                     </div>
                 </div>
                 <div class="reveal">
-                    <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-10"><span class="gold-gradient">Expert Tips</span> 🩺</h2>
-                    <div class="bg-black/60 p-10 rounded-[3rem] border border-white/10 h-full flex flex-col justify-center relative overflow-hidden">
-                        <i class="fas fa-temperature-half text-6xl text-white/5 absolute -right-4 -top-4 scale-150"></i>
-                        <i class="fas fa-temperature-half text-5xl text-gold-500 mb-6 relative z-10"></i>
-                        <h3 class="text-2xl font-black uppercase italic mb-4 relative z-10">Brooding Care</h3>
-                        <p class="text-gray-400 font-medium leading-relaxed mb-6 relative z-10">প্রথম ৭ দিন মুরগির বাচ্চার জন্য সবচেয়ে গুরুত্বপূর্ণ। (First 7 days are crucial). Brooder ka temperature 33°C-35°C hona chahiye. Niche saaf burda bichhayein.</p>
+                    <h2 class="text-3xl md:text-5xl font-black uppercase italic mb-6"><span class="gold-gradient">Expert Tips</span> 🩺</h2>
+                    <div class="bg-black/60 p-8 rounded-[2rem] border border-white/10 h-full flex flex-col justify-center relative overflow-hidden">
+                        <i class="fas fa-temperature-half text-5xl text-gold-500 mb-4 relative z-10"></i>
+                        <h3 class="text-xl font-black uppercase italic mb-2 relative z-10">Brooding Care</h3>
+                        <p class="text-gray-400 text-xs font-medium leading-relaxed relative z-10">প্রথম ৭ দিন মুরগির বাচ্চার জন্য সবচেয়ে গুরুত্বপূর্ণ। (First 7 days are crucial). Brooder ka temperature 33°C-35°C hona chahiye. Niche saaf burda bichhayein.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DELIVERY & POLICY -->
+        <section id="terms" class="section-tight full-screen-section bg-black/40 border-t border-white/5 pt-16">
+            <!-- DELIVERY INFO -->
+            <div class="w-full text-center px-6 mb-20">
+                <h2 class="text-5xl md:text-[80px] font-black mb-10 uppercase italic tracking-tighter leading-none">Delivery 🚚</h2>
+                <div class="grid md:grid-cols-3 gap-6 max-w-[1200px] mx-auto">
+                    <div class="p-6 rounded-[2rem] border border-white/5 flex flex-col items-center group luxury-card shadow-xl">
+                        <i class="fas fa-train text-4xl mb-4 text-gold-500"></i>
+                        <p class="text-[10px] font-black uppercase tracking-[0.2em] italic">Safe Train &<br>Bus Delivery</p>
+                    </div>
+                    <div class="p-6 rounded-[2rem] border border-white/5 flex flex-col items-center group luxury-card shadow-2xl">
+                        <i class="fas fa-hand-holding-heart text-4xl mb-4 text-gold-500"></i>
+                        <p class="text-[10px] font-black uppercase tracking-[0.2em] italic">Self Pick-up at<br>Station / Stand</p>
+                    </div>
+                    <div class="p-6 rounded-[2rem] border border-white/5 flex flex-col items-center group luxury-card shadow-xl">
+                        <i class="fas fa-wallet text-4xl mb-4 text-gold-500"></i>
+                        <p class="text-[10px] font-black uppercase tracking-[0.2em] italic">Extra Charges<br>(Paid by Client)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POLICY -->
+            <div class="w-full px-6 max-w-[1200px] mx-auto">
+                <h2 class="text-4xl md:text-7xl font-black gold-gradient uppercase italic tracking-tighter mb-10 text-center leading-none">Policies</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-[2rem] border border-white/5 bg-white/5 reveal">
+                        <h3 class="text-lg font-black uppercase italic mb-4"><i class="fas fa-file-invoice text-gold-500 mr-2"></i> Chicks Policy</h3>
+                        <ul class="space-y-3 text-gray-400 text-xs font-medium">
+                            <li class="flex gap-2"><i class="fas fa-check text-gold-500 mt-0.5"></i> No returns on live animals after delivery.</li>
+                            <li class="flex gap-2"><i class="fas fa-check text-gold-500 mt-0.5"></i> Count and health check mandatory at collection.</li>
+                            <li class="flex gap-2"><i class="fas fa-check text-gold-500 mt-0.5"></i> Advance booking required for bulk stock.</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 rounded-[2rem] border border-white/5 bg-white/5 reveal">
+                        <h3 class="text-lg font-black uppercase italic mb-4"><i class="fas fa-shield-heart text-gold-500 mr-2"></i> Machinery Policy</h3>
+                        <ul class="space-y-3 text-gray-400 text-xs font-medium">
+                            <li class="flex gap-2"><i class="fas fa-times-circle text-gold-500 mt-0.5"></i> <b>No warranty</b> on machinery or parts.</li>
+                            <li class="flex gap-2"><i class="fas fa-times-circle text-gold-500 mt-0.5"></i> <b>No replacement</b> policy applies.</li>
+                            <li class="flex gap-2"><i class="fas fa-check-circle text-gold-500 mt-0.5"></i> Replacement only available for <b>Controllers</b>.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CONTACT & FOOTER -->
-        <section id="contact" class="section-tight text-center full-screen-section bg-black/40 pt-28">
+        <section id="contact" class="section-tight text-center full-screen-section bg-white/5 backdrop-blur-sm border-t border-white/10 pt-20">
             <div class="w-full">
-                <h2 class="text-7xl md:text-[140px] font-black gold-gradient uppercase mb-20 italic tracking-tighter leading-none px-6">Contact</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1700px] mx-auto mb-20 px-6">
-                    <a href="https://www.facebook.com/roofsafarifarm/" target="_blank" class="bg-white/5 p-10 rounded-[4rem] border border-white/10 hover:border-[#1877F2] transition group reveal shadow-xl">
-                        <i class="fab fa-facebook text-6xl mb-6 text-[#1877F2] group-hover:scale-110 transition"></i>
-                        <h3 class="text-2xl font-black uppercase italic text-white">Facebook</h3>
-                        <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Follow Safari Farm</p>
+                <h2 class="text-5xl md:text-[100px] font-black gold-gradient uppercase mb-12 italic tracking-tighter leading-none px-6">Contact</h2>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-[1200px] mx-auto mb-16 px-6">
+                    <a href="https://www.facebook.com/roofsafarifarm/" target="_blank" class="bg-black/60 p-6 rounded-[2rem] border border-white/10 hover:border-[#1877F2] transition group reveal shadow-xl">
+                        <i class="fab fa-facebook text-4xl mb-4 text-[#1877F2] group-hover:scale-110 transition"></i>
+                        <h3 class="text-sm font-black uppercase italic text-white">Facebook</h3>
                     </a>
-                    <a href="https://maps.app.goo.gl/9Lo99GGgt1TVvm5c8?g_st=ac" target="_blank" class="bg-white/5 p-10 rounded-[4rem] border border-white/10 hover:border-gold-500 transition group reveal shadow-xl">
-                        <i class="fas fa-location-dot text-6xl mb-6 text-gold-500 group-hover:rotate-12 transition"></i>
-                        <h3 class="text-2xl font-black uppercase italic">Maps</h3>
-                        <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Open Location</p>
+                    <a href="https://maps.app.goo.gl/9Lo99GGgt1TVvm5c8?g_st=ac" target="_blank" class="bg-black/60 p-6 rounded-[2rem] border border-white/10 hover:border-gold-500 transition group reveal shadow-xl">
+                        <i class="fas fa-location-dot text-4xl mb-4 text-gold-500 group-hover:rotate-12 transition"></i>
+                        <h3 class="text-sm font-black uppercase italic text-white">Maps</h3>
                     </a>
-                    <a href="tel:+917063482623" class="bg-white/5 p-10 rounded-[4rem] border border-white/10 hover:border-gold-500 transition group reveal shadow-xl">
-                        <i class="fas fa-phone-flip text-6xl mb-6 text-gold-500 group-hover:scale-110 transition"></i>
-                        <h3 class="text-2xl font-black uppercase italic">Call</h3>
-                        <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase">Direct Call Malik</p>
+                    <a href="tel:+917063482623" class="bg-black/60 p-6 rounded-[2rem] border border-white/10 hover:border-gold-500 transition group reveal shadow-xl">
+                        <i class="fas fa-phone-flip text-4xl mb-4 text-gold-500 group-hover:scale-110 transition"></i>
+                        <h3 class="text-sm font-black uppercase italic text-white">Call</h3>
                     </a>
-                    <a href="mailto:rifatsahin000@gmail.com" class="bg-white/5 p-10 rounded-[4rem] border border-white/10 hover:border-gold-500 transition group reveal shadow-xl">
-                        <i class="fas fa-at text-6xl mb-6 text-gold-500 group-hover:-translate-y-2 transition"></i>
-                        <h3 class="text-2xl font-black uppercase italic">Gmail</h3>
-                        <p class="text-gray-500 text-[10px] mt-4 font-black tracking-widest uppercase truncate px-2">rifatsahin000</p>
+                    <a href="mailto:rifatsahin000@gmail.com" class="bg-black/60 p-6 rounded-[2rem] border border-white/10 hover:border-gold-500 transition group reveal shadow-xl">
+                        <i class="fas fa-at text-4xl mb-4 text-gold-500 group-hover:-translate-y-2 transition"></i>
+                        <h3 class="text-sm font-black uppercase italic text-white">Gmail</h3>
                     </a>
                 </div>
-                <div class="reveal pb-6 pt-10 text-center">
-                    <img src="logo.png" loading="lazy" class="w-24 h-24 mx-auto mb-6 rounded-full border border-gold-500 shadow-2xl bg-black">
-                    <p class="text-[10px] text-gray-600 font-black uppercase tracking-[1em]">© 2026 SAFARI FARM | TWO BROTHERS STYLE</p>
-                    <p class="text-[8px] text-gold-500/50 font-black uppercase tracking-[0.5em] mt-2">Made with ❤️ in Bengal</p>
+                <div class="reveal pb-6 pt-6 text-center">
+                    <img src="logo.png" loading="lazy" class="w-16 h-16 mx-auto mb-4 rounded-full border border-gold-500 shadow-2xl bg-black">
+                    <p class="text-[9px] text-gray-600 font-black uppercase tracking-[0.5em]">© 2026 SAFARI FARM</p>
+                    <p class="text-[7px] text-gold-500/50 font-black uppercase tracking-[0.4em] mt-1">Made with ❤️ in Bengal</p>
                 </div>
             </div>
         </section>
@@ -587,13 +625,13 @@
     </div>
 
     <!-- 🚀 FLOATING BUTTONS & BACK TO TOP 🚀 -->
-    <button onclick="window.scrollTo({top:0, behavior:'smooth'})" id="backToTopBtn" class="fixed bottom-28 right-8 w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full z-[3000] flex items-center justify-center text-xl shadow-xl hover:bg-gold-500 hover:text-black transition-all opacity-0 translate-y-10">
+    <button onclick="window.scrollTo({top:0, behavior:'smooth'})" id="backToTopBtn" class="fixed bottom-28 right-6 w-10 h-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full z-[3000] flex items-center justify-center text-lg shadow-xl hover:bg-gold-500 hover:text-black transition-all opacity-0 translate-y-10">
         <i class="fas fa-arrow-up"></i>
     </button>
-    <button onclick="toggleAI()" class="fixed bottom-8 left-8 w-16 h-16 bg-black border-2 border-gold-500 text-gold-500 rounded-full z-[4000] flex items-center justify-center text-3xl shadow-3xl hover:scale-110 transition-all">
+    <button onclick="toggleAI()" class="fixed bottom-6 left-6 w-14 h-14 bg-black border-2 border-gold-500 text-gold-500 rounded-full z-[4000] flex items-center justify-center text-2xl shadow-3xl hover:scale-110 transition-all">
         <i class="fas fa-brain animate-pulse"></i>
     </button>
-    <a href="https://wa.me/917063482623" target="_blank" class="fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] text-white rounded-full z-[4000] flex items-center justify-center text-4xl hover:scale-110 transition-all border-4 border-black/50 animate-pulse-glow">
+    <a href="https://wa.me/917063482623" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full z-[4000] flex items-center justify-center text-3xl hover:scale-110 transition-all border-2 border-black/50 animate-pulse-glow">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -617,7 +655,6 @@
                 setTimeout(() => loader.style.display = 'none', 300); 
             }, 400);
 
-            // Auto Play/Pause logic
             let options = { root: null, rootMargin: '0px', threshold: 0.5 };
             let observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -706,7 +743,7 @@
             const text = input.value.trim();
             if(!text) return;
             const chat = document.getElementById('chatBox');
-            chat.innerHTML += `<div class="flex justify-end mb-8"><div class="user-msg-item bg-gold-500 text-black p-5 rounded-[2.5rem] rounded-tr-none text-sm font-bold shadow-xl max-w-[85%]">${text}</div></div>`;
+            chat.innerHTML += `<div class="flex justify-end mb-8"><div class="user-msg-item bg-gold-500 text-black p-4 rounded-[2rem] rounded-tr-none text-sm font-bold shadow-xl max-w-[85%]">${text}</div></div>`;
             input.value = ''; chat.scrollTop = chat.scrollHeight;
 
             const typing = document.createElement('div');
@@ -718,7 +755,7 @@
                 const res = await fetch("https://broken-wood-dd3csafari-ai-bot.rifatsahin000.workers.dev", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text }) });
                 const data = await res.json();
                 typing.remove();
-                chat.innerHTML += `<div class="flex gap-4 items-start mb-8"><div class="w-9 h-9 rounded-xl bg-gold-500/10 flex-shrink-0 flex items-center justify-center text-gold-500 border border-gold-500/20 font-black text-[10px]">S.F</div><div class="bg-white/5 p-5 rounded-[2.5rem] rounded-tl-none border border-white/5 leading-relaxed text-gray-300 shadow-sm">${data.reply.replace(/\n/g, '<br>')}</div></div>`;
+                chat.innerHTML += `<div class="flex gap-4 items-start mb-8"><div class="w-8 h-8 rounded-xl bg-gold-500/10 flex-shrink-0 flex items-center justify-center text-gold-500 border border-gold-500/20 font-black text-[9px]">S.F</div><div class="bg-white/5 p-4 rounded-[2rem] rounded-tl-none border border-white/5 leading-relaxed text-gray-300 shadow-sm">${data.reply.replace(/\n/g, '<br>')}</div></div>`;
             } catch (e) { typing.innerHTML = "Error! Call Malik 7063482623"; }
             chat.scrollTop = chat.scrollHeight;
         }
@@ -733,4 +770,3 @@
     </script>
 </body>
 </html>
-```eof
